@@ -49,25 +49,19 @@
         .logo-star:hover { transform: rotate(45deg) scale(1.15); box-shadow: 0 0 20px var(--gold-shadow); background: linear-gradient(135deg, rgba(232, 197, 71, 0.5) 0%, rgba(232, 197, 71, 0.3) 100%); }
         @keyframes rotateStar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .header-right { display: flex; align-items: center; gap: 0.75rem; }
-        
-        /* Бургер-меню */
         .burger-btn { display: none; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
         .burger-btn:hover { background: rgba(232, 197, 71, 0.2); }
-        
         nav { background: rgba(30, 58, 47, 0.95); padding: 0.6rem 0; border-top: 1px solid rgba(232, 197, 71, 0.3); }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; justify-content: center; }
         .nav-links a { color: var(--gold-bright); text-decoration: none; font-weight: 600; transition: all 0.3s; position: relative; padding: 0.4rem 0; font-size: 0.95rem; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold-bright), var(--gold-light)); transition: width 0.3s; }
         .nav-links a:hover::after { width: 100%; }
         .nav-links a:hover { color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-shadow); }
-        
-        /* Мобильное меню */
         .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 51, 41, 0.98); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
         .mobile-menu.active { display: flex; }
         .mobile-menu a { color: var(--gold-bright); text-decoration: none; font-size: 1.5rem; font-weight: 600; transition: all 0.3s; }
         .mobile-menu a:hover { color: var(--gold); transform: scale(1.1); }
         .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
-        
         .hero { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); padding: 4rem 0; text-align: center; position: relative; overflow: hidden; border-bottom: 4px solid var(--gold); z-index: 2; }
         .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(232, 197, 71, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite; }
         .hero-content { position: relative; z-index: 2; }
@@ -82,10 +76,17 @@
         .stat-item:hover { transform: translateY(-8px); background: rgba(232, 197, 71, 0.2); box-shadow: 0 10px 35px var(--gold-shadow); }
         .stat-number { font-size: 2.75rem; font-weight: 800; display: block; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: 'Cormorant Garamond', serif; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); }
         .stat-label { font-size: 0.95rem; opacity: 0.9; margin-top: 0.4rem; font-weight: 500; color: var(--gold-light); }
-        .principles, .features, .catalog { padding: 4rem 0; position: relative; z-index: 2; }
+        .principles, .features, .catalog, .delivery-section { padding: 4rem 0; position: relative; z-index: 2; }
         .principles { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
         .features { background: #fff; }
         .catalog { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
+        .delivery-section { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); }
+        .delivery-section .section-title { color: var(--gold-bright); }
+        .delivery-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
+        .delivery-card { max-width: 700px; margin: 2rem auto 0; background: rgba(255,255,255,0.08); padding: 2.5rem; border-radius: 1.5rem; border: 2px solid rgba(232, 197, 71, 0.4); text-align: center; }
+        .delivery-card .delivery-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .delivery-card h3 { font-size: 1.75rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; margin-bottom: 1rem; }
+        .delivery-card p { font-size: 1.15rem; line-height: 1.8; opacity: 0.95; }
         .section-title { text-align: center; font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
         .section-title::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); border-radius: 2px; }
         .section-subtitle { text-align: center; font-size: 1.05rem; color: var(--text-light); margin-bottom: 2.5rem; margin-top: 1.25rem; }
@@ -130,16 +131,16 @@
         .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
         .product-card:hover .product-image { transform: scale(1.08); }
         .product-info { padding: 1rem; }
-        .product-brand { color: var(--gold-dark); font-weight: 700; font-size: 0.75rem; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--green-dark); line-height: 1.3; font-family: 'Cormorant Garamond', serif; }
-        .product-category { color: var(--text-light); font-size: 0.8rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
-        .product-price { font-size: 1.5rem; font-weight: 800; color: var(--gold-dark); display: flex; align-items: center; gap: 0.3rem; font-family: 'Cormorant Garamond', serif; margin-bottom: 0.75rem; }
-        .product-price span { font-size: 1.1rem; }
+        .product-brand { color: var(--gold-dark); font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .product-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--green-dark); line-height: 1.3; font-family: 'Cormorant Garamond', serif; }
+        .product-category { color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+        .product-price { font-size: 1.75rem; font-weight: 800; color: var(--gold-dark); display: flex; align-items: center; gap: 0.3rem; font-family: 'Cormorant Garamond', serif; margin-bottom: 0.75rem; }
+        .product-price span { font-size: 1.25rem; }
         .quantity-selector { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); border-radius: 50px; padding: 0.4rem; border: 2px solid var(--border); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); }
-        .qty-btn { width: 30px; height: 30px; border: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; cursor: pointer; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px var(--gold-shadow); border: 2px solid var(--gold-light); flex-shrink: 0; }
+        .qty-btn { width: 32px; height: 32px; border: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; cursor: pointer; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px var(--gold-shadow); border: 2px solid var(--gold-light); flex-shrink: 0; }
         .qty-btn:hover { transform: scale(1.12); }
         .qty-btn:active { transform: scale(0.95); }
-        .qty-value { font-weight: 700; font-size: 1rem; min-width: 35px; text-align: center; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
+        .qty-value { font-weight: 700; font-size: 1.05rem; min-width: 35px; text-align: center; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
         .btn { padding: 0.75rem 1.25rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; position: relative; overflow: hidden; font-family: 'Montserrat', sans-serif; }
         .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.5s; }
         .btn:hover::before { left: 100%; }
@@ -204,65 +205,74 @@
         @keyframes slideUp { to { transform: translateX(-50%) translateY(0); } }
         .loading-message { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-light); font-size: 1.1rem; }
         
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ — УВЕЛИЧЕННЫЕ ШРИФТЫ */
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .header-top { padding: 0.4rem 0; }
-            .logo { font-size: 1.15rem; gap: 0.35rem; }
-            .logo i { font-size: 1.4rem; }
-            .logo-star { width: 28px; height: 28px; }
-            .logo-star::before { font-size: 1rem; }
-            .header-cart { padding: 0.3rem 0.6rem; }
-            .header-cart i { font-size: 0.85rem; }
-            .header-cart-count { font-size: 0.7rem; }
-            .header-cart-total { font-size: 0.6rem; }
+            .header-top { padding: 0.5rem 0; }
+            .logo { font-size: 1.25rem; gap: 0.4rem; }
+            .logo i { font-size: 1.5rem; }
+            .logo-star { width: 30px; height: 30px; }
+            .logo-star::before { font-size: 1.1rem; }
+            .header-cart { padding: 0.35rem 0.7rem; }
+            .header-cart i { font-size: 0.9rem; }
+            .header-cart-count { font-size: 0.75rem; }
+            .header-cart-total { font-size: 0.65rem; }
             .burger-btn { display: flex; align-items: center; justify-content: center; }
             nav { display: none; }
             .hero { padding: 2.5rem 0; }
-            .hero h1 { font-size: 1.75rem; }
-            .hero-description { font-size: 0.9rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-description { font-size: 1rem; }
             .hero-stats { gap: 1rem; }
-            .stat-item { padding: 0.85rem 1.25rem; }
-            .stat-number { font-size: 1.75rem; }
-            .stat-label { font-size: 0.8rem; }
-            .hero-badge { font-size: 0.8rem; padding: 0.4rem 1rem; }
-            .section-title { font-size: 1.65rem; }
-            .principles, .features, .catalog, .quality-section { padding: 2.5rem 0; }
+            .stat-item { padding: 1rem 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .stat-label { font-size: 0.9rem; }
+            .hero-badge { font-size: 0.85rem; padding: 0.45rem 1.1rem; }
+            .section-title { font-size: 1.85rem; }
+            .principles, .features, .catalog, .quality-section, .delivery-section { padding: 3rem 0; }
             .principles-grid, .features-grid, .quality-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-            .product-image-wrapper { height: 120px; }
-            .product-info { padding: 0.75rem; }
-            .product-name { font-size: 0.9rem; }
-            .product-price { font-size: 1.25rem; }
-            .qty-btn { width: 26px; height: 26px; font-size: 0.95rem; }
-            .qty-value { font-size: 0.9rem; min-width: 28px; }
-            .filter-btn { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
-            .floating-cart-btn { width: 48px; height: 48px; right: 12px; font-size: 1.2rem; }
-            .scroll-btn { width: 38px; height: 38px; right: 12px; font-size: 0.95rem; }
-            .scroll-top { bottom: 85px; }
-            .scroll-bottom { bottom: 35px; }
-            .modal-content { padding: 1rem; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+            .product-image-wrapper { height: 130px; }
+            .product-info { padding: 0.85rem; }
+            .product-brand { font-size: 0.8rem; }
+            .product-name { font-size: 1.05rem; margin-bottom: 0.4rem; }
+            .product-category { font-size: 0.85rem; margin-bottom: 0.6rem; }
+            .product-price { font-size: 1.4rem; margin-bottom: 0.6rem; }
+            .quantity-selector { padding: 0.35rem; gap: 0.5rem; }
+            .qty-btn { width: 30px; height: 30px; font-size: 1rem; }
+            .qty-value { font-size: 1rem; min-width: 32px; }
+            .filter-btn { padding: 0.55rem 1rem; font-size: 0.85rem; }
+            .floating-cart-btn { width: 50px; height: 50px; right: 12px; font-size: 1.3rem; }
+            .scroll-btn { width: 40px; height: 40px; right: 12px; font-size: 1rem; }
+            .scroll-top { bottom: 90px; }
+            .scroll-bottom { bottom: 38px; }
+            .modal-content { padding: 1.25rem; }
             .cart-item { flex-direction: column; text-align: center; padding: 1rem; }
             .footer-content { gap: 1.5rem; }
             .footer-contact-buttons { flex-direction: column; }
+            .delivery-card { padding: 1.75rem; margin: 1.5rem 1rem 0; }
+            .delivery-card .delivery-icon { font-size: 3rem; }
+            .delivery-card h3 { font-size: 1.4rem; }
+            .delivery-card p { font-size: 1rem; }
         }
         
         @media (max-width: 480px) {
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
-            .product-image-wrapper { height: 100px; }
-            .product-brand { font-size: 0.65rem; }
-            .product-name { font-size: 0.8rem; margin-bottom: 0.3rem; }
-            .product-category { font-size: 0.7rem; margin-bottom: 0.5rem; }
-            .product-price { font-size: 1.1rem; margin-bottom: 0.5rem; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+            .product-image-wrapper { height: 115px; }
+            .product-brand { font-size: 0.75rem; }
+            .product-name { font-size: 0.95rem; margin-bottom: 0.35rem; }
+            .product-category { font-size: 0.8rem; margin-bottom: 0.5rem; }
+            .product-price { font-size: 1.25rem; margin-bottom: 0.5rem; }
             .quantity-selector { padding: 0.3rem; gap: 0.4rem; }
-            .qty-btn { width: 24px; height: 24px; font-size: 0.85rem; }
-            .qty-value { font-size: 0.8rem; min-width: 24px; }
-            .hero h1 { font-size: 1.5rem; }
-            .hero-description { font-size: 0.85rem; }
-            .stat-item { padding: 0.65rem 1rem; }
-            .stat-number { font-size: 1.5rem; }
+            .qty-btn { width: 28px; height: 28px; font-size: 0.95rem; }
+            .qty-value { font-size: 0.95rem; min-width: 28px; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero-description { font-size: 0.9rem; }
+            .stat-item { padding: 0.75rem 1.1rem; }
+            .stat-number { font-size: 1.75rem; }
+            .stat-label { font-size: 0.8rem; }
             .filters { gap: 0.5rem; }
-            .filter-btn { padding: 0.4rem 0.7rem; font-size: 0.75rem; }
+            .filter-btn { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+            .section-title { font-size: 1.65rem; }
         }
         
         html { scroll-behavior: smooth; }
@@ -288,6 +298,7 @@
         <a href="#principles" onclick="closeMobileMenu()">Принципы</a>
         <a href="#quality" onclick="closeMobileMenu()">Гарантия</a>
         <a href="#catalog" onclick="closeMobileMenu()">Каталог</a>
+        <a href="#delivery" onclick="closeMobileMenu()">Доставка</a>
         <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
     </div>
     
@@ -321,6 +332,7 @@
                     <li><a href="#principles">Принципы</a></li>
                     <li><a href="#quality">Гарантия</a></li>
                     <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#delivery">Доставка</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </div>
@@ -343,7 +355,6 @@
                     <div class="stat-item"><span class="stat-number" id="totalProducts">0</span><span class="stat-label">позиций</span></div>
                     <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">брендов</span></div>
                     <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">оригинал</span></div>
-                    <div class="stat-item"><span class="stat-number">24/7</span><span class="stat-label">приём заказов</span></div>
                 </div>
             </div>
         </div>
@@ -389,11 +400,24 @@
             <p class="section-subtitle">Преимущества работы с Аманат Маркет</p>
             <div class="features-grid">
                 <div class="feature-card"><div class="feature-icon">💰</div><h3 class="feature-title">Оптовые цены</h3><p>Выгодные условия для магазинов и оптовиков. Работаем без посредников — напрямую от производителя</p></div>
-                <div class="feature-card"><div class="feature-icon">🚚</div><h3 class="feature-title">Быстрая доставка</h3><p>Отправка в день заказа по договорённости. Доставка по всей Ингушетии</p></div>
                 <div class="feature-card"><div class="feature-icon">✅</div><h3 class="feature-title">Оригинальная продукция</h3><p>Только сертифицированные бренды. Гарантия качества на каждую позицию</p></div>
             </div>
         </div>
     </section>
+    
+    <!-- НОВАЯ СЕКЦИЯ ДОСТАВКИ -->
+    <section class="delivery-section" id="delivery">
+        <div class="container">
+            <h2 class="section-title">Доставка</h2>
+            <p class="section-subtitle">Быстрая и надёжная доставка по Ингушетии</p>
+            <div class="delivery-card">
+                <div class="delivery-icon">🚚</div>
+                <h3>Быстрая доставка</h3>
+                <p>Отправка в день заказа по договорённости.<br>Доставка по всей Ингушетии.</p>
+            </div>
+        </div>
+    </section>
+    
     <section class="catalog" id="catalog">
         <div class="container">
             <div class="catalog-header">
@@ -558,7 +582,6 @@
                 }
                 renderProducts();
                 updateStats();
-                // Уведомление убрано для посетителей
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
                 grid.innerHTML = '<div class="loading-message"><i class="fas fa-exclamation-triangle" style="color: #dc3545; font-size: 2rem;"></i><br><br>Ошибка: ' + error.message + '</div>';
@@ -614,7 +637,6 @@
         function createBubble(container) {
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            // УМЕНЬШЕНО ЕЩЁ В 2 РАЗА: было 20-60px, стало 10-30px
             const size = Math.random() * 20 + 10;
             const duration = Math.random() * 12000 + 14000;
             bubble.style.width = size + 'px';
@@ -656,7 +678,6 @@
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
         function scrollToBottom() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
 
-        // Мобильное меню
         function openMobileMenu() { document.getElementById('mobileMenu').classList.add('active'); }
         function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('active'); }
 
