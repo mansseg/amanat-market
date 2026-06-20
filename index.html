@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аманат Маркет — Оригинальная бытовая химия премиум класса</title>
+    <title>Аманат Маркет — Оригинальная бытовая химия в Ингушетии</title>
+    <meta name="description" content="Оптовая продажа оригинальной бытовой химии в Ингушетии. Прямые поставки от производителя. Доставка по Магасу, Назрани и всей республике.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,14 +15,10 @@
             --green-dark: #1a3329; --green: #2d5a4a; --green-light: #3d7a64;
             --text: #2c3e2d; --text-light: #5a6c57; --border: #e8e4d9;
             --shadow: rgba(30, 58, 47, 0.1); --gold-shadow: rgba(232, 197, 71, 0.4);
+            --danger: #c0392b; --danger-light: #e74c3c;
         }
         body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--text); background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); overflow-x: hidden; }
         .premium-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a961' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        .bubbles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden; }
-        .bubble { position: absolute; bottom: -150px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 15%, rgba(201, 169, 97, 0.35) 35%, rgba(255, 255, 255, 0.25) 55%, rgba(200, 220, 255, 0.2) 75%, transparent 100%); box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.7), inset 10px 10px 30px rgba(255, 255, 255, 0.5), inset -10px -10px 30px rgba(201, 169, 97, 0.2), 0 0 25px rgba(255, 255, 255, 0.4), 0 0 15px rgba(201, 169, 97, 0.3); border: 2px solid rgba(255, 255, 255, 0.5); opacity: 0; animation: bubbleRise var(--duration) ease-out forwards; will-change: transform, opacity; }
-        .bubble::before { content: ''; position: absolute; top: 15%; left: 18%; width: 35%; height: 22%; background: radial-gradient(ellipse, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 40%, transparent 100%); border-radius: 50%; transform: rotate(-35deg); filter: blur(1px); }
-        .bubble::after { content: ''; position: absolute; top: 5%; left: 5%; width: 90%; height: 90%; background: linear-gradient(135deg, rgba(255, 180, 120, 0.25) 0%, rgba(180, 210, 255, 0.25) 25%, rgba(255, 255, 180, 0.25) 50%, rgba(210, 180, 255, 0.25) 75%, rgba(180, 255, 200, 0.25) 100%); border-radius: 50%; mix-blend-mode: overlay; }
-        @keyframes bubbleRise { 0% { transform: translateY(0) translateX(0) scale(0.6); opacity: 0; } 5% { opacity: 0.9; } 25% { transform: translateY(-30vh) translateX(var(--drift1)) scale(1); opacity: 1; } 50% { transform: translateY(-60vh) translateX(var(--drift2)) scale(1.05); opacity: 0.95; } 75% { transform: translateY(-90vh) translateX(var(--drift3)) scale(1.02); opacity: 0.85; } 95% { opacity: 0.7; } 100% { transform: translateY(-120vh) translateX(var(--drift4)) scale(0.95); opacity: 0; } }
         .floating-cart-btn { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--gold-light); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 5px 20px var(--gold-shadow); transition: all 0.3s; z-index: 100; opacity: 0; pointer-events: none; }
         .floating-cart-btn.visible { opacity: 1; pointer-events: all; }
         .floating-cart-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 8px 25px var(--gold-shadow); }
@@ -58,6 +55,7 @@
         .mobile-menu a { color: var(--gold-bright); text-decoration: none; font-size: 1.5rem; font-weight: 600; transition: all 0.3s; }
         .mobile-menu a:hover { color: var(--gold); transform: scale(1.1); }
         .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
+        
         .hero { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); padding: 3.5rem 0; text-align: center; position: relative; overflow: hidden; border-bottom: 4px solid var(--gold); z-index: 2; }
         .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(232, 197, 71, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite; }
         .hero-content { position: relative; z-index: 2; }
@@ -66,23 +64,71 @@
         .hero-description { font-size: 1.05rem; margin-bottom: 1.75rem; opacity: 0.95; max-width: 650px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s both; font-weight: 300; line-height: 1.8; }
         .hero-description-line { display: block; margin-bottom: 0.35rem; }
         .hero-description-line:last-child { margin-bottom: 0; }
-        .hero-buttons { margin: 1.75rem 0; animation: fadeInUp 1s ease-out 0.6s both; }
+        .hero-buttons { margin: 1.75rem 0; animation: fadeInUp 1s ease-out 0.6s both; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .hero-stats { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeInUp 1s ease-out 0.8s both; }
         .stat-item { text-align: center; padding: 1.1rem 1.75rem; background: rgba(232, 197, 71, 0.12); border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.4); transition: all 0.3s; cursor: pointer; }
         .stat-item:hover { transform: translateY(-8px); background: rgba(232, 197, 71, 0.25); box-shadow: 0 10px 35px var(--gold-shadow); border-color: var(--gold-bright); }
         .stat-number { font-size: 2.5rem; font-weight: 800; display: block; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: 'Cormorant Garamond', serif; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); }
         .stat-label { font-size: 0.9rem; opacity: 0.9; margin-top: 0.35rem; font-weight: 500; color: var(--gold-light); }
+        
+        /* БЛОК ПРОБЛЕМЫ - УЛУЧШЕННЫЙ ПОДЗАГОЛОВОК */
+        .problem-section { padding: 4rem 0; background: #fff; position: relative; z-index: 2; }
+        .problem-section .section-title { color: var(--danger); }
+        .problem-section .section-title::after { background: linear-gradient(90deg, var(--danger), var(--danger-light), var(--danger)); }
+        .problem-section .section-subtitle { 
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2.25rem;
+            margin-top: 1rem;
+        }
+        .problem-section .section-subtitle .gold-text {
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 30%, var(--gold-bright) 60%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            text-shadow: 0 2px 4px rgba(232, 197, 71, 0.3);
+        }
+        .problem-card { max-width: 800px; margin: 2rem auto 0; background: #fff; padding: 2.5rem; border-radius: 1.5rem; border-left: 6px solid var(--danger); box-shadow: 0 10px 40px rgba(192, 57, 43, 0.15); }
+        .problem-card .problem-number { font-size: 4rem; font-weight: 800; color: var(--danger); font-family: 'Cormorant Garamond', serif; line-height: 1; margin-bottom: 1rem; }
+        .problem-card h3 { font-size: 1.75rem; color: var(--green-dark); margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
+        .problem-card p { font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 1.5rem; }
+        .problem-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .problem-stat { background: var(--cream); padding: 1.25rem; border-radius: 1rem; text-align: center; border: 2px solid var(--border); }
+        .problem-stat .stat-num { font-size: 2rem; font-weight: 800; color: var(--danger); font-family: 'Cormorant Garamond', serif; display: block; }
+        .problem-stat .stat-desc { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
+        
+        .how-to-section { padding: 4rem 0; background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); position: relative; z-index: 2; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .step-card { text-align: center; padding: 2rem 1.5rem; background: #fff; border-radius: 1.5rem; border: 3px solid var(--border); transition: all 0.4s; position: relative; }
+        .step-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 50px var(--gold-shadow); }
+        .step-number { width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; font-weight: 800; margin: 0 auto 1.25rem; font-family: 'Cormorant Garamond', serif; box-shadow: 0 5px 20px var(--gold-shadow); }
+        .step-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
+        .step-card p { font-size: 0.95rem; line-height: 1.7; color: var(--text-light); }
+        
         .principles, .features, .catalog, .delivery-section { padding: 3.5rem 0; position: relative; z-index: 2; }
         .principles { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
         .features { background: #fff; }
         .catalog { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
         .delivery-section { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); }
         .delivery-section .section-title { color: var(--gold-bright); }
+        .delivery-section .section-title::after { background: linear-gradient(90deg, var(--gold-bright), var(--gold), var(--gold-bright)); }
         .delivery-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
         .delivery-card { max-width: 700px; margin: 1.75rem auto 0; background: rgba(255,255,255,0.08); padding: 2.25rem; border-radius: 1.5rem; border: 2px solid rgba(232, 197, 71, 0.4); text-align: center; }
         .delivery-card .delivery-icon { font-size: 3.5rem; margin-bottom: 0.85rem; }
         .delivery-card h3 { font-size: 1.6rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; margin-bottom: 0.85rem; }
         .delivery-card p { font-size: 1.1rem; line-height: 1.8; opacity: 0.95; }
+        
+        .delivery-simple { max-width: 600px; margin: 2rem auto 0; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.3); text-align: center; }
+        .delivery-simple .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .delivery-simple h4 { font-size: 1.4rem; color: var(--gold-bright); margin-bottom: 0.75rem; font-family: 'Cormorant Garamond', serif; }
+        .delivery-simple p { font-size: 1.1rem; opacity: 0.95; }
+        .delivery-simple .highlight { font-weight: 700; color: var(--gold-bright); font-size: 1.2rem; display: block; margin-top: 0.5rem; }
+        
         .section-title { text-align: center; font-size: 2.1rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 90px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); border-radius: 2px; }
         .section-subtitle { text-align: center; font-size: 1rem; color: var(--text-light); margin-bottom: 2.25rem; margin-top: 1rem; }
@@ -95,6 +141,7 @@
         .principle-text { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); }
         .quality-section { padding: 3.5rem 0; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); position: relative; z-index: 2; color: var(--cream); }
         .quality-section .section-title { color: var(--gold-bright); }
+        .quality-section .section-title::after { background: linear-gradient(90deg, var(--gold-bright), var(--gold), var(--gold-bright)); }
         .quality-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
         .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
         .quality-card { background: rgba(255, 255, 255, 0.06); padding: 1.5rem; border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.4); transition: all 0.4s; }
@@ -201,7 +248,6 @@
         @keyframes slideUp { to { transform: translateX(-50%) translateY(0); } }
         .loading-message { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-light); font-size: 1.05rem; }
         
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ — ВСЁ В ОДНУ СТРОКУ */
         @media (max-width: 768px) {
             .container { padding: 0 0.75rem; }
             .header-top { padding: 0.4rem 0; }
@@ -223,7 +269,7 @@
             .stat-label { font-size: 0.8rem; }
             .hero-badge { font-size: 0.8rem; padding: 0.4rem 1rem; }
             .section-title { font-size: 1.7rem; }
-            .principles, .features, .catalog, .quality-section, .delivery-section { padding: 2.75rem 0; }
+            .principles, .features, .catalog, .quality-section, .delivery-section, .problem-section, .how-to-section { padding: 2.75rem 0; }
             .principles-grid, .features-grid, .quality-grid { grid-template-columns: 1fr; gap: 1.25rem; }
             .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
             .product-image-wrapper { height: 120px; }
@@ -248,6 +294,15 @@
             .delivery-card .delivery-icon { font-size: 2.75rem; }
             .delivery-card h3 { font-size: 1.3rem; }
             .delivery-card p { font-size: 0.95rem; }
+            .problem-card { padding: 1.5rem; margin: 1.5rem 0.75rem 0; }
+            .problem-card .problem-number { font-size: 3rem; }
+            .problem-card h3 { font-size: 1.4rem; }
+            .problem-card p { font-size: 0.95rem; }
+            .steps-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .step-number { width: 50px; height: 50px; font-size: 1.5rem; }
+            .delivery-simple { margin: 1.5rem 0.75rem 0; padding: 1.5rem; }
+            .problem-section .section-subtitle { font-size: 1.1rem; }
+            .problem-section .section-subtitle .gold-text { font-size: 1.4rem; }
         }
         
         @media (max-width: 480px) {
@@ -276,6 +331,10 @@
             .filters { gap: 0.4rem; }
             .filter-btn { padding: 0.45rem 0.7rem; font-size: 0.75rem; }
             .section-title { font-size: 1.55rem; }
+            .problem-card .problem-number { font-size: 2.5rem; }
+            .problem-stats { grid-template-columns: 1fr; }
+            .problem-section .section-subtitle { font-size: 1rem; }
+            .problem-section .section-subtitle .gold-text { font-size: 1.25rem; }
         }
         
         html { scroll-behavior: smooth; }
@@ -287,20 +346,20 @@
 </head>
 <body>
     <div class="premium-pattern"></div>
-    <div class="bubbles-container" id="bubblesContainer"></div>
     <button class="scroll-btn scroll-top" id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
     <button class="scroll-btn scroll-bottom" id="scrollBottomBtn" onclick="scrollToBottom()"><i class="fas fa-chevron-down"></i></button>
     <button class="floating-cart-btn" id="floatingCartBtn" onclick="toggleCart()" title="Открыть корзину">
         <i class="fas fa-shopping-cart"></i>
     </button>
     
-    <!-- Мобильное меню -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
         <a href="#home" onclick="closeMobileMenu()">Главная</a>
+        <a href="#problem" onclick="closeMobileMenu()">Проблема</a>
         <a href="#principles" onclick="closeMobileMenu()">Принципы</a>
         <a href="#quality" onclick="closeMobileMenu()">Гарантия</a>
         <a href="#catalog" onclick="closeMobileMenu()">Каталог</a>
+        <a href="#how-to" onclick="closeMobileMenu()">Как заказать</a>
         <a href="#delivery" onclick="closeMobileMenu()">Доставка</a>
         <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
     </div>
@@ -332,15 +391,18 @@
             <div class="container">
                 <ul class="nav-links">
                     <li><a href="#home">Главная</a></li>
+                    <li><a href="#problem">Проблема</a></li>
                     <li><a href="#principles">Принципы</a></li>
                     <li><a href="#quality">Гарантия</a></li>
                     <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#how-to">Как заказать</a></li>
                     <li><a href="#delivery">Доставка</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </div>
         </nav>
     </header>
+    
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="container">
@@ -353,6 +415,7 @@
                 </div>
                 <div class="hero-buttons">
                     <a href="#catalog" class="btn btn-gold" style="font-size: 1rem; padding: 1rem 2rem;"><i class="fas fa-th-large"></i> Смотреть каталог</a>
+                    <a href="#catalog" class="btn btn-gold" style="font-size: 1rem; padding: 1rem 2rem;"><i class="fas fa-bolt"></i> Заказать сейчас</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'})">
@@ -371,6 +434,33 @@
             </div>
         </div>
     </section>
+    
+    <section class="problem-section" id="problem">
+        <div class="container">
+            <h2 class="section-title">Реальная проблема</h2>
+            <p class="section-subtitle">Почему мы создали <span class="gold-text">Аманат Маркет</span></p>
+            <div class="problem-card">
+                <div class="problem-number">80–90%</div>
+                <h3>бытовой химии в Ингушетии — подделка</h3>
+                <p>Поддельные средства не просто неэффективны. Они содержат опасные примеси, разрушают поверхности и вызывают аллергию у детей. Внешне — не отличить от оригинала. Мы создали Аманат Маркет именно поэтому.</p>
+                <div class="problem-stats">
+                    <div class="problem-stat">
+                        <span class="stat-num">3%</span>
+                        <span class="stat-desc">Активного вещества в подделках вместо заявленных 25–40%</span>
+                    </div>
+                    <div class="problem-stat">
+                        <span class="stat-num">☠️</span>
+                        <span class="stat-desc">Опасный состав — хлорсодержащие отходы без нейтрализации</span>
+                    </div>
+                    <div class="problem-stat">
+                        <span class="stat-num">≈</span>
+                        <span class="stat-desc">Копия упаковки — та же этикетка, фальшивый штрихкод</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="principles" id="principles">
         <div class="container">
             <h2 class="section-title">Наши принципы</h2>
@@ -394,6 +484,7 @@
             </div>
         </div>
     </section>
+    
     <section class="quality-section" id="quality">
         <div class="container">
             <h2 class="section-title">Гарантия качества</h2>
@@ -406,6 +497,7 @@
             </div>
         </div>
     </section>
+    
     <section class="features">
         <div class="container">
             <h2 class="section-title">Почему выбирают нас</h2>
@@ -416,17 +508,48 @@
             </div>
         </div>
     </section>
+    
+    <section class="how-to-section" id="how-to">
+        <div class="container">
+            <h2 class="section-title">Как заказать</h2>
+            <p class="section-subtitle">Три шага до чистоты</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Выбираете товары</h3>
+                    <p>Листаете каталог или пишете нам — подберём нужное, уточним наличие и рассчитаем стоимость.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Подтверждаете заказ</h3>
+                    <p>Сообщаете адрес и время. Оплата при получении или переводом — как удобно.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Получаете дома</h3>
+                    <p>Привозим в день заказа или назавтра. Проверяете упаковку при курьере и принимаете спокойно.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="delivery-section" id="delivery">
         <div class="container">
             <h2 class="section-title">Доставка</h2>
-            <p class="section-subtitle">Быстрая и надёжная доставка по Ингушетии</p>
+            <p class="section-subtitle">Привозим по всей Ингушетии</p>
             <div class="delivery-card">
                 <div class="delivery-icon">🚚</div>
                 <h3>Быстрая доставка</h3>
                 <p>Отправка в день заказа по договорённости.<br>Доставка по всей Ингушетии.</p>
             </div>
+            <div class="delivery-simple">
+                <div class="icon">🎁</div>
+                <h4>Бесплатная доставка</h4>
+                <p>При заказе от <span class="highlight">1000 ₽</span></p>
+            </div>
         </div>
     </section>
+    
     <section class="catalog" id="catalog">
         <div class="container">
             <div class="catalog-header">
@@ -435,15 +558,16 @@
                     <button class="filter-btn active" onclick="filterCategory('all')"><span>Все товары</span></button>
                     <button class="filter-btn" onclick="filterCategory('kitchen')"><span>🍳 Кухня</span></button>
                     <button class="filter-btn" onclick="filterCategory('dishes')"><span>🍽️ Посуда</span></button>
-                    <button class="filter-btn" onclick="filterCategory('laundry')"><span>👕 Стирка</span></button>
+                    <button class="filter-btn" onclick="filterCategory('laundry')"><span> Стирка</span></button>
                     <button class="filter-btn" onclick="filterCategory('cleaning')"><span>🧹 Уборка</span></button>
-                    <button class="filter-btn" onclick="filterCategory('hygiene')"><span>🧴 Гигиена</span></button>
+                    <button class="filter-btn" onclick="filterCategory('hygiene')"><span> Гигиена</span></button>
                 </div>
                 <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="searchProducts()"></div>
             </div>
             <div class="products-grid" id="productsGrid"></div>
         </div>
     </section>
+    
     <div class="admin-login" id="adminLogin">
         <div class="login-box">
             <h3><i class="fas fa-user-shield" style="color: var(--gold);"></i> Вход в панель управления</h3>
@@ -630,41 +754,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadProductsFromSheets();
             updateCart();
-            startBubbles();
             setupScrollButtons();
         });
-
-        function startBubbles() {
-            const container = document.getElementById('bubblesContainer');
-            for (let i = 0; i < 15; i++) setTimeout(() => createBubble(container), i * 600);
-            setInterval(() => {
-                const existing = container.querySelectorAll('.bubble');
-                if (existing.length < 20) createBubble(container);
-            }, 2500);
-        }
-
-        function createBubble(container) {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            const size = Math.random() * 20 + 10;
-            const duration = Math.random() * 12000 + 14000;
-            bubble.style.width = size + 'px';
-            bubble.style.height = size + 'px';
-            bubble.style.left = Math.random() * 100 + '%';
-            bubble.style.setProperty('--duration', duration + 'ms');
-            bubble.style.setProperty('--drift1', (Math.random() * 100 - 50) + 'px');
-            bubble.style.setProperty('--drift2', (Math.random() * 150 - 75) + 'px');
-            bubble.style.setProperty('--drift3', (Math.random() * 100 - 50) + 'px');
-            bubble.style.setProperty('--drift4', (Math.random() * 80 - 40) + 'px');
-            container.appendChild(bubble);
-            setTimeout(() => {
-                if (bubble.parentNode) {
-                    bubble.style.transition = 'opacity 0.5s';
-                    bubble.style.opacity = '0';
-                    setTimeout(() => { if (bubble.parentNode) bubble.remove(); }, 500);
-                }
-            }, duration + 100);
-        }
 
         function setupScrollButtons() {
             const scrollTopBtn = document.getElementById('scrollTopBtn');
