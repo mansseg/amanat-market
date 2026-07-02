@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Аманат Маркет — Оригинальная бытовая химия в Ингушетии</title>
-    <meta name="description" content="Оптовая продажа оригинальной бытовой химии in Ингушетии. Прямые поставки от производителя. Доставка по Магасу, Назрани и всей республике.">
+    <meta name="description" content="Оптовая продажа оригинальной бытовой химии в Ингушетии. Прямые поставки от производителя.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,236 +15,345 @@
             --green-dark: #1a3329; --green: #2d5a4a; --green-light: #3d7a64;
             --text: #2c3e2d; --text-light: #5a6c57; --border: #e8e4d9;
             --shadow: rgba(30, 58, 47, 0.1); --gold-shadow: rgba(232, 197, 71, 0.4);
-            --danger: #c0392b; --danger-light: #e74c3c;
         }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--text); background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); overflow-x: hidden; }
-        .premium-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a961' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        .floating-cart-btn { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--gold-light); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 5px 20px var(--gold-shadow); transition: all 0.3s; z-index: 100; opacity: 0; pointer-events: none; }
-        .floating-cart-btn.visible { opacity: 1; pointer-events: all; }
-        .floating-cart-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 8px 25px var(--gold-shadow); }
-        .scroll-btn { position: fixed; right: 25px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold-light); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 5px 20px var(--gold-shadow); transition: all 0.3s; z-index: 100; opacity: 0; pointer-events: none; }
-        .scroll-btn.visible { opacity: 1; pointer-events: all; }
-        .scroll-btn:hover { transform: translateY(-3px) scale(1.1); }
-        .scroll-top { bottom: 100px; }
-        .scroll-bottom { bottom: 40px; }
-        .header-cart { display: flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, rgba(232, 197, 71, 0.25) 0%, rgba(232, 197, 71, 0.1) 100%); border: 2px solid var(--gold); border-radius: 50px; padding: 0.35rem 0.65rem; cursor: pointer; transition: all 0.3s; color: var(--gold-light); }
-        .header-cart:hover { background: linear-gradient(135deg, rgba(232, 197, 71, 0.35) 0%, rgba(232, 197, 71, 0.2) 100%); transform: translateY(-2px); box-shadow: 0 5px 15px var(--gold-shadow); }
-        .header-cart i { font-size: 0.9rem; color: var(--gold-bright); }
-        .header-cart-info { display: flex; flex-direction: column; line-height: 1.05; }
-        .header-cart-count { font-size: 0.7rem; font-weight: 700; color: var(--gold-bright); }
-        .header-cart-total { font-size: 0.6rem; font-weight: 600; color: var(--gold-light); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        header { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 30px rgba(30, 58, 47, 0.3); border-bottom: 2px solid var(--gold); }
-        .header-top { padding: 0.5rem 0; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--text); background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 0.5rem; }
-        .logo { font-size: 1.35rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; color: var(--gold-bright); text-shadow: 2px 2px 4px rgba(0,0,0,0.4); white-space: nowrap; }
-        .logo i { font-size: 1.6rem; color: var(--gold-bright); }
-        .header-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
-        .burger-btn { display: none; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; font-size: 1.1rem; transition: all 0.3s; flex-shrink: 0; }
-        .burger-btn:hover { background: rgba(232, 197, 71, 0.2); }
-        nav { background: rgba(30, 58, 47, 0.95); padding: 0.5rem 0; border-top: 1px solid rgba(232, 197, 71, 0.3); }
-        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; justify-content: center; }
-        .nav-links a { color: var(--gold-bright); text-decoration: none; font-weight: 600; transition: all 0.3s; position: relative; padding: 0.35rem 0; font-size: 0.9rem; }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold-bright), var(--gold-light)); transition: width 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-shadow); }
-        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 51, 41, 0.98); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
-        .mobile-menu.active { display: flex; }
-        .mobile-menu a { color: var(--gold-bright); text-decoration: none; font-size: 1.5rem; font-weight: 600; transition: all 0.3s; }
-        .mobile-menu a:hover { color: var(--gold); transform: scale(1.1); }
-        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
         
-        .hero { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); padding: 3.5rem 0; text-align: center; position: relative; overflow: hidden; border-bottom: 4px solid var(--gold); z-index: 2; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(232, 197, 71, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite; }
-        .hero-content { position: relative; z-index: 2; }
-        .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); padding: 0.45rem 1.1rem; border-radius: 50px; font-weight: 700; margin-bottom: 1.1rem; box-shadow: 0 5px 20px var(--gold-shadow); animation: fadeInUp 1s ease-out; border: 2px solid var(--gold-bright); font-size: 0.85rem; }
-        .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.9rem; line-height: 1.3; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out 0.2s both; font-family: 'Cormorant Garamond', serif; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 30%, var(--gold-bright) 60%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); }
-        .hero-description { font-size: 1.05rem; margin-bottom: 1.75rem; opacity: 0.95; max-width: 650px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s both; font-weight: 300; line-height: 1.8; }
-        .hero-description-line { display: block; margin-bottom: 0.35rem; }
-        .hero-description-line:last-child { margin-bottom: 0; }
-        .hero-buttons { margin: 1.75rem 0; animation: fadeInUp 1s ease-out 0.6s both; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .hero-stats { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeInUp 1s ease-out 0.8s both; }
-        .stat-item { text-align: center; padding: 1.1rem 1.75rem; background: rgba(232, 197, 71, 0.12); border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.4); transition: all 0.3s; cursor: pointer; }
-        .stat-item:hover { transform: translateY(-8px); background: rgba(232, 197, 71, 0.25); box-shadow: 0 10px 35px var(--gold-shadow); border-color: var(--gold-bright); }
-        .stat-number { font-size: 2.5rem; font-weight: 800; display: block; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: 'Cormorant Garamond', serif; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); }
-        .stat-label { font-size: 0.9rem; opacity: 0.9; margin-top: 0.35rem; font-weight: 500; color: var(--gold-light); }
+        /* Шапка */
+        header { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); padding: 1rem 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--gold-bright); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
         
-        /* БЛОК ПРОБЛЕМЫ - УЛУЧШЕННЫЙ ПОДЗАГОЛОВОК */
-        .problem-section { padding: 4rem 0; background: #fff; position: relative; z-index: 2; }
-        .problem-section .section-title { color: var(--danger); }
-        .problem-section .section-title::after { background: linear-gradient(90deg, var(--danger), var(--danger-light), var(--danger)); }
-        .problem-section .section-subtitle { 
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 2.25rem;
-            margin-top: 1rem;
-        }
-        .problem-section .section-subtitle .gold-text {
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 30%, var(--gold-bright) 60%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            text-shadow: 0 2px 4px rgba(232, 197, 71, 0.3);
-        }
-        .problem-card { max-width: 800px; margin: 2rem auto 0; background: #fff; padding: 2.5rem; border-radius: 1.5rem; border-left: 6px solid var(--danger); box-shadow: 0 10px 40px rgba(192, 57, 43, 0.15); }
-        .problem-card .problem-number { font-size: 4rem; font-weight: 800; color: var(--danger); font-family: 'Cormorant Garamond', serif; line-height: 1; margin-bottom: 1rem; }
-        .problem-card h3 { font-size: 1.75rem; color: var(--green-dark); margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
-        .problem-card p { font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 1.5rem; }
-        .problem-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .problem-stat { background: var(--cream); padding: 1.25rem; border-radius: 1rem; text-align: center; border: 2px solid var(--border); }
-        .problem-stat .stat-num { font-size: 2rem; font-weight: 800; color: var(--danger); font-family: 'Cormorant Garamond', serif; display: block; }
-        .problem-stat .stat-desc { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
+        .header-cart { display: flex; align-items: center; gap: 0.5rem; background: rgba(232, 197, 71, 0.15); border: 2px solid var(--gold); border-radius: 50px; padding: 0.5rem 1rem; cursor: pointer; color: var(--gold-light); transition: 0.3s; }
+        .header-cart:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--gold-shadow); }
+
+        /* Баннер доставки */
+        .delivery-banner { background: rgba(255, 255, 255, 0.05); border: 2px solid var(--gold); border-radius: 15px; padding: 1.5rem; text-align: center; max-width: 400px; margin: 2rem auto; color: #fff; }
+        .delivery-banner h3 { color: var(--gold-bright); margin-bottom: 0.5rem; }
+
+        /* Секция каталога */
+        .catalog { padding: 3.5rem 0; }
+        .catalog-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; gap: 1.5rem; }
+        .catalog-header h2 { font-size: 2.2rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
         
-        .how-to-section { padding: 4rem 0; background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); position: relative; z-index: 2; }
-        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .step-card { text-align: center; padding: 2rem 1.5rem; background: #fff; border-radius: 1.5rem; border: 3px solid var(--border); transition: all 0.4s; position: relative; }
-        .step-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 50px var(--gold-shadow); }
-        .step-number { width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; font-weight: 800; margin: 0 auto 1.25rem; font-family: 'Cormorant Garamond', serif; box-shadow: 0 5px 20px var(--gold-shadow); }
-        .step-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .step-card p { font-size: 0.95rem; line-height: 1.7; color: var(--text-light); }
+        /* Фильтры */
+        .filters { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+        .filter-btn { padding: 0.6rem 1.2rem; border: 2px solid var(--border); background: #fff; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .filter-btn.active, .filter-btn:hover { background: var(--gold); color: var(--green-dark); border-color: var(--gold); }
         
-        .principles, .features, .catalog, .delivery-section { padding: 3.5rem 0; position: relative; z-index: 2; }
-        .principles { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
-        .features { background: #fff; }
-        .catalog { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
-        .delivery-section { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); }
-        .delivery-section .section-title { color: var(--gold-bright); }
-        .delivery-section .section-title::after { background: linear-gradient(90deg, var(--gold-bright), var(--gold), var(--gold-bright)); }
-        .delivery-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
-        .delivery-card { max-width: 700px; margin: 1.75rem auto 0; background: rgba(255,255,255,0.08); padding: 2.25rem; border-radius: 1.5rem; border: 2px solid rgba(232, 197, 71, 0.4); text-align: center; }
-        .delivery-card .delivery-icon { font-size: 3.5rem; margin-bottom: 0.85rem; }
-        .delivery-card h3 { font-size: 1.6rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; margin-bottom: 0.85rem; }
-        .delivery-card p { font-size: 1.1rem; line-height: 1.8; opacity: 0.95; }
-        
-        .delivery-simple { max-width: 600px; margin: 2rem auto 0; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.3); text-align: center; }
-        .delivery-simple .icon { font-size: 3rem; margin-bottom: 1rem; }
-        .delivery-simple h4 { font-size: 1.4rem; color: var(--gold-bright); margin-bottom: 0.75rem; font-family: 'Cormorant Garamond', serif; }
-        .delivery-simple p { font-size: 1.1rem; opacity: 0.95; }
-        .delivery-simple .highlight { font-weight: 700; color: var(--gold-bright); font-size: 1.2rem; display: block; margin-top: 0.5rem; }
-        
-        .section-title { text-align: center; font-size: 2.1rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
-        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 90px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); border-radius: 2px; }
-        .section-subtitle { text-align: center; font-size: 1rem; color: var(--text-light); margin-bottom: 2.25rem; margin-top: 1rem; }
-        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
-        .principle-card { background: linear-gradient(135deg, #fff 0%, var(--cream) 100%); padding: 1.75rem 1.5rem; border-radius: 1.5rem; border: 3px solid transparent; transition: all 0.4s; position: relative; overflow: hidden; box-shadow: 0 10px 40px var(--shadow); }
-        .principle-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); }
-        .principle-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 60px var(--gold-shadow); }
-        .principle-icon { font-size: 2.5rem; margin-bottom: 0.85rem; display: inline-block; animation: float 3s ease-in-out infinite; }
-        .principle-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .principle-text { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); }
-        .quality-section { padding: 3.5rem 0; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); position: relative; z-index: 2; color: var(--cream); }
-        .quality-section .section-title { color: var(--gold-bright); }
-        .quality-section .section-title::after { background: linear-gradient(90deg, var(--gold-bright), var(--gold), var(--gold-bright)); }
-        .quality-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
-        .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
-        .quality-card { background: rgba(255, 255, 255, 0.06); padding: 1.5rem; border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.4); transition: all 0.4s; }
-        .quality-card:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-5px); border-color: var(--gold-bright); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .quality-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; }
-        .quality-card p { line-height: 1.7; opacity: 0.95; font-size: 0.85rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
-        .feature-card { text-align: center; padding: 1.75rem 1.5rem; border-radius: 1.5rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); transition: all 0.4s; border: 3px solid var(--border); position: relative; overflow: hidden; }
-        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); transform: scaleX(0); transition: transform 0.4s; }
-        .feature-card:hover::before { transform: scaleX(1); }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 50px var(--shadow); }
-        .feature-icon { font-size: 2.75rem; margin-bottom: 0.85rem; display: inline-block; }
-        .feature-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .catalog-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 1.75rem; gap: 1.1rem; }
-        .catalog-header h2 { font-size: 1.85rem; font-weight: 700; color: var(--green-dark); margin: 0; font-family: 'Cormorant Garamond', serif; }
-        .filters { display: flex; gap: 0.65rem; flex-wrap: wrap; justify-content: center; }
-        .filter-btn { padding: 0.6rem 1.1rem; border: 2px solid var(--border); background: #fff; border-radius: 50px; cursor: pointer; transition: all 0.3s; font-weight: 600; font-family: inherit; position: relative; overflow: hidden; font-size: 0.85rem; }
-        .filter-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; z-index: 0; }
-        .filter-btn:hover::before, .filter-btn.active::before { width: 300px; height: 300px; }
-        .filter-btn span { position: relative; z-index: 1; }
-        .filter-btn:hover, .filter-btn.active { color: var(--green-dark); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 5px 20px var(--gold-shadow); }
+        /* Поиск */
         .search-box { position: relative; width: 100%; max-width: 400px; }
-        .search-box input { width: 100%; padding: 0.7rem 0.9rem 0.7rem 2.5rem; border: 2px solid var(--border); border-radius: 50px; font-size: 0.85rem; font-family: inherit; transition: all 0.3s; background: #fff; }
-        .search-box input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-shadow); }
-        .search-box i { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 0.85rem; }
+        .search-box input { width: 100%; padding: 0.7rem 1rem 0.7rem 2.5rem; border: 2px solid var(--border); border-radius: 50px; }
+        .search-box i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--gold); }
+
+        /* Сетка товаров и фикс картинок */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .product-card { background: #fff; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 5px 20px var(--shadow); border: 2px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 15px 40px var(--gold-shadow); }
         
-        /* ИСПРАВЛЕННЫЙ БЛОК ДЛЯ ОТОБРАЖЕНИЯ КАРТИНОК */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.1rem; }
-        .product-card { background: #fff; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 5px 20px var(--shadow); transition: all 0.3s; border: 2px solid var(--border); animation: fadeInUp 0.5s ease-out; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px var(--gold-shadow); border-color: var(--gold); }
-        .product-image-wrapper { position: relative; overflow: hidden; height: 180px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 10px; }
-        .product-image { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s; }
-        .product-card:hover .product-image { transform: scale(1.05); }
+        .product-image-wrapper { height: 200px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 15px; position: relative; }
+        .product-image { max-width: 100%; max-height: 100%; object-fit: contain; }
         
-        .product-info { padding: 0.9rem; }
-        .product-brand { color: var(--gold-dark); font-weight: 700; font-size: 0.8rem; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .product-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem; color: var(--green-dark); line-height: 1.3; font-family: 'Cormorant Garamond', serif; }
-        .product-category { color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.35rem; }
-        .product-price { font-size: 1.6rem; font-weight: 800; color: var(--gold-dark); display: flex; align-items: center; gap: 0.25rem; font-family: 'Cormorant Garamond', serif; margin-bottom: 0.65rem; }
-        .product-price span { font-size: 1.15rem; }
-        .quantity-selector { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); border-radius: 50px; padding: 0.35rem; border: 2px solid var(--border); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); }
-        .qty-btn { width: 30px; height: 30px; border: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; cursor: pointer; font-weight: 700; font-size: 1rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px var(--gold-shadow); border: 2px solid var(--gold-light); flex-shrink: 0; }
-        .qty-btn:hover { transform: scale(1.12); }
-        .qty-btn:active { transform: scale(0.95); }
-        .qty-value { font-weight: 700; font-size: 1rem; min-width: 32px; text-align: center; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .btn { padding: 0.7rem 1.1rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; position: relative; overflow: hidden; font-family: 'Montserrat', sans-serif; }
-        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.5s; }
-        .btn:hover::before { left: 100%; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
-        .btn-whatsapp { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--gold-bright); box-shadow: 0 4px 15px var(--shadow); border: 2px solid var(--gold); }
-        .btn-telegram { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); box-shadow: 0 4px 15px var(--gold-shadow); border: 2px solid var(--gold-light); }
-        .btn-gold { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); box-shadow: 0 4px 15px var(--gold-shadow); border: 2px solid var(--gold-light); }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; }
+        /* Заглушка, если картинка сломается, чтобы карточка не пустовала */
+        .product-image-wrapper::before { content: '📦'; position: absolute; font-size: 3rem; opacity: 0.1; z-index: 1; }
+        .product-image { position: relative; z-index: 2; }
+
+        .product-info { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .product-brand { color: var(--gold-dark); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.25rem; }
+        .product-name { font-size: 1.1rem; font-weight: 700; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; min-height: 44px; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); margin-bottom: 1rem; }
+
+        /* Кнопки управления количеством */
+        .quantity-selector { display: flex; align-items: center; justify-content: space-between; background: var(--cream); border-radius: 50px; padding: 0.3rem; border: 2px solid var(--border); }
+        .qty-btn { width: 32px; height: 32px; border: none; background: var(--gold); color: var(--green-dark); border-radius: 50%; cursor: pointer; font-weight: 700; }
+        .qty-value { font-weight: 700; }
+
+        /* Модалка корзины */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
-        .modal-content { background: linear-gradient(135deg, #faf8f3 0%, #f5f0e6 100%); border-radius: 1.5rem; max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; padding: 1.75rem; box-shadow: 0 25px 100px rgba(0,0,0,0.6); border: 3px solid var(--gold); opacity: 1 !important; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem; padding-bottom: 0.9rem; border-bottom: 3px solid var(--border); }
-        .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--green-dark); display: flex; align-items: center; gap: 0.55rem; font-family: 'Cormorant Garamond', serif; }
-        .close-modal { background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--text-light); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .close-modal:hover { background: var(--cream); transform: rotate(90deg); }
-        .cart-item { display: flex; gap: 1.1rem; padding: 1.1rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); border-radius: 1.25rem; margin-bottom: 0.75rem; align-items: center; border: 2px solid var(--border); }
-        .cart-item-image { width: 75px; height: 75px; object-fit: cover; border-radius: 0.75rem; border: 2px solid var(--gold); }
-        .cart-item-info { flex: 1; }
-        .cart-item-name { font-weight: 700; margin-bottom: 0.25rem; font-size: 0.95rem; color: var(--green-dark); }
-        .cart-item-price { color: var(--gold-dark); font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
-        .cart-item-quantity { display: flex; align-items: center; gap: 0.5rem; }
-        .cart-total { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 3px solid var(--border); text-align: right; }
-        .total-label { font-size: 1rem; color: var(--text-light); margin-bottom: 0.5rem; }
-        .total-amount { font-size: 2.25rem; font-weight: 800; color: var(--gold-dark); display: block; font-family: 'Cormorant Garamond', serif; }
-        .checkout-buttons { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
-        .checkout-buttons .btn { flex: 1; min-width: 170px; justify-content: center; padding: 0.75rem 1.1rem; font-size: 0.9rem; }
-        .admin-login { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 3000; align-items: center; justify-content: center; }
-        .admin-login.active { display: flex; }
-        .login-box { background: linear-gradient(135deg, #fff 0%, var(--cream) 100%); padding: 2.25rem; border-radius: 1.5rem; max-width: 400px; width: 90%; box-shadow: 0 25px 100px rgba(0,0,0,0.4); border: 3px solid var(--gold); }
-        .login-box h3 { margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .login-box input { width: 100%; padding: 0.8rem 0.9rem; border: 2px solid var(--border); border-radius: 50px; font-size: 0.9rem; margin-bottom: 0.85rem; font-family: inherit; }
-        .login-box input:focus { outline: none; border-color: var(--gold); }
-        .admin-panel { display: none; padding: 2.25rem 0; background: linear-gradient(180deg, var(--green-dark) 0%, var(--green) 100%); min-height: 100vh; z-index: 2; position: relative; }
-        .admin-panel.active { display: block; }
-        .admin-header { background: rgba(0,0,0,0.3); color: var(--gold-bright); padding: 1.75rem 0; margin-bottom: 2.25rem; border-radius: 1.5rem; text-align: center; border: 3px solid var(--gold); }
-        .admin-card { background: #fff; border-radius: 1.5rem; padding: 1.75rem; box-shadow: 0 15px 50px rgba(0,0,0,0.2); border: 3px solid var(--gold); max-width: 700px; margin: 0 auto; }
-        .admin-card h3 { margin-bottom: 1.5rem; font-size: 1.25rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; text-align: center; }
-        .admin-info-text { color: var(--text-light); text-align: center; padding: 1.1rem; font-size: 0.95rem; line-height: 1.8; background: var(--cream); border-radius: 1rem; margin-bottom: 1.1rem; }
-        .admin-sheets-link { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.75rem 1.75rem; margin-top: 0.75rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 5px 20px var(--gold-shadow); }
-        .admin-sheets-link:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--gold-shadow); }
-        .admin-instructions { text-align: left; margin-top: 1.1rem; padding: 1.1rem; background: var(--cream); border-radius: 1rem; font-size: 0.85rem; line-height: 1.8; color: var(--text-light); }
-        .admin-instructions ol { margin-left: 1.1rem; margin-top: 0.55rem; }
-        .admin-instructions li { margin-bottom: 0.35rem; }
-        .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.1rem; margin-top: 1.5rem; }
-        .admin-stat-item { background: var(--cream); padding: 1.1rem; border-radius: 1rem; text-align: center; border: 2px solid var(--border); }
-        .admin-stat-value { font-size: 1.6rem; font-weight: 800; color: var(--gold-dark); font-family: 'Cormorant Garamond', serif; }
-        .admin-stat-label { font-size: 0.8rem; color: var(--text-light); margin-top: 0.35rem; font-weight: 600; }
+        .modal-content { background: #fff; border-radius: 1.5rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; border: 3px solid var(--gold); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .close-modal { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
         
-        /* ВОССТАНОВЛЕННЫЙ И ЗАКРЫТЫЙ ФУТЕР */
-        footer { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); color: var(--cream); padding: 2.75rem 0 1.25rem; margin-top: 3.5rem; position: relative; z-index: 2; border-top: 4px solid var(--gold); }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2.25rem; margin-bottom: 2.25rem; }
-        .footer-section h3 { margin-bottom: 1.1rem; font-size: 1.3rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; display: flex; align-items: center; gap: 0.55rem; }
-        .footer-section p, .footer-section a { color: var(--cream); text-decoration: none; line-height: 2; transition: all 0.3s; display: block; font-size: 0.85rem; }
-        .footer-section a:hover { color: var(--gold-bright); padding-left: 5px; }
-        .footer-description-line { display: block; margin-bottom: 0.3rem; line-height: 1.7; }
-        .footer-contact-buttons { display: flex; gap: 0.5rem; }
+        .cart-items-list { margin-bottom: 1.5rem; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        
+        .btn-send { display: block; width: 100%; text-align: center; padding: 1rem; background: #25D366; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; }
+        
+        /* Футер */
+        footer { background: var(--green-dark); color: #fff; padding: 3rem 0 1.5rem; border-top: 4px solid var(--gold); text-align: center; }
     </style>
 </head>
 <body>
-    <div class="premium-pattern"></div>
-    </body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-crown"></i> Аманат Маркет
+            </a>
+            <div class="header-cart" onclick="toggleModal(true)">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <div class="header-cart-info">
+                    <span class="header-cart-count" id="cart-count">0 шт.</span>
+                    <span class="header-cart-total" id="cart-total-nav">0 ₽</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="delivery-banner">
+            <h3>Бесплатная доставка</h3>
+            <p>При заказе от <strong>1000 ₽</strong></p>
+        </div>
+
+        <section class="catalog" id="catalog">
+            <div class="catalog-header">
+                <h2>Каталог товаров</h2>
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterCategory('all', this)"><span>Все товары</span></button>
+                    <button class="filter-btn" onclick="filterCategory('kitchen', this)"><span>Кухня</span></button>
+                    <button class="filter-btn" onclick="filterCategory('dishes', this)"><span>Посуда</span></button>
+                    <button class="filter-btn" onclick="filterCategory('laundry', this)"><span>Стирка</span></button>
+                    <button class="filter-btn" onclick="filterCategory('cleaning', this)"><span>Уборка</span></button>
+                    <button class="filter-btn" onclick="filterCategory('hygiene', this)"><span>Гигиена</span></button>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Поиск товаров..." oninput="handleSearch()">
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-container">
+                </div>
+        </section>
+    </main>
+
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Ваш заказ</h3>
+                <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            </div>
+            <div class="cart-items-list" id="modal-cart-items"></div>
+            <div style="text-align: right; margin-bottom: 1.5rem;">
+                <span>Итого к оплате: </span><strong style="font-size: 1.5rem;" id="modal-total-amount">0 ₽</strong>
+            </div>
+            <a href="#" class="btn-send" id="whatsapp-send-btn" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Отправить заказ в WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Аманат Маркет — Оригинальная бытовая химия в Ингушетии.</p>
+    </footer>
+
+    <script>
+        // База данных из твоей таблицы
+        const products = [
+            { id: 1, name: "Азелит Кухня", brand: "Азелит", cat: "kitchen", price: 138, img: "https://mansseg.github.io/amanat-market/images/azelit-kuhnya.jpg" },
+            { id: 2, name: "Азелит Казан", brand: "Азелит", cat: "kitchen", price: 138, img: "https://mansseg.github.io/amanat-market/images/azelit-kazan.jpg" },
+            { id: 3, name: "Уникум жироудалитель", brand: "Уникум", cat: "kitchen", price: 100, img: "https://mansseg.github.io/amanat-market/images/unikum-zhiro.jpg" },
+            { id: 4, name: "Нефес универсальное", brand: "Нефес", cat: "cleaning", price: 150, img: "https://mansseg.github.io/amanat-market/images/nefes-universal.jpg" },
+            { id: 5, name: "Аос 900 мл (3 вида)", brand: "Аос", cat: "dishes", price: 153, img: "https://mansseg.github.io/amanat-market/images/aos-900ml.jpg" },
+            { id: 6, name: "Аос 1300 мл бальзам", brand: "Аос", cat: "dishes", price: 197, img: "https://mansseg.github.io/amanat-market/images/aos-1300ml-balsam.jpg" },
+            { id: 7, name: "Аос 1300 мл Алоэ Вера", brand: "Аос", cat: "dishes", price: 197, img: "https://mansseg.github.io/amanat-market/images/aos-1300ml-aloe.jpg" },
+            { id: 8, name: "Аос 450 мл (3 вида)", brand: "Аос", cat: "dishes", price: 77, img: "https://mansseg.github.io/amanat-market/images/aos-450ml.jpg" },
+            { id: 9, name: "Сорти 450 мл (4 вида)", brand: "Сорти", cat: "dishes", price: 67, img: "https://mansseg.github.io/amanat-market/images/sorti-450ml.jpg" },
+            { id: 10, name: "Бимакс 3 кг (3 вида)", brand: "Бимакс", cat: "laundry", price: 319, img: "https://mansseg.github.io/amanat-market/images/bimax-3kg.jpg" },
+            { id: 11, name: "Бимакс 4 кг цветное", brand: "Бимакс", cat: "laundry", price: 500, img: "https://mansseg.github.io/amanat-market/images/bimax-4kg-color.jpg" },
+            { id: 12, name: "Бимакс 4 кг белое", brand: "Бимакс", cat: "laundry", price: 500, img: "https://mansseg.github.io/amanat-market/images/bimax-4kg-white.jpg" },
+            { id: 13, name: "Бимакс 6 кг цветное", brand: "Бимакс", cat: "laundry", price: 638, img: "https://mansseg.github.io/amanat-market/images/bimax-6kg-color.jpg" },
+            { id: 14, name: "Бимакс 6 кг белое", brand: "Бимакс", cat: "laundry", price: 638, img: "https://mansseg.github.io/amanat-market/images/bimax-6kg-white.jpg" },
+            { id: 15, name: "Бимакс 6 кг Арома", brand: "Бимакс", cat: "laundry", price: 638, img: "https://mansseg.github.io/amanat-market/images/bimax-6kg-aroma.jpg" },
+            { id: 16, name: "Бимакс 9 кг белое", brand: "Бимакс", cat: "laundry", price: 950, img: "https://mansseg.github.io/amanat-market/images/bimax-9kg-white.jpg" },
+            { id: 17, name: "Бимакс 9 кг цветное", brand: "Бимакс", cat: "laundry", price: 950, img: "https://mansseg.github.io/amanat-market/images/bimax-9kg-color.jpg" },
+            { id: 18, name: "АВС 1.5 л цветное", brand: "АВС", cat: "laundry", price: 200, img: "https://mansseg.github.io/amanat-market/images/avs-1.5l-color.jpg" },
+            { id: 19, name: "АВС 1.5 л белое", brand: "АВС", cat: "laundry", price: 200, img: "https://mansseg.github.io/amanat-market/images/avs-1.5l-white.jpg" },
+            { id: 20, name: "АВС жидкое мыло 400 мл", brand: "АВС", cat: "hygiene", price: 75, img: "https://mansseg.github.io/amanat-market/images/avs-soap-400ml.jpg" },
+            { id: 21, name: "АВС 3 кг белое", brand: "АВС", cat: "laundry", price: 332, img: "https://mansseg.github.io/amanat-market/images/avs-3kg-white.jpg" },
+            { id: 22, name: "АВС 3 кг цветное", brand: "АВС", cat: "laundry", price: 332, img: "https://mansseg.github.io/amanat-market/images/avs-3kg-color.jpg" },
+            { id: 23, name: "АВС 1 л Камелия", brand: "АВС", cat: "laundry", price: 113, img: "https://mansseg.github.io/amanat-market/images/avs-1l-camellia.jpg" },
+            { id: 24, name: "АВС 1.5 кг белое", brand: "АВС", cat: "laundry", price: 188, img: "https://mansseg.github.io/amanat-market/images/avs-1.5kg-white.jpg" },
+            { id: 25, name: "АВС 1.5 кг цветное", brand: "АВС", cat: "laundry", price: 188, img: "https://mansseg.github.io/amanat-market/images/avs-1.5kg-color.jpg" },
+            { id: 26, name: "АВС 4 кг цветное", brand: "АВС", cat: "laundry", price: 400, img: "https://mansseg.github.io/amanat-market/images/avs-4kg-color.jpg" },
+            { id: 27, name: "АВС 2 л (1 вид)", brand: "АВС", cat: "laundry", price: 200, img: "https://mansseg.github.io/amanat-market/images/avs-2l.jpg" },
+            { id: 28, name: "АВС 3 л цветное", brand: "АВС", cat: "laundry", price: 375, img: "https://mansseg.github.io/amanat-market/images/avs-3l-color.jpg" },
+            { id: 29, name: "АВС 3 л Деликатный", brand: "АВС", cat: "laundry", price: 375, img: "https://mansseg.github.io/amanat-market/images/avs-3l-delicate.jpg" },
+            { id: 30, name: "Ласка 1 л белое", brand: "Ласка", cat: "laundry", price: 250, img: "https://mansseg.github.io/amanat-market/images/laska-1l-white.jpg" },
+            { id: 31, name: "Бреф Дачный", brand: "Бреф", cat: "cleaning", price: 98, img: "https://mansseg.github.io/amanat-market/images/bref-dacha.jpg" },
+            { id: 32, name: "Пемолюкс Лимон", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-lemon.jpg" },
+            { id: 33, name: "Пемолюкс Яблоко", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-apple.jpg" },
+            { id: 34, name: "Пемолюкс Морской", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-sea.jpg" },
+            { id: 35, name: "Пемолюкс Чистота и Гигиена", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-clean.jpg" },
+            { id: 36, name: "Тайд 450 гр цветное", brand: "Тайд", cat: "laundry", price: 85, img: "https://mansseg.github.io/amanat-market/images/tide-450g.jpg" },
+            { id: 37, name: "Тайд 450 гр белое", brand: "Тайд", cat: "laundry", price: 85, img: "https://mansseg.github.io/amanat-market/images/tide-450g.jpg" },
+            { id: 38, name: "Миф 2 кг цветное", brand: "Миф", cat: "laundry", price: 250, img: "https://mansseg.github.io/amanat-market/images/myf-2kg.jpg" },
+            { id: 39, name: "Миф 2 кг белое", brand: "Миф", cat: "laundry", price: 250, img: "https://mansseg.github.io/amanat-market/images/myf-2kg.jpg" },
+            { id: 40, name: "Тайд 9 кг цветное", brand: "Тайд", cat: "laundry", price: 1200, img: "https://mansseg.github.io/amanat-market/images/tide-9kg.jpg" },
+            { id: 41, name: "Тайд 6 кг белое", brand: "Тайд", cat: "laundry", price: 813, img: "https://mansseg.github.io/amanat-market/images/tide-6kg.jpg" },
+            { id: 42, name: "Тайд 6 кг цветное", brand: "Тайд", cat: "laundry", price: 813, img: "https://mansseg.github.io/amanat-market/images/tide-6kg.jpg" },
+            { id: 43, name: "Ариэль 450 гр", brand: "Ариэль", cat: "laundry", price: 93, img: "https://mansseg.github.io/amanat-market/images/ariel-3kg.jpg" },
+            { id: 44, name: "Ариэль 6 кг белое", brand: "Ариэль", cat: "laundry", price: 882, img: "https://mansseg.github.io/amanat-market/images/ariel-3kg.jpg" },
+            { id: 45, name: "Ариэль 9 кг цветное", brand: "Ариэль", cat: "laundry", price: 1250, img: "https://mansseg.github.io/amanat-market/images/ariel-3kg.jpg" },
+            { id: 46, name: "Сарма чистящее 400 гр (3 вида)", brand: "Сарма", cat: "cleaning", price: 67, img: "https://mansseg.github.io/amanat-market/images/sarma-clean-400g.jpg" },
+            { id: 47, name: "Сарма посуда 500мл (5 видов)", brand: "Сарма", cat: "dishes", price: 88, img: "https://mansseg.github.io/amanat-market/images/sarma-dishes-500ml.jpg" },
+            { id: 48, name: "Сарма 900 мл (3 вида)", brand: "Сарма", cat: "dishes", price: 150, img: "https://mansseg.github.io/amanat-market/images/sarma-900ml.jpg" },
+            { id: 49, name: "Сарма 9 кг", brand: "Сарма", cat: "laundry", price: 1425, img: "https://mansseg.github.io/amanat-market/images/sarma-9kg.jpg" },
+            { id: 50, name: "Сарма 6 кг цветное", brand: "Сарма", cat: "laundry", price: 882, img: "https://mansseg.github.io/amanat-market/images/sarma-6kg.jpg" },
+            { id: 51, name: "Сарма хоз. мыло 140 гр (2 вида)", brand: "Сарма", cat: "hygiene", price: 50, img: "https://mansseg.github.io/amanat-market/images/sarma-soap-140g.jpg" },
+            { id: 52, name: "Сарма 4.5 кг цветное", brand: "Сарма", cat: "laundry", price: 700, img: "https://mansseg.github.io/amanat-market/images/sarma-4.5kg.jpg" },
+            { id: 53, name: "Сарма 2.4 кг (цветное и белое)", brand: "Сарма", cat: "laundry", price: 388, img: "https://mansseg.github.io/amanat-market/images/sarma-2.4kg.jpg" },
+            { id: 54, name: "Аист 150 гр 26%", brand: "Аист", cat: "laundry", price: 150, img: "https://mansseg.github.io/amanat-market/images/aist-150g.jpg" },
+            { id: 55, name: "Ушастик 4.5 кг", brand: "Ушастик", cat: "laundry", price: 700, img: "https://mansseg.github.io/amanat-market/images/ushastik-4.5kg.jpg" },
+            { id: 56, name: "Ушастик 6 кг", brand: "Ушастик", cat: "laundry", price: 888, img: "https://mansseg.github.io/amanat-market/images/ushastik-6kg.jpg" },
+            { id: 57, name: "Ушастик 400 гр", brand: "Ушастик", cat: "laundry", price: 73, img: "https://mansseg.github.io/amanat-market/images/ushastik-400g.jpg" },
+            { id: 58, name: "Ушастик 800 гр", brand: "Ушастик", cat: "laundry", price: 143, img: "https://mansseg.github.io/amanat-market/images/ushastik-800g.jpg" },
+            { id: 59, name: "Ушастик 9 кг", brand: "Ушастик", cat: "laundry", price: 1425, img: "https://mansseg.github.io/amanat-market/images/ushastik-9kg.jpg" },
+            { id: 60, name: "Детское (ромашка) 90 гр", brand: "Ушастик", cat: "hygiene", price: 29, img: "https://mansseg.github.io/amanat-market/images/baby-camomile-90g.jpg" },
+            { id: 61, name: "Ушастик 90 ромашка", brand: "Ушастик", cat: "hygiene", price: 36, img: "https://mansseg.github.io/amanat-market/images/ushastik-90-camomile.jpg" },
+            { id: 62, name: "Уш. нянь 180гр (2 вида)", brand: "Ушастик", cat: "hygiene", price: 54, img: "https://mansseg.github.io/amanat-market/images/ushastik-nyan-180g.jpg" },
+            { id: 63, name: "Невка хоз. мыло с глицерином 180 гр", brand: "Невка", cat: "hygiene", price: 49, img: "https://mansseg.github.io/amanat-market/images/nevka-soap-glycerin-180g.jpg" },
+            { id: 64, name: "Невка хоз. мыло пальмовое 180 гр", brand: "Невка", cat: "hygiene", price: 49, img: "https://mansseg.github.io/amanat-market/images/nevka-soap-palm-180g.jpg" },
+            { id: 65, name: "Дегтярное мыло 180 гр", brand: "Невка", cat: "hygiene", price: 49, img: "https://mansseg.github.io/amanat-market/images/degtyar-soap-180g.jpg" },
+            { id: 66, name: "Санокс 750 мл", brand: "Санокс", cat: "cleaning", price: 92, img: "https://mansseg.github.io/amanat-market/images/sanoks-750ml.jpg" },
+            { id: 67, name: "Санокс 1100 мл", brand: "Санокс", cat: "cleaning", price: 150, img: "https://mansseg.github.io/amanat-market/images/sanoks-1100ml.jpg" },
+            { id: 68, name: "Санокс 750 гель", brand: "Санокс", cat: "cleaning", price: 110, img: "https://mansseg.github.io/amanat-market/images/sanoks-gel-750ml.jpg" },
+            { id: 69, name: "Босс 300 гр", brand: "Босс", cat: "cleaning", price: 75, img: "https://mansseg.github.io/amanat-market/images/boss-300g.jpg" },
+            { id: 70, name: "Русь 250 гр", brand: "Русь", cat: "cleaning", price: 52, img: "https://mansseg.github.io/amanat-market/images/rus-250g.jpg" },
+            { id: 71, name: "Босс 600 гр", brand: "Босс", cat: "cleaning", price: 143, img: "https://mansseg.github.io/amanat-market/images/boss-600g.jpg" },
+            { id: 72, name: "Колгейт 100 мл (4 вида)", brand: "Колгейт", cat: "hygiene", price: 92, img: "https://mansseg.github.io/amanat-market/images/colgate-100ml.jpg" },
+            { id: 73, name: "Лесной бальзам (3 вида)", brand: "Лесной бальзам", cat: "hygiene", price: 60, img: "https://mansseg.github.io/amanat-market/images/lesnoy-balzam-100ml.jpg" },
+            { id: 74, name: "Dove шампунь 380мл (5 видов)", brand: "Dove", cat: "hygiene", price: 207, img: "https://mansseg.github.io/amanat-market/images/dove-shampoo-380ml.jpg" },
+            { id: 75, name: "Clear шампунь 380 мл (9 видов)", brand: "Clear", cat: "hygiene", price: 207, img: "https://mansseg.github.io/amanat-market/images/clear-shampoo-380ml.jpg" },
+            { id: 76, name: "Доместос 1 л белое", brand: "Доместос", cat: "cleaning", price: 148, img: "https://mansseg.github.io/amanat-market/images/domestos-1l.jpg" },
+            { id: 77, name: "Доместос 1 л для пола", brand: "Доместос", cat: "cleaning", price: 148, img: "https://mansseg.github.io/amanat-market/images/domestos-1l.jpg" },
+            { id: 78, name: "Доместос 500 мл Лимон", brand: "Доместос", cat: "cleaning", price: 104, img: "https://mansseg.github.io/amanat-market/images/domestos-500ml.jpg" },
+            { id: 79, name: "Доместос 500 мл Белый", brand: "Доместос", cat: "cleaning", price: 104, img: "https://mansseg.github.io/amanat-market/images/domestos-500ml.jpg" },
+            { id: 80, name: "Доместос 500 мл Свежесть", brand: "Доместос", cat: "cleaning", price: 104, img: "https://mansseg.github.io/amanat-market/images/domestos-500ml.jpg" },
+            { id: 81, name: "Доместос 1.5 л Лимон", brand: "Доместос", cat: "cleaning", price: 229, img: "https://mansseg.github.io/amanat-market/images/domestos-1.5l.jpg" },
+            { id: 82, name: "Чистая линия шампунь (7 видов)", brand: "Чистая линия", cat: "hygiene", price: 108, img: "https://mansseg.github.io/amanat-market/images/chistaya-liniya-400ml.jpg" },
+            { id: 83, name: "Rexona женский (3 вида)", brand: "Rexona", cat: "hygiene", price: 132, img: "https://mansseg.github.io/amanat-market/images/rexona-deo.jpg" },
+            { id: 84, name: "Palette краска роскошный медный", brand: "Palette", cat: "hygiene", price: 117, img: "https://mansseg.github.io/amanat-market/images/palette-kraska.jpg" },
+            { id: 85, name: "Dove женский спрей (4 вида)", brand: "Dove", cat: "hygiene", price: 132, img: "https://mansseg.github.io/amanat-market/images/dove-spray.jpg" }
+        ];
+
+        let cart = {};
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // Инициализация рендера товаров
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            
+            const filtered = products.filter(p => {
+                const matchesCat = currentCategory === 'all' || p.cat === currentCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.brand.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            filtered.forEach(p => {
+                const qty = cart[p.id] || 0;
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-wrapper">
+                        <img src="${p.img}" alt="${p.name}" class="product-image" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <div class="product-brand">${p.brand}</div>
+                            <div class="product-name">${p.name}</div>
+                        </div>
+                        <div>
+                            <div class="product-price">${p.price} ₽</div>
+                            <div class="quantity-selector">
+                                <button class="qty-btn" onclick="updateQty(${p.id}, -1)">-</button>
+                                <span class="qty-value">${qty}</span>
+                                <button class="qty-btn" onclick="updateQty(${p.id}, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateQty(id, change) {
+            if (!cart[id]) cart[id] = 0;
+            cart[id] += change;
+            if (cart[id] <= 0) delete cart[id];
+            
+            updateCartUI();
+            renderProducts();
+        }
+
+        function updateCartUI() {
+            let totalCount = 0;
+            let totalPrice = 0;
+            
+            for (let id in cart) {
+                const prod = products.find(p => p.id == id);
+                if (prod) {
+                    totalCount += cart[id];
+                    totalPrice += prod.price * cart[id];
+                }
+            }
+
+            document.getElementById('cart-count').innerText = `${totalCount} шт.`;
+            document.getElementById('cart-total-nav').innerText = `${totalPrice} ₽`;
+            document.getElementById('modal-total-amount').innerText = `${totalPrice} ₽`;
+            
+            // Настройка ссылки WhatsApp
+            let message = `Здравствуйте! Мой заказ в Аманат Маркет:\n\n`;
+            for (let id in cart) {
+                const prod = products.find(p => p.id == id);
+                message += `• ${prod.name} (${cart[id]} шт.) — ${prod.price * cart[id]} ₽\n`;
+            }
+            message += `\nИтого: ${totalPrice} ₽`;
+            
+            // Замени 79999999999 на реальный номер менеджера
+            document.getElementById('whatsapp-send-btn').href = `https://wa.me/79999999999?text=${encodeURIComponent(message)}`;
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value;
+            renderProducts();
+        }
+
+        function toggleModal(show) {
+            const modal = document.getElementById('cart-modal');
+            const list = document.getElementById('modal-cart-items');
+            list.innerHTML = '';
+
+            if (show) {
+                modal.classList.add('active');
+                for (let id in cart) {
+                    const prod = products.find(p => p.id == id);
+                    const itemRow = document.createElement('div');
+                    itemRow.className = 'cart-item';
+                    itemRow.innerHTML = `
+                        <div><strong>${prod.name}</strong></div>
+                        <div>${cart[id]} шт. x ${prod.price} ₽ = ${prod.price * cart[id]} ₽</div>
+                    `;
+                    list.appendChild(itemRow);
+                }
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Первичный запуск
+        renderProducts();
+    </script>
+</body>
 </html>
