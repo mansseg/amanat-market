@@ -2,358 +2,1524 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аманат Маркет — Оригинальная бытовая химия в Ингушетии</title>
-    <meta name="description" content="Оптовая продажа оригинальной бытовой химии в Ингушетии. Прямые поставки от производителя.">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Amanat Market | Оптовая база бытовой химии</title>
+    <meta name="description" content="Премиальный оптовый поставщик оригинальной бытовой химии по канонам Ислама в Ингушетии.">
+    
+    <!-- Стили и Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --gold: #e8c547; --gold-light: #f5d76e; --gold-dark: #c9a227; --gold-bright: #ffd700;
-            --cream: #faf8f3; --cream-dark: #f5f0e6;
-            --green-dark: #1a3329; --green: #2d5a4a; --green-light: #3d7a64;
-            --text: #2c3e2d; --text-light: #5a6c57; --border: #e8e4d9;
-            --shadow: rgba(30, 58, 47, 0.1); --gold-shadow: rgba(232, 197, 71, 0.4);
+            --base-dark: #0b1511;
+            --surface-dark: #12241d;
+            --surface-light: #1c352b;
+            --accent-gold: #dfba43;
+            --gold-muted: #bfa037;
+            --bg-main: #fcfbfa;
+            --bg-silk: #f4f1ea;
+            --text-dark: #1e2b25;
+            --text-muted: #5c6e65;
+            --text-white: #ffffff;
+            --radius-main: 12px;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--text); background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
-        
-        /* Шапка */
-        header { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); padding: 1rem 0; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--gold-bright); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-        
-        .header-cart { display: flex; align-items: center; gap: 0.5rem; background: rgba(232, 197, 71, 0.15); border: 2px solid var(--gold); border-radius: 50px; padding: 0.5rem 1rem; cursor: pointer; color: var(--gold-light); transition: 0.3s; }
-        .header-cart:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--gold-shadow); }
 
-        /* Баннер доставки */
-        .delivery-banner { background: rgba(255, 255, 255, 0.05); border: 2px solid var(--gold); border-radius: 15px; padding: 1.5rem; text-align: center; max-width: 400px; margin: 2rem auto; color: #fff; }
-        .delivery-banner h3 { color: var(--gold-bright); margin-bottom: 0.5rem; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
 
-        /* Секция каталога */
-        .catalog { padding: 3.5rem 0; }
-        .catalog-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; gap: 1.5rem; }
-        .catalog-header h2 { font-size: 2.2rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        
-        /* Фильтры */
-        .filters { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
-        .filter-btn { padding: 0.6rem 1.2rem; border: 2px solid var(--border); background: #fff; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 600; }
-        .filter-btn.active, .filter-btn:hover { background: var(--gold); color: var(--green-dark); border-color: var(--gold); }
-        
-        /* Поиск */
-        .search-box { position: relative; width: 100%; max-width: 400px; }
-        .search-box input { width: 100%; padding: 0.7rem 1rem 0.7rem 2.5rem; border: 2px solid var(--border); border-radius: 50px; }
-        .search-box i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--gold); }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 80px; /* Отступ под нижний мобильный бар */
+        }
 
-        /* Сетка товаров и фикс картинок */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .product-card { background: #fff; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 5px 20px var(--shadow); border: 2px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 15px 40px var(--gold-shadow); }
-        
-        .product-image-wrapper { height: 200px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 15px; position: relative; }
-        .product-image { max-width: 100%; max-height: 100%; object-fit: contain; }
-        
-        /* Заглушка, если картинка сломается, чтобы карточка не пустовала */
-        .product-image-wrapper::before { content: '📦'; position: absolute; font-size: 3rem; opacity: 0.1; z-index: 1; }
-        .product-image { position: relative; z-index: 2; }
+        h1, h2, h3, .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
 
-        .product-info { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .product-brand { color: var(--gold-dark); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.25rem; }
-        .product-name { font-size: 1.1rem; font-weight: 700; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; min-height: 44px; margin-bottom: 0.5rem; }
-        .product-price { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); margin-bottom: 1rem; }
+        /* АНИМАЦИЯ ПУЗЫРЕЙ НА ФОНЕ */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -60px;
+            background: linear-gradient(135deg, rgba(28, 53, 43, 0.05), rgba(223, 186, 67, 0.03));
+            border-radius: 50%;
+            animation: floatUp 15s infinite linear;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-110vh) translateX(70px) scale(1.2); opacity: 0; }
+        }
 
-        /* Кнопки управления количеством */
-        .quantity-selector { display: flex; align-items: center; justify-content: space-between; background: var(--cream); border-radius: 50px; padding: 0.3rem; border: 2px solid var(--border); }
-        .qty-btn { width: 32px; height: 32px; border: none; background: var(--gold); color: var(--green-dark); border-radius: 50%; cursor: pointer; font-weight: 700; }
-        .qty-value { font-weight: 700; }
+        /* ДЕЛИКАТНЫЙ ВЕРХНИЙ СТАТУС-БАР */
+        .top-bar {
+            background-color: var(--base-dark);
+            color: var(--text-white);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(223, 186, 67, 0.15);
+            position: relative;
+            z-index: 10;
+        }
+        .top-bar span { color: var(--accent-gold); }
 
-        /* Модалка корзины */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: #fff; border-radius: 1.5rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; border: 3px solid var(--gold); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
-        .close-modal { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        /* ЭЛЕГАНТНАЯ ШАПКА */
+        .header {
+            background-color: rgba(252, 251, 250, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            transition: var(--transition-smooth);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo i {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+            color: var(--base-dark);
+        }
+        .nav-desktop {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: var(--gold-muted); }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .star-trigger {
+            color: var(--text-muted);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+        .star-trigger:hover { color: var(--accent-gold); }
+
+        /* ВЕРХНЯЯ КОРЗИНА (ДЛЯ ДЕСКТОПА) */
+        .header-cart {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--base-dark);
+            color: var(--text-white);
+            padding: 10px 18px;
+            border-radius: var(--radius-main);
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+        .header-cart:hover {
+            background-color: var(--surface-dark);
+            border-color: var(--accent-gold);
+        }
+        .header-cart i { color: var(--accent-gold); }
+        .h-cart-count {
+            background: var(--accent-gold);
+            color: var(--base-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 20px;
+        }
+
+        /* HERO СЕКЦИЯ С ЧИСТЫМ ДИЗАЙНОМ */
+        .hero {
+            padding: 90px 0 70px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: radial-gradient(circle at top, rgba(223, 186, 67, 0.04), transparent);
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--text-white);
+            border: 1px solid rgba(223, 186, 67, 0.3);
+            color: var(--gold-muted);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            color: var(--base-dark);
+            line-height: 1.15;
+            max-width: 900px;
+            margin: 0 auto 24px;
+        }
+        .hero h1 i {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+        .hero-lines {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .hero-line-item {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-line-item::before {
+            content: '•';
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+        .btn-luxury {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--base-dark), var(--surface-dark));
+            color: var(--text-white);
+            padding: 16px 38px;
+            border-radius: var(--radius-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(11, 21, 17, 0.15);
+        }
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(11, 21, 17, 0.25);
+            background: var(--surface-dark);
+        }
+
+        /* ТРИ СТАТИСТИКИ КЛИКАБЕЛЬНЫЕ */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+        }
+        .stat-node {
+            background: var(--text-white);
+            padding: 24px;
+            border-radius: var(--radius-main);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-align: center;
+        }
+        .stat-node:hover {
+            transform: translateY(-4px);
+            border-color: rgba(223, 186, 67, 0.2);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+        }
+        .stat-val {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--base-dark);
+            line-height: 1.1;
+        }
+        .stat-lbl {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* СЕКЦИИ ОБЩИЕ */
+        .section {
+            padding: 90px 24px;
+            position: relative;
+            z-index: 2;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .section-dark-wrap {
+            background-color: var(--base-dark);
+            color: var(--text-white);
+            position: relative;
+            z-index: 2;
+        }
+        .section-dark-wrap .section { max-width: 1300px; }
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--base-dark);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-dark-wrap .section-title { color: var(--text-white); }
+        .section-title span {
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        /* КАРТОЧКИ ПРИНЦИПОВ */
+        .modern-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .principle-card {
+            background: var(--text-white);
+            padding: 40px 30px;
+            border-radius: var(--radius-main);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.01);
+            border-top: 3px solid var(--base-dark);
+            transition: var(--transition-smooth);
+        }
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+            border-top-color: var(--accent-gold);
+        }
+        .principle-card i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        .principle-card h3 {
+            font-size: 1.6rem;
+            color: var(--base-dark);
+            margin-bottom: 12px;
+        }
+        .principle-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* ГАРАНТИИ (НА ТЕМНОМ) */
+        .modern-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .garant-card {
+            background-color: var(--surface-dark);
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 30px 24px;
+            border-radius: var(--radius-main);
+            transition: var(--transition-smooth);
+        }
+        .garant-card:hover {
+            background-color: var(--surface-light);
+            transform: translateY(-3px);
+        }
+        .garant-card i {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+        .garant-card h3 {
+            font-size: 1.35rem;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+        .garant-card p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ПОЧЕМУ МЫ И ДОСТАВКА */
+        .modern-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .why-card {
+            background: var(--text-white);
+            padding: 35px;
+            border-radius: var(--radius-main);
+            display: flex;
+            gap: 24px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.01);
+        }
+        .why-card i {
+            font-size: 1.8rem;
+            color: var(--base-dark);
+            margin-top: 4px;
+        }
+        .why-card h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--base-dark); }
+        .why-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+        .delivery-banner {
+            background: linear-gradient(135deg, var(--surface-dark), var(--base-dark));
+            border-radius: var(--radius-main);
+            padding: 50px;
+            text-align: center;
+            border: 1px solid rgba(223, 186, 67, 0.2);
+        }
+        .delivery-banner i { font-size: 2.6rem; color: var(--accent-gold); margin-bottom: 20px; }
+        .delivery-banner h3 { font-size: 2rem; margin-bottom: 10px; }
+        .delivery-banner p { font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto; }
+
+        /* ИННОВАЦИОННЫЙ УПРАВЛЯЕМЫЙ КАТАЛОГ */
+        .catalog-head {
+            background: var(--bg-silk);
+            padding: 30px;
+            border-radius: var(--radius-main);
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .modern-search {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: var(--text-white);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: var(--transition-smooth);
+        }
+        .modern-search:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(223, 186, 67, 0.1);
+        }
+        .search-container i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+        .filter-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .tag-btn {
+            background-color: var(--text-white);
+            border: 1px solid transparent;
+            padding: 10px 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 30px;
+            color: var(--text-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: var(--transition-smooth);
+        }
+        .tag-btn.active, .tag-btn:hover {
+            background-color: var(--base-dark);
+            color: var(--text-white);
+            border-color: var(--accent-gold);
+        }
+
+        /* МОДЕРНИЗИРОВАННАЯ СЕТКА ТОВАРОВ */
+        .modern-products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .modern-card {
+            background: var(--text-white);
+            border-radius: var(--radius-main);
+            padding: 20px;
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+        .modern-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: rgba(223, 186, 67, 0.15);
+        }
+        .img-holder {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-silk);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .img-holder img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: var(--transition-smooth);
+        }
+        .modern-card:hover .img-holder img {
+            transform: scale(1.04);
+        }
+        .meta-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .meta-brand { color: var(--gold-muted); }
+        .meta-cat { color: var(--text-muted); }
         
-        .cart-items-list { margin-bottom: 1.5rem; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        .item-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--base-dark);
+            margin-bottom: 16px;
+            min-height: 48px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+        .footer-line {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.03);
+        }
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--base-dark);
+        }
+        .price-tag span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+
+        .btn-luxury-cart {
+            background-color: var(--base-dark);
+            color: var(--text-white);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+        .btn-luxury-cart:hover {
+            background-color: var(--surface-dark);
+            border-color: var(--accent-gold);
+        }
         
-        .btn-send { display: block; width: 100%; text-align: center; padding: 1rem; background: #25D366; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; }
+        /* УПРАВЛЕНИЕ КОЛИЧЕСТВОМ В СТИЛЕ МИНИМАЛИЗМА */
+        .lux-qty {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-silk);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .lux-qty-btn {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--base-dark);
+            background: transparent;
+            transition: var(--transition-smooth);
+        }
+        .lux-qty-btn:hover { background-color: rgba(0,0,0,0.04); color: var(--accent-gold); }
+        .lux-qty-val {
+            padding: 0 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* ПОДВАЛ */
+        .footer {
+            background-color: var(--base-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 80px 24px 40px;
+            border-top: 1px solid rgba(223, 186, 67, 0.1);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1300px;
+            margin: 0 auto 50px;
+        }
+        .foot-block h4 {
+            font-size: 1.4rem;
+            color: var(--text-white);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .foot-block p { font-size: 0.9rem; line-height: 1.7; }
+        .foot-menu { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .foot-menu a { font-size: 0.9rem; text-decoration: none; color: rgba(255,255,255,0.6); transition: var(--transition-smooth); }
+        .foot-menu a:hover { color: var(--accent-gold); padding-left: 4px; }
+        .btn-stack { display: flex; flex-direction: column; gap: 12px; }
+        .luxury-soc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        .soc-wa { background-color: #1e3629; border: 1px solid #25d366; }
+        .soc-tg { background-color: #132733; border: 1px solid #0088cc; }
+        .luxury-soc:hover { transform: translateY(-2px); opacity: 0.95; }
         
-        /* Футер */
-        footer { background: var(--green-dark); color: #fff; padding: 3rem 0 1.5rem; border-top: 4px solid var(--gold); text-align: center; }
+        .footer-meta {
+            text-align: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        .admin-link { cursor: pointer; transition: var(--transition-smooth); }
+        .admin-link:hover { color: var(--accent-gold); }
+
+        /* ВСПЛЫВАЮЩИЕ И МОДАЛЬНЫЕ ОКНА */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 21, 17, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            padding: 20px;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-window {
+            background-color: var(--text-white);
+            width: 100%;
+            max-width: 540px;
+            border-radius: var(--radius-main);
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(223, 186, 67, 0.2);
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95);
+            transition: var(--transition-smooth);
+        }
+        .modal-overlay.active .modal-window { transform: scale(1); }
+        .modal-title-bar {
+            background-color: var(--base-dark);
+            color: var(--text-white);
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-title-bar h3 { font-size: 1.5rem; color: var(--accent-gold); }
+        .modal-close-trigger { color: var(--text-white); font-size: 1.3rem; background: none; border: none; cursor: pointer; }
+        .modal-scroller { padding: 24px; overflow-y: auto; flex-grow: 1; }
+
+        /* СПИСОК В КОРЗИНЕ */
+        .basket-list { display: flex; flex-direction: column; gap: 16px; }
+        .basket-row { display: flex; align-items: center; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .basket-img { width: 55px; height: 55px; background-color: var(--bg-silk); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .basket-img img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .basket-details { flex-grow: 1; }
+        .basket-name { font-size: 0.9rem; font-weight: 600; color: var(--base-dark); }
+        .basket-math { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+        .basket-summary-panel { padding: 20px; background-color: var(--bg-silk); border-radius: 8px; margin-top: 20px; }
+        .basket-total-row { display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 700; color: var(--base-dark); margin-bottom: 16px; }
+        .basket-total-row span:last-child { color: var(--base-dark); }
+        .btn-clear-basket { font-size: 0.8rem; color: #a33838; font-weight: 600; display: inline-block; margin-bottom: 16px; }
+        .basket-checkout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        /* АДМИН ПАНЕЛЬ */
+        .form-node { display: flex; flex-direction: column; gap: 16px; }
+        .input-sub-block { display: flex; flex-direction: column; gap: 6px; }
+        .input-sub-block label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+        .lux-input { padding: 12px; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; font-family: inherit; font-size: 0.95rem; }
+        .lux-input:focus { outline: none; border-color: var(--accent-gold); }
+        .btn-admin-auth { background-color: var(--base-dark); color: var(--text-white); padding: 14px; border-radius: 6px; font-weight: 600; border: 1px solid var(--accent-gold); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
+        
+        .panel-dashboard { display: flex; flex-direction: column; gap: 20px; }
+        .dash-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .dash-card { background-color: var(--bg-silk); padding: 16px 10px; border-radius: 8px; text-align: center; }
+        .dash-val { font-size: 1.15rem; font-weight: 700; color: var(--base-dark); }
+        .dash-lbl { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; }
+        .btn-google-sheet { background-color: #134e2e; color: var(--text-white); padding: 14px; border-radius: 6px; text-align: center; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #25d366; }
+        .admin-note { background-color: #fffdec; border-left: 3px solid var(--accent-gold); padding: 14px; font-size: 0.8rem; color: #5c532e; line-height: 1.5; border-radius: 0 6px 6px 0; }
+
+        /* ======================================================= */
+        /* КРИТИЧЕСКИЙ UX: КАРДИНАЛЬНОЕ ИЗМЕНЕНИЕ ДЛЯ МОБИЛЬНЫХ    */
+        /* ======================================================= */
+        
+        /* НИЖНИЙ НАВИГАЦИОННЫЙ БАР (ЭРГОНОМИКА СМАРТФОНОВ) */
+        .bottom-nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 21, 17, 0.96);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(223, 186, 67, 0.2);
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            height: 68px;
+            z-index: 250;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+        }
+        .b-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            gap: 4px;
+            position: relative;
+        }
+        .b-nav-item i { font-size: 1.2rem; transition: var(--transition-smooth); }
+        .b-nav-item.active, .b-nav-item:hover { color: var(--accent-gold); }
+        .b-nav-item .b-cart-badge {
+            position: absolute;
+            top: 6px;
+            right: 22%;
+            background-color: var(--accent-gold);
+            color: var(--base-dark);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 10px;
+        }
+
+        /* КНОПКА БЫСТРОГО СКРОЛЛА */
+        .scroll-assist {
+            position: fixed;
+            right: 16px;
+            bottom: 85px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 150;
+        }
+        .sa-btn {
+            width: 44px;
+            height: 44px;
+            background-color: var(--base-dark);
+            color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(223, 186, 67, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+        }
+        .sa-btn.visible { opacity: 1; visibility: visible; }
+
+        @media (max-width: 992px) {
+            .modern-products { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .modern-grid-3, .modern-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            /* Скрытие десктопных элементов */
+            .nav-desktop, .header-cart, .hero-lines { display: none; }
+            
+            /* Нижний бар становится видимым */
+            .bottom-nav-bar { display: grid; }
+            
+            /* Оптимизация шапки */
+            .header-container { height: 62px; padding: 0 16px; }
+            .logo-text { font-size: 1.25rem; }
+            .logo i { font-size: 1.15rem; }
+
+            /* Адаптивный Hero */
+            .hero { padding: 50px 16px 40px; }
+            .hero h1 { font-size: 2.1rem; margin-bottom: 16px; }
+            .hero-badge { margin-bottom: 16px; font-size: 0.75rem; }
+            .btn-luxury { padding: 14px 28px; font-size: 0.85rem; width: 100%; max-width: 290px; }
+            
+            .stats-container { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 30px; padding: 0; }
+            .stat-node { padding: 12px 6px; }
+            .stat-val { font-size: 1.65rem; }
+            .stat-lbl { font-size: 0.7rem; }
+
+            /* Сетки перестраиваются в стек */
+            .modern-grid-3, .modern-grid-4, .modern-grid-2 { grid-template-columns: 1fr; gap: 16px; }
+            .principle-card, .garant-card, .why-card { padding: 24px; }
+            .why-card { flex-direction: column; gap: 12px; }
+            .delivery-banner { padding: 30px 20px; }
+            .delivery-banner h3 { font-size: 1.5rem; }
+            .delivery-banner p { font-size: 0.95rem; }
+            .section { padding: 50px 16px; }
+            .section-title { font-size: 1.9rem; margin-bottom: 30px; }
+
+            /* ЭРГОНОМИЧНЫЙ КАТАЛОГ ДЛЯ МОБИЛЬНЫХ: СТРОГО 2 КОЛОНКИ С ИДЕАЛЬНЫМИ ШРИФТАМИ */
+            .catalog-head { padding: 16px; margin-bottom: 24px; gap: 16px; }
+            .tag-btn { padding: 8px 14px; font-size: 0.78rem; }
+            .modern-products { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .modern-card { padding: 12px; border-radius: 8px; }
+            .img-holder { height: 130px; margin-bottom: 10px; }
+            .item-name { font-size: 0.9rem; min-height: 38px; margin-bottom: 12px; line-height: 1.35; }
+            .meta-line { font-size: 0.68rem; margin-bottom: 4px; }
+            .price-tag { font-size: 1.2rem; }
+            .btn-luxury-cart { padding: 8px 12px; font-size: 0.75rem; border-radius: 6px; }
+            .lux-qty-btn { width: 30px; height: 30px; }
+            .lux-qty-val { font-size: 0.85rem; min-width: 20px; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-content">
+    <!-- АМБИЕНТНЫЙ ЗАДНИЙ ПЛАН -->
+    <div class="ambient-bg" id="ambientBg"></div>
+
+    <!-- ТОРГОВЫЙ СТАТУС БАР -->
+    <div class="top-bar">Оптовые поставки бытовой химии • <span>Чистота сделки по канонам Ислама</span></div>
+
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="header-container">
             <a href="#" class="logo">
-                <i class="fa-solid fa-crown"></i> Аманат Маркет
+                <i class="fa-solid fa-crown"></i>
+                <span class="logo-text">Amanat Market</span>
             </a>
-            <div class="header-cart" onclick="toggleModal(true)">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <div class="header-cart-info">
-                    <span class="header-cart-count" id="cart-count">0 шт.</span>
-                    <span class="header-cart-total" id="cart-total-nav">0 ₽</span>
-                </div>
+            
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link">Главная</a>
+                <a href="#principles" class="nav-link">Принципы</a>
+                <a href="#garant" class="nav-link">Гарантия</a>
+                <a href="#catalog" class="nav-link">Каталог</a>
+                <a href="#delivery" class="nav-link">Доставка</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="star-trigger" onclick="openAdmin()" aria-label="Панель управления"><i class="fa-solid fa-star"></i></button>
+                <button class="header-cart" onclick="openBasket()">
+                    <i class="fa-solid fa-shopping-basket"></i>
+                    <span class="h-cart-count" id="dkCartCount">0</span>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        <div class="delivery-banner">
-            <h3>Бесплатная доставка</h3>
-            <p>При заказе от <strong>1000 ₽</strong></p>
+    <!-- ИНСТРУМЕНТ НАВИГАЦИИ ПОД БОЛЬШОЙ ПАЛЕЦ (МОБИЛЬНЫЙ БАР) -->
+    <div class="bottom-nav-bar">
+        <a href="#" class="b-nav-item active" id="mNavHome"><i class="fa-solid fa-layer-group"></i>База</a>
+        <a href="#catalog" class="b-nav-item" id="mNavCat"><i class="fa-solid fa-magnifying-glass"></i>Поиск</a>
+        <a href="javascript:void(0)" class="b-nav-item" onclick="openBasket()">
+            <i class="fa-solid fa-shopping-basket"></i>Корзина
+            <span class="b-cart-badge" id="mbCartCount" style="display:none;">0</span>
+        </a>
+        <a href="javascript:void(0)" class="b-nav-item" onclick="openAdmin()"><i class="fa-solid fa-user-gear"></i>Сеть</a>
+    </div>
+
+    <!-- HERO СЕКЦИЯ -->
+    <section class="hero">
+        <div class="hero-badge"><i class="fa-solid fa-circle-check"></i> Стопроцентная подлинность продукции</div>
+        <h1>Оригинальная бытовая химия <i>премиум класса</i></h1>
+        <div class="hero-lines">
+            <div class="hero-line-item">Прямые поставки со складов производителей</div>
+            <div class="hero-line-item">Качество работы по канонам этики Ислама</div>
+            <div class="hero-line-item">Защитная маркировка на каждой упаковке</div>
+        </div>
+        <a href="#catalog" class="btn-luxury">Открыть каталог продукции</a>
+        
+        <div class="stats-container">
+            <div class="stat-node" onclick="scrollFilter('all')">
+                <div class="stat-val" id="stItemsCount">85</div>
+                <div class="stat-lbl">Позиций базы</div>
+            </div>
+            <div class="stat-node" onclick="scrollFilter('all')">
+                <div class="stat-val">20+</div>
+                <div class="stat-lbl">Мировых брендов</div>
+            </div>
+            <div class="stat-node" onclick="scrollFilter('all')">
+                <div class="stat-val">100%</div>
+                <div class="stat-lbl">Оригинал партий</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРИНЦИПЫ -->
+    <section class="section" id="principles">
+        <h2 class="section-title"><span>Этика и стандарты</span>Наши принципы торговли</h2>
+        <div class="modern-grid-3">
+            <div class="principle-card">
+                <i class="fa-solid fa-building-shield"></i>
+                <h3>Истинный оригинал</h3>
+                <p>Мы полностью исключили реплики, дубликаты и подделки. В ассортименте исключительно оригинальная заводская химия премиум секторов.</p>
+            </div>
+            <div class="principle-card">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>Религиозная этика</h3>
+                <p>Ведение деловых операций в строгом соответствии с исламским экономическим правом. Прозрачное ценообразование, отсутствие пени.</p>
+            </div>
+            <div class="principle-card">
+                <i class="fa-solid fa-scroll"></i>
+                <h3>Чистота договора</h3>
+                <p>Все параметры сделки (цена, объем, сроки) фиксируются до момента оплаты. Исключены любые двусмысленности в процессе сотрудничества.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАРАНТИЯ КАЧЕСТВА (ТЕМНЫЙ БЛОК) -->
+    <div class="section-dark-wrap" id="garant">
+        <section class="section">
+            <h2 class="section-title"><span>Безопасность поставок</span>Гарантия стабильного качества</h2>
+            <div class="modern-grid-4">
+                <div class="garant-card">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <h3>QR-код верификации</h3>
+                    <p>Каждая упаковка снабжена защитным кодом для мгновенной проверки аутентичности партии.</p>
+                </div>
+                <div class="garant-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Премиальный состав</h3>
+                    <p>Повышенная концентрация моющих компонентов гарантирует экономичный расход и эффективность.</p>
+                </div>
+                <div class="garant-card">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <h3>Забота о здоровье</h3>
+                    <p>Продукция полностью гипоаллергенна, выполаскивается без остатка и безопасна для человека.</p>
+                </div>
+                <div class="garant-card">
+                    <i class="fa-solid fa-gem"></i>
+                    <h3>Сохранение вещей</h3>
+                    <p>Формулы оберегают волокна тканей и структуру поверхностей от преждевременного износа.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ПОЧЕМУ МЫ -->
+    <section class="section">
+        <h2 class="section-title"><span>Преимущества партнерства</span>Почему выбирают Аманат Маркет</h2>
+        <div class="modern-grid-2">
+            <div class="why-card">
+                <i class="fa-solid fa-percent"></i>
+                <div>
+                    <h3>Честные оптовые цены</h3>
+                    <p>Прямой доступ к дистрибуции заводов позволяет нам формировать оптимальные ценовые предложения для розничных сетей Ингушетии.</p>
+                </div>
+            </div>
+            <div class="why-card">
+                <i class="fa-solid fa-clipboard-check"></i>
+                <div>
+                    <h3>Сертифицированный импорт</h3>
+                    <p>Каждая закупаемая у нас коробка имеет полный комплект легальных бухгалтерских и гигиенических документов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ДОСТАВКА (ТЕМНЫЙ БАННЕР) -->
+    <div class="section-dark-wrap" id="delivery">
+        <section class="section">
+            <div class="delivery-banner">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+                <h3>Оперативная логистика</h3>
+                <p>Отправка в день заказа по договорённости. Налаженная и бесперебойная доставка партий по всей территории Республики Ингушетия.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ИНТЕРФЕЙС КАТАЛОГА -->
+    <section class="section" id="catalog">
+        <h2 class="section-title"><span>Выбор продукции</span>Оптовый каталог товаров</h2>
+        
+        <div class="catalog-head">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="modernSearchInput" class="modern-search" placeholder="Быстрый поиск по наименованию или бренду...">
+            </div>
+            <div class="filter-row" id="tagFilterRow">
+                <button class="tag-btn active" data-cat="all">Все категории</button>
+                <button class="tag-btn" data-cat="kitchen">🍳 Кухня</button>
+                <button class="tag-btn" data-cat="dishes">🍽️ Посуда</button>
+                <button class="tag-btn" data-cat="laundry">👕 Стирка</button>
+                <button class="tag-btn" data-cat="cleaning">🧹 Уборка</button>
+                <button class="tag-btn" data-cat="hygiene">🧴 Гигиена</button>
+            </div>
         </div>
 
-        <section class="catalog" id="catalog">
-            <div class="catalog-header">
-                <h2>Каталог товаров</h2>
-                <div class="filters">
-                    <button class="filter-btn active" onclick="filterCategory('all', this)"><span>Все товары</span></button>
-                    <button class="filter-btn" onclick="filterCategory('kitchen', this)"><span>Кухня</span></button>
-                    <button class="filter-btn" onclick="filterCategory('dishes', this)"><span>Посуда</span></button>
-                    <button class="filter-btn" onclick="filterCategory('laundry', this)"><span>Стирка</span></button>
-                    <button class="filter-btn" onclick="filterCategory('cleaning', this)"><span>Уборка</span></button>
-                    <button class="filter-btn" onclick="filterCategory('hygiene', this)"><span>Гигиена</span></button>
-                </div>
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="search-input" placeholder="Поиск товаров..." oninput="handleSearch()">
-                </div>
-            </div>
+        <div class="modern-products" id="modernGrid">
+            <!-- Элементы генерируются скриптом -->
+        </div>
+    </section>
 
-            <div class="products-grid" id="products-container">
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="foot-block">
+                <h4>Аманат Маркет</h4>
+                <p>Оптово-распределительный торговый узел качественной бытовой химии. Мы строим долгосрочные партнерские отношения, основанные на доверии, качестве продукции и строгом соблюдении принципов ведения бизнеса в Исламе.</p>
+            </div>
+            <div class="foot-block">
+                <h4>Каталог базы</h4>
+                <ul class="foot-menu">
+                    <li><a href="#catalog" onclick="setCatalogFilter('kitchen')">Средства для кухни</a></li>
+                    <li><a href="#catalog" onclick="setCatalogFilter('dishes')">Мытье посуды</a></li>
+                    <li><a href="#catalog" onclick="setCatalogFilter('laundry')">Профессиональная стирка</a></li>
+                    <li><a href="#catalog" onclick="setCatalogFilter('cleaning')">Эффективная уборка</a></li>
+                    <li><a href="#catalog" onclick="setCatalogFilter('hygiene')">Личная гигиена</a></li>
+                </ul>
+            </div>
+            <div class="foot-block">
+                <h4>Прямая связь</h4>
+                <div class="btn-stack">
+                    <a href="https://wa.me/77077974406" target="_blank" class="luxury-soc soc-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Менеджер WhatsApp
+                    </a>
+                    <a href="https://t.me/Amanating_bot" target="_blank" class="luxury-soc soc-tg">
+                        <i class="fa-brands fa-telegram"></i> Telegram Bot системы
+                    </a>
                 </div>
-        </section>
-    </main>
+            </div>
+        </div>
+        <div class="footer-meta">
+            <span class="admin-link" onclick="openAdmin()">© 2026 Amanat Market • Панель управления</span>
+        </div>
+    </footer>
 
-    <div class="modal" id="cart-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Ваш заказ</h3>
-                <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+    <!-- ВСПОМОГАТЕЛЬНЫЙ СКРОЛЛ -->
+    <div class="scroll-assist">
+        <button class="sa-btn" id="saUp" onclick="window.scrollTo(0,0)"><i class="fa-solid fa-chevron-up"></i></button>
+        <button class="sa-btn" id="saDown" onclick="window.scrollTo(0,document.body.scrollHeight)"><i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: КОРЗИНА -->
+    <div class="modal-overlay" id="basketOverlay">
+        <div class="modal-window">
+            <div class="modal-title-bar">
+                <h3>Ваша корзина заказа</h3>
+                <button class="modal-close-trigger" onclick="closeBasket()"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="cart-items-list" id="modal-cart-items"></div>
-            <div style="text-align: right; margin-bottom: 1.5rem;">
-                <span>Итого к оплате: </span><strong style="font-size: 1.5rem;" id="modal-total-amount">0 ₽</strong>
+            <div class="modal-scroller">
+                <div id="basketItemsList" class="basket-list">
+                    <!-- Товары -->
+                </div>
+                <div id="basketFooterBlock" class="basket-summary-panel" style="display:none;">
+                    <div class="basket-total-row">
+                        <span>Оптовый итог:</span>
+                        <span id="basketSumVal">0 ₽</span>
+                    </div>
+                    <button class="btn-clear-basket" onclick="wipeBasket()"><i class="fa-solid fa-eraser"></i> Очистить спецификацию</button>
+                    <div class="basket-checkout-grid">
+                        <button class="luxury-soc soc-wa" style="border:none;" onclick="runCheckout('wa')"><i class="fa-brands fa-whatsapp"></i> В WhatsApp</button>
+                        <button class="luxury-soc soc-tg" style="border:none;" onclick="runCheckout('tg')"><i class="fa-brands fa-telegram"></i> В Telegram</button>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="btn-send" id="whatsapp-send-btn" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Отправить заказ в WhatsApp
-            </a>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Аманат Маркет — Оригинальная бытовая химия в Ингушетии.</p>
-    </footer>
+    <!-- МОДАЛЬНОЕ ОКНО: СИСТЕМА УПРАВЛЕНИЯ -->
+    <div class="modal-overlay" id="adminOverlay">
+        <div class="modal-window">
+            <div class="modal-title-bar">
+                <h3>Вход в управление</h3>
+                <button class="modal-close-trigger" onclick="closeAdmin()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-scroller">
+                <form id="authForm" class="form-node" onsubmit="executeAuth(event)">
+                    <div class="input-sub-block">
+                        <label>Идентификатор доступа</label>
+                        <input type="text" id="authLogin" class="lux-input" required autocomplete="username">
+                    </div>
+                    <div class="input-sub-block">
+                        <label>Криптоключ (Пароль)</label>
+                        <input type="password" id="authPassword" class="lux-input" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn-admin-auth">Пройти валидацию</button>
+                </form>
 
+                <div id="dashboardBlock" class="panel-dashboard" style="display:none;">
+                    <div class="dash-row">
+                        <div class="dash-card">
+                            <div class="dash-val" id="dsTotal">0</div>
+                            <div class="dash-lbl">Номенклатура</div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-val" id="dsQty">0</div>
+                            <div class="dash-lbl">Резерв (ед)</div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-val" id="dsSum">0 ₽</div>
+                            <div class="dash-lbl">Сумма сессии</div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://docs.google.com/spreadsheets/d/1AQPDlp3Wh2rz21Ra1ltDpEDy9ocSO_elskJYx8ONr8s/edit" target="_blank" class="btn-google-sheet">
+                        <i class="fa-solid fa-file-excel"></i> Открыть мастер-таблицу
+                    </a>
+
+                    <div class="admin-note">
+                        <strong>Синхронизация данных:</strong><br>
+                        Обновление цен, товарного остатка и названий выполняется напрямую через подключенную Google Таблицу. Данные обновляются на витрине автоматически в течение 2-5 минут.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СЦЕНАРИИ КОРРЕКТНОЙ ЛОГИКИ И ИНТЕГРАЦИИ -->
     <script>
-        // База данных из твоей таблицы
-        const products = [
-            { id: 1, name: "Азелит Кухня", brand: "Азелит", cat: "kitchen", price: 138, img: "https://mansseg.github.io/amanat-market/images/azelit-kuhnya.jpg" },
-            { id: 2, name: "Азелит Казан", brand: "Азелит", cat: "kitchen", price: 138, img: "https://mansseg.github.io/amanat-market/images/azelit-kazan.jpg" },
-            { id: 3, name: "Уникум жироудалитель", brand: "Уникум", cat: "kitchen", price: 100, img: "https://mansseg.github.io/amanat-market/images/unikum-zhiro.jpg" },
-            { id: 4, name: "Нефес универсальное", brand: "Нефес", cat: "cleaning", price: 150, img: "https://mansseg.github.io/amanat-market/images/nefes-universal.jpg" },
-            { id: 5, name: "Аос 900 мл (3 вида)", brand: "Аос", cat: "dishes", price: 153, img: "https://mansseg.github.io/amanat-market/images/aos-900ml.jpg" },
-            { id: 6, name: "Аос 1300 мл бальзам", brand: "Аос", cat: "dishes", price: 197, img: "https://mansseg.github.io/amanat-market/images/aos-1300ml-balsam.jpg" },
-            { id: 7, name: "Аос 1300 мл Алоэ Вера", brand: "Аос", cat: "dishes", price: 197, img: "https://mansseg.github.io/amanat-market/images/aos-1300ml-aloe.jpg" },
-            { id: 8, name: "Аос 450 мл (3 вида)", brand: "Аос", cat: "dishes", price: 77, img: "https://mansseg.github.io/amanat-market/images/aos-450ml.jpg" },
-            { id: 9, name: "Сорти 450 мл (4 вида)", brand: "Сорти", cat: "dishes", price: 67, img: "https://mansseg.github.io/amanat-market/images/sorti-450ml.jpg" },
-            { id: 10, name: "Бимакс 3 кг (3 вида)", brand: "Бимакс", cat: "laundry", price: 319, img: "https://mansseg.github.io/amanat-market/images/bimax-3kg.jpg" },
-            { id: 11, name: "Бимакс 4 кг цветное", brand: "Бимакс", cat: "laundry", price: 500, img: "https://mansseg.github.io/amanat-market/images/bimax-4kg-color.jpg" },
-            { id: 12, name: "Бимакс 4 кг белое", brand: "Бимакс", cat: "laundry", price: 500, img: "https://mansseg.github.io/amanat-market/images/bimax-4kg-white.jpg" },
-            { id: 13, name: "Бимакс 6 кг цветное", brand: "Бимакс", cat: "laundry", price: 638, img: "https://mansseg.github.io/amanat-market/images/bimax-6kg-color.jpg" },
-            { id: 14, name: "Бимакс 6 кг белое", brand: "Бимакс", cat: "laundry", price: 638, img: "https://mansseg.github.io/amanat-market/images/bimax-6kg-white.jpg" },
-            { id: 15, name: "Бимакс 6 кг Арома", brand: "Бимакс", cat: "laundry", price: 638, img: "https://mansseg.github.io/amanat-market/images/bimax-6kg-aroma.jpg" },
-            { id: 16, name: "Бимакс 9 кг белое", brand: "Бимакс", cat: "laundry", price: 950, img: "https://mansseg.github.io/amanat-market/images/bimax-9kg-white.jpg" },
-            { id: 17, name: "Бимакс 9 кг цветное", brand: "Бимакс", cat: "laundry", price: 950, img: "https://mansseg.github.io/amanat-market/images/bimax-9kg-color.jpg" },
-            { id: 18, name: "АВС 1.5 л цветное", brand: "АВС", cat: "laundry", price: 200, img: "https://mansseg.github.io/amanat-market/images/avs-1.5l-color.jpg" },
-            { id: 19, name: "АВС 1.5 л белое", brand: "АВС", cat: "laundry", price: 200, img: "https://mansseg.github.io/amanat-market/images/avs-1.5l-white.jpg" },
-            { id: 20, name: "АВС жидкое мыло 400 мл", brand: "АВС", cat: "hygiene", price: 75, img: "https://mansseg.github.io/amanat-market/images/avs-soap-400ml.jpg" },
-            { id: 21, name: "АВС 3 кг белое", brand: "АВС", cat: "laundry", price: 332, img: "https://mansseg.github.io/amanat-market/images/avs-3kg-white.jpg" },
-            { id: 22, name: "АВС 3 кг цветное", brand: "АВС", cat: "laundry", price: 332, img: "https://mansseg.github.io/amanat-market/images/avs-3kg-color.jpg" },
-            { id: 23, name: "АВС 1 л Камелия", brand: "АВС", cat: "laundry", price: 113, img: "https://mansseg.github.io/amanat-market/images/avs-1l-camellia.jpg" },
-            { id: 24, name: "АВС 1.5 кг белое", brand: "АВС", cat: "laundry", price: 188, img: "https://mansseg.github.io/amanat-market/images/avs-1.5kg-white.jpg" },
-            { id: 25, name: "АВС 1.5 кг цветное", brand: "АВС", cat: "laundry", price: 188, img: "https://mansseg.github.io/amanat-market/images/avs-1.5kg-color.jpg" },
-            { id: 26, name: "АВС 4 кг цветное", brand: "АВС", cat: "laundry", price: 400, img: "https://mansseg.github.io/amanat-market/images/avs-4kg-color.jpg" },
-            { id: 27, name: "АВС 2 л (1 вид)", brand: "АВС", cat: "laundry", price: 200, img: "https://mansseg.github.io/amanat-market/images/avs-2l.jpg" },
-            { id: 28, name: "АВС 3 л цветное", brand: "АВС", cat: "laundry", price: 375, img: "https://mansseg.github.io/amanat-market/images/avs-3l-color.jpg" },
-            { id: 29, name: "АВС 3 л Деликатный", brand: "АВС", cat: "laundry", price: 375, img: "https://mansseg.github.io/amanat-market/images/avs-3l-delicate.jpg" },
-            { id: 30, name: "Ласка 1 л белое", brand: "Ласка", cat: "laundry", price: 250, img: "https://mansseg.github.io/amanat-market/images/laska-1l-white.jpg" },
-            { id: 31, name: "Бреф Дачный", brand: "Бреф", cat: "cleaning", price: 98, img: "https://mansseg.github.io/amanat-market/images/bref-dacha.jpg" },
-            { id: 32, name: "Пемолюкс Лимон", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-lemon.jpg" },
-            { id: 33, name: "Пемолюкс Яблоко", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-apple.jpg" },
-            { id: 34, name: "Пемолюкс Морской", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-sea.jpg" },
-            { id: 35, name: "Пемолюкс Чистота и Гигиена", brand: "Пемолюкс", cat: "cleaning", price: 72, img: "https://mansseg.github.io/amanat-market/images/pemolyuks-clean.jpg" },
-            { id: 36, name: "Тайд 450 гр цветное", brand: "Тайд", cat: "laundry", price: 85, img: "https://mansseg.github.io/amanat-market/images/tide-450g.jpg" },
-            { id: 37, name: "Тайд 450 гр белое", brand: "Тайд", cat: "laundry", price: 85, img: "https://mansseg.github.io/amanat-market/images/tide-450g.jpg" },
-            { id: 38, name: "Миф 2 кг цветное", brand: "Миф", cat: "laundry", price: 250, img: "https://mansseg.github.io/amanat-market/images/myf-2kg.jpg" },
-            { id: 39, name: "Миф 2 кг белое", brand: "Миф", cat: "laundry", price: 250, img: "https://mansseg.github.io/amanat-market/images/myf-2kg.jpg" },
-            { id: 40, name: "Тайд 9 кг цветное", brand: "Тайд", cat: "laundry", price: 1200, img: "https://mansseg.github.io/amanat-market/images/tide-9kg.jpg" },
-            { id: 41, name: "Тайд 6 кг белое", brand: "Тайд", cat: "laundry", price: 813, img: "https://mansseg.github.io/amanat-market/images/tide-6kg.jpg" },
-            { id: 42, name: "Тайд 6 кг цветное", brand: "Тайд", cat: "laundry", price: 813, img: "https://mansseg.github.io/amanat-market/images/tide-6kg.jpg" },
-            { id: 43, name: "Ариэль 450 гр", brand: "Ариэль", cat: "laundry", price: 93, img: "https://mansseg.github.io/amanat-market/images/ariel-3kg.jpg" },
-            { id: 44, name: "Ариэль 6 кг белое", brand: "Ариэль", cat: "laundry", price: 882, img: "https://mansseg.github.io/amanat-market/images/ariel-3kg.jpg" },
-            { id: 45, name: "Ариэль 9 кг цветное", brand: "Ариэль", cat: "laundry", price: 1250, img: "https://mansseg.github.io/amanat-market/images/ariel-3kg.jpg" },
-            { id: 46, name: "Сарма чистящее 400 гр (3 вида)", brand: "Сарма", cat: "cleaning", price: 67, img: "https://mansseg.github.io/amanat-market/images/sarma-clean-400g.jpg" },
-            { id: 47, name: "Сарма посуда 500мл (5 видов)", brand: "Сарма", cat: "dishes", price: 88, img: "https://mansseg.github.io/amanat-market/images/sarma-dishes-500ml.jpg" },
-            { id: 48, name: "Сарма 900 мл (3 вида)", brand: "Сарма", cat: "dishes", price: 150, img: "https://mansseg.github.io/amanat-market/images/sarma-900ml.jpg" },
-            { id: 49, name: "Сарма 9 кг", brand: "Сарма", cat: "laundry", price: 1425, img: "https://mansseg.github.io/amanat-market/images/sarma-9kg.jpg" },
-            { id: 50, name: "Сарма 6 кг цветное", brand: "Сарма", cat: "laundry", price: 882, img: "https://mansseg.github.io/amanat-market/images/sarma-6kg.jpg" },
-            { id: 51, name: "Сарма хоз. мыло 140 гр (2 вида)", brand: "Сарма", cat: "hygiene", price: 50, img: "https://mansseg.github.io/amanat-market/images/sarma-soap-140g.jpg" },
-            { id: 52, name: "Сарма 4.5 кг цветное", brand: "Сарма", cat: "laundry", price: 700, img: "https://mansseg.github.io/amanat-market/images/sarma-4.5kg.jpg" },
-            { id: 53, name: "Сарма 2.4 кг (цветное и белое)", brand: "Сарма", cat: "laundry", price: 388, img: "https://mansseg.github.io/amanat-market/images/sarma-2.4kg.jpg" },
-            { id: 54, name: "Аист 150 гр 26%", brand: "Аист", cat: "laundry", price: 150, img: "https://mansseg.github.io/amanat-market/images/aist-150g.jpg" },
-            { id: 55, name: "Ушастик 4.5 кг", brand: "Ушастик", cat: "laundry", price: 700, img: "https://mansseg.github.io/amanat-market/images/ushastik-4.5kg.jpg" },
-            { id: 56, name: "Ушастик 6 кг", brand: "Ушастик", cat: "laundry", price: 888, img: "https://mansseg.github.io/amanat-market/images/ushastik-6kg.jpg" },
-            { id: 57, name: "Ушастик 400 гр", brand: "Ушастик", cat: "laundry", price: 73, img: "https://mansseg.github.io/amanat-market/images/ushastik-400g.jpg" },
-            { id: 58, name: "Ушастик 800 гр", brand: "Ушастик", cat: "laundry", price: 143, img: "https://mansseg.github.io/amanat-market/images/ushastik-800g.jpg" },
-            { id: 59, name: "Ушастик 9 кг", brand: "Ушастик", cat: "laundry", price: 1425, img: "https://mansseg.github.io/amanat-market/images/ushastik-9kg.jpg" },
-            { id: 60, name: "Детское (ромашка) 90 гр", brand: "Ушастик", cat: "hygiene", price: 29, img: "https://mansseg.github.io/amanat-market/images/baby-camomile-90g.jpg" },
-            { id: 61, name: "Ушастик 90 ромашка", brand: "Ушастик", cat: "hygiene", price: 36, img: "https://mansseg.github.io/amanat-market/images/ushastik-90-camomile.jpg" },
-            { id: 62, name: "Уш. нянь 180гр (2 вида)", brand: "Ушастик", cat: "hygiene", price: 54, img: "https://mansseg.github.io/amanat-market/images/ushastik-nyan-180g.jpg" },
-            { id: 63, name: "Невка хоз. мыло с глицерином 180 гр", brand: "Невка", cat: "hygiene", price: 49, img: "https://mansseg.github.io/amanat-market/images/nevka-soap-glycerin-180g.jpg" },
-            { id: 64, name: "Невка хоз. мыло пальмовое 180 гр", brand: "Невка", cat: "hygiene", price: 49, img: "https://mansseg.github.io/amanat-market/images/nevka-soap-palm-180g.jpg" },
-            { id: 65, name: "Дегтярное мыло 180 гр", brand: "Невка", cat: "hygiene", price: 49, img: "https://mansseg.github.io/amanat-market/images/degtyar-soap-180g.jpg" },
-            { id: 66, name: "Санокс 750 мл", brand: "Санокс", cat: "cleaning", price: 92, img: "https://mansseg.github.io/amanat-market/images/sanoks-750ml.jpg" },
-            { id: 67, name: "Санокс 1100 мл", brand: "Санокс", cat: "cleaning", price: 150, img: "https://mansseg.github.io/amanat-market/images/sanoks-1100ml.jpg" },
-            { id: 68, name: "Санокс 750 гель", brand: "Санокс", cat: "cleaning", price: 110, img: "https://mansseg.github.io/amanat-market/images/sanoks-gel-750ml.jpg" },
-            { id: 69, name: "Босс 300 гр", brand: "Босс", cat: "cleaning", price: 75, img: "https://mansseg.github.io/amanat-market/images/boss-300g.jpg" },
-            { id: 70, name: "Русь 250 гр", brand: "Русь", cat: "cleaning", price: 52, img: "https://mansseg.github.io/amanat-market/images/rus-250g.jpg" },
-            { id: 71, name: "Босс 600 гр", brand: "Босс", cat: "cleaning", price: 143, img: "https://mansseg.github.io/amanat-market/images/boss-600g.jpg" },
-            { id: 72, name: "Колгейт 100 мл (4 вида)", brand: "Колгейт", cat: "hygiene", price: 92, img: "https://mansseg.github.io/amanat-market/images/colgate-100ml.jpg" },
-            { id: 73, name: "Лесной бальзам (3 вида)", brand: "Лесной бальзам", cat: "hygiene", price: 60, img: "https://mansseg.github.io/amanat-market/images/lesnoy-balzam-100ml.jpg" },
-            { id: 74, name: "Dove шампунь 380мл (5 видов)", brand: "Dove", cat: "hygiene", price: 207, img: "https://mansseg.github.io/amanat-market/images/dove-shampoo-380ml.jpg" },
-            { id: 75, name: "Clear шампунь 380 мл (9 видов)", brand: "Clear", cat: "hygiene", price: 207, img: "https://mansseg.github.io/amanat-market/images/clear-shampoo-380ml.jpg" },
-            { id: 76, name: "Доместос 1 л белое", brand: "Доместос", cat: "cleaning", price: 148, img: "https://mansseg.github.io/amanat-market/images/domestos-1l.jpg" },
-            { id: 77, name: "Доместос 1 л для пола", brand: "Доместос", cat: "cleaning", price: 148, img: "https://mansseg.github.io/amanat-market/images/domestos-1l.jpg" },
-            { id: 78, name: "Доместос 500 мл Лимон", brand: "Доместос", cat: "cleaning", price: 104, img: "https://mansseg.github.io/amanat-market/images/domestos-500ml.jpg" },
-            { id: 79, name: "Доместос 500 мл Белый", brand: "Доместос", cat: "cleaning", price: 104, img: "https://mansseg.github.io/amanat-market/images/domestos-500ml.jpg" },
-            { id: 80, name: "Доместос 500 мл Свежесть", brand: "Доместос", cat: "cleaning", price: 104, img: "https://mansseg.github.io/amanat-market/images/domestos-500ml.jpg" },
-            { id: 81, name: "Доместос 1.5 л Лимон", brand: "Доместос", cat: "cleaning", price: 229, img: "https://mansseg.github.io/amanat-market/images/domestos-1.5l.jpg" },
-            { id: 82, name: "Чистая линия шампунь (7 видов)", brand: "Чистая линия", cat: "hygiene", price: 108, img: "https://mansseg.github.io/amanat-market/images/chistaya-liniya-400ml.jpg" },
-            { id: 83, name: "Rexona женский (3 вида)", brand: "Rexona", cat: "hygiene", price: 132, img: "https://mansseg.github.io/amanat-market/images/rexona-deo.jpg" },
-            { id: 84, name: "Palette краска роскошный медный", brand: "Palette", cat: "hygiene", price: 117, img: "https://mansseg.github.io/amanat-market/images/palette-kraska.jpg" },
-            { id: 85, name: "Dove женский спрей (4 вида)", brand: "Dove", cat: "hygiene", price: 132, img: "https://mansseg.github.io/amanat-market/images/dove-spray.jpg" }
-        ];
+        let dbProducts = [];
+        let basketStorage = {};
+        let activeFilterCode = 'all';
+        let filterSearchString = '';
+        let systemSessionValid = false;
 
-        let cart = {};
-        let currentCategory = 'all';
-        let searchQuery = '';
+        const ruCategories = {
+            kitchen: 'Кухня', dishes: 'Посуда', laundry: 'Стирка', cleaning: 'Уборка', hygiene: 'Гигиена'
+        };
 
-        // Инициализация рендера товаров
-        function renderProducts() {
-            const container = document.getElementById('products-container');
-            container.innerHTML = '';
+        document.addEventListener('DOMContentLoaded', () => {
+            generateVisualBubbles();
+            importCloudSheet();
+            bindUserActions();
+        });
+
+        // ПУЗЫРИ СТРОГО В ПРЕДЕЛАХ 10-30PX БЕЗ ПЕРЕКРЫТИЙ
+        function generateVisualBubbles() {
+            const node = document.getElementById('ambientBg');
+            const density = 15;
+            for (let i = 0; i < density; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                const diam = Math.floor(Math.random() * 20) + 10;
+                bubble.style.width = `${diam}px`;
+                bubble.style.height = `${diam}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.animationDelay = `${Math.random() * 10}s`;
+                bubble.style.animationDuration = `${Math.random() * 6 + 9}s`;
+                node.appendChild(bubble);
+            }
+        }
+
+        // ЗАГРУЗКА ИЗ СЕТЕВОГО ИСТОЧНИКА GOOGLE TABLES
+        function importCloudSheet() {
+            const endpoint = "https://docs.google.com/spreadsheets/d/1AQPDlp3Wh2rz21Ra1ltDpEDy9ocSO_elskJYx8ONr8s/export?format=csv";
             
-            const filtered = products.filter(p => {
-                const matchesCat = currentCategory === 'all' || p.cat === currentCategory;
-                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.brand.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchesCat && matchesSearch;
+            fetch(endpoint)
+                .then(r => r.text())
+                .then(rawText => {
+                    processCSVData(rawText);
+                })
+                .catch(err => {
+                    console.error("Критическая ошибка парсинга удаленной таблицы: ", err);
+                    document.getElementById('modernGrid').innerHTML = '<div class="no-results" style="grid-column: 1/-1; text-align:center; padding:50px; color:var(--text-muted);">Ошибка подключения к базе данных. Перезагрузите интерфейс.</div>';
+                });
+        }
+
+        function processCSVData(text) {
+            const rows = text.split('\n');
+            if (rows.length < 2) return;
+
+            const headerCells = rows[0].split(',').map(item => item.trim().replace(/^"|"$/g, ''));
+            const container = [];
+
+            for (let i = 1; i < rows.length; i++) {
+                if (!rows[i].trim()) continue;
+                const fieldValues = tokeniseCSVLine(rows[i]);
+                if (fieldValues.length < headerCells.length) continue;
+
+                const objectInstance = {};
+                headerCells.forEach((label, idx) => {
+                    objectInstance[label] = fieldValues[idx] ? fieldValues[idx].trim().replace(/^"|"$/g, '') : '';
+                });
+
+                if (objectInstance.id && objectInstance.name) {
+                    objectInstance.price = parseFloat(objectInstance.price) || 0;
+                    container.push(objectInstance);
+                }
+            }
+
+            dbProducts = container;
+            document.getElementById('stItemsCount').innerText = dbProducts.length;
+            renderVisualCatalog();
+        }
+
+        function tokeniseCSVLine(text) {
+            let buffer = '', output = [];
+            let inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (char === '"') { inQuotes = !inQuotes; }
+                else if (char === ',' && !inQuotes) { output.push(buffer); buffer = ''; }
+                else { buffer += char; }
+            }
+            output.push(buffer);
+            return output;
+        }
+
+        // МОНОГРАММА-ЗАГЛУШКА ДЛЯ ПРЕМИУМ-СТИЛЯ САЙТА
+        function generateLuxuryPlaceholder(brandName) {
+            const bg = '%23f4f1ea';
+            const fg = '%23bfa037';
+            const shortName = brandName ? encodeURIComponent(brandName.substring(0, 3).toUpperCase()) : 'AM';
+            return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="${bg}"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="36" font-weight="600" fill="${fg}">${shortName}</text></svg>`;
+        }
+
+        // ОТРИСОВКА ОПТИМИЗИРОВАННОЙ СЕТКИ КАТАЛОГА
+        function renderVisualCatalog() {
+            const gridNode = document.getElementById('modernGrid');
+            gridNode.innerHTML = '';
+
+            const filteredSet = dbProducts.filter(item => {
+                const matchCategory = (activeFilterCode === 'all' || item.category === activeFilterCode);
+                const matchQuery = item.name.toLowerCase().includes(filterSearchString.toLowerCase()) || 
+                                   item.brand.toLowerCase().includes(filterSearchString.toLowerCase());
+                return matchCategory && matchQuery;
             });
 
-            filtered.forEach(p => {
-                const qty = cart[p.id] || 0;
+            if (filteredSet.length === 0) {
+                gridNode.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--text-muted); font-weight:500;">Продукция не найдена. Попробуйте обновить поисковый запрос.</div>';
+                return;
+            }
+
+            filteredSet.forEach(product => {
                 const card = document.createElement('div');
-                card.className = 'product-card';
+                card.classList.add('modern-card');
+
+                const imageLocation = (product.image && product.image.startsWith('http')) ? product.image : generateLuxuryPlaceholder(product.brand);
+                const currentQuantity = basketStorage[product.id] || 0;
+                
+                let dynamicControlLayout = '';
+                if (currentQuantity === 0) {
+                    dynamicControlLayout = `<button class="btn-luxury-cart" onclick="insertToBasket('${product.id}')">Заказать</button>`;
+                } else {
+                    dynamicControlLayout = `
+                        <div class="lux-qty">
+                            <button class="lux-qty-btn" onclick="modifyBasketVolume('${product.id}', -1)">-</button>
+                            <span class="lux-qty-val">${currentQuantity}</span>
+                            <button class="lux-qty-btn" onclick="modifyBasketVolume('${product.id}', 1)">+</button>
+                        </div>
+                    `;
+                }
+
                 card.innerHTML = `
-                    <div class="product-image-wrapper">
-                        <img src="${p.img}" alt="${p.name}" class="product-image" onerror="this.style.opacity='0'">
+                    <div class="img-holder">
+                        <img src="${imageLocation}" alt="${product.name}" loading="lazy">
                     </div>
-                    <div class="product-info">
-                        <div>
-                            <div class="product-brand">${p.brand}</div>
-                            <div class="product-name">${p.name}</div>
-                        </div>
-                        <div>
-                            <div class="product-price">${p.price} ₽</div>
-                            <div class="quantity-selector">
-                                <button class="qty-btn" onclick="updateQty(${p.id}, -1)">-</button>
-                                <span class="qty-value">${qty}</span>
-                                <button class="qty-btn" onclick="updateQty(${p.id}, 1)">+</button>
-                            </div>
-                        </div>
+                    <div class="meta-line">
+                        <span class="meta-brand">${product.brand}</span>
+                        <span class="meta-cat">${ruCategories[product.category] || product.category}</span>
+                    </div>
+                    <div class="item-name">${product.name}</div>
+                    <div class="footer-line">
+                        <div class="price-tag">${product.price} <span>₽</span></div>
+                        <div>${dynamicControlLayout}</div>
                     </div>
                 `;
-                container.appendChild(card);
+                gridNode.appendChild(card);
             });
         }
 
-        function updateQty(id, change) {
-            if (!cart[id]) cart[id] = 0;
-            cart[id] += change;
-            if (cart[id] <= 0) delete cart[id];
-            
-            updateCartUI();
-            renderProducts();
-        }
+        function bindUserActions() {
+            document.getElementById('modernSearchInput').addEventListener('input', (e) => {
+                filterSearchString = e.target.value;
+                renderVisualCatalog();
+            });
 
-        function updateCartUI() {
-            let totalCount = 0;
-            let totalPrice = 0;
-            
-            for (let id in cart) {
-                const prod = products.find(p => p.id == id);
-                if (prod) {
-                    totalCount += cart[id];
-                    totalPrice += prod.price * cart[id];
+            const filterTagNodes = document.querySelectorAll('#tagFilterRow .tag-btn');
+            filterTagNodes.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterTagNodes.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilterCode = btn.getAttribute('data-cat');
+                    renderVisualCatalog();
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                const heightOffset = window.scrollY;
+                const up = document.getElementById('saUp');
+                const down = document.getElementById('saDown');
+
+                if (heightOffset > 400) {
+                    up.classList.add('visible');
+                    down.classList.add('visible');
+                } else {
+                    up.classList.remove('visible');
+                    down.classList.remove('visible');
                 }
+            });
+        }
+
+        function setCatalogFilter(code) {
+            const tags = document.querySelectorAll('#tagFilterRow .tag-btn');
+            tags.forEach(t => {
+                if (t.getAttribute('data-cat') === code) t.classList.add('active');
+                else t.classList.remove('active');
+            });
+            activeFilterCode = code;
+            renderVisualCatalog();
+        }
+
+        function scrollFilter(code) {
+            setCatalogFilter(code);
+            document.getElementById('catalog').scrollIntoView();
+        }
+
+        // --- ЛОГИКА ОПЕРАЦИЙ КОРЗИНЫ ---
+        function insertToBasket(id) {
+            basketStorage[id] = 1;
+            refreshCartState();
+            renderVisualCatalog();
+        }
+
+        function modifyBasketVolume(id, delta) {
+            if (!basketStorage[id]) return;
+            basketStorage[id] += delta;
+            if (basketStorage[id] <= 0) delete basketStorage[id];
+            refreshCartState();
+            renderVisualCatalog();
+            if (document.getElementById('basketOverlay').classList.contains('active')) {
+                renderBasketModalList();
             }
-
-            document.getElementById('cart-count').innerText = `${totalCount} шт.`;
-            document.getElementById('cart-total-nav').innerText = `${totalPrice} ₽`;
-            document.getElementById('modal-total-amount').innerText = `${totalPrice} ₽`;
-            
-            // Настройка ссылки WhatsApp
-            let message = `Здравствуйте! Мой заказ в Аманат Маркет:\n\n`;
-            for (let id in cart) {
-                const prod = products.find(p => p.id == id);
-                message += `• ${prod.name} (${cart[id]} шт.) — ${prod.price * cart[id]} ₽\n`;
-            }
-            message += `\nИтого: ${totalPrice} ₽`;
-            
-            // Замени 79999999999 на реальный номер менеджера
-            document.getElementById('whatsapp-send-btn').href = `https://wa.me/79999999999?text=${encodeURIComponent(message)}`;
         }
 
-        function filterCategory(cat, btn) {
-            currentCategory = cat;
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderProducts();
+        function wipeBasket() {
+            basketStorage = {};
+            refreshCartState();
+            renderVisualCatalog();
+            closeBasket();
         }
 
-        function handleSearch() {
-            searchQuery = document.getElementById('search-input').value;
-            renderProducts();
+        function aggregateQty() {
+            return Object.values(basketStorage).reduce((acc, v) => acc + v, 0);
         }
 
-        function toggleModal(show) {
-            const modal = document.getElementById('cart-modal');
-            const list = document.getElementById('modal-cart-items');
-            list.innerHTML = '';
+        function aggregateSum() {
+            return Object.keys(basketStorage).reduce((total, currentId) => {
+                const targetObj = dbProducts.find(item => item.id === currentId);
+                return total + (targetObj ? targetObj.price * basketStorage[currentId] : 0);
+            }, 0);
+        }
 
-            if (show) {
-                modal.classList.add('active');
-                for (let id in cart) {
-                    const prod = products.find(p => p.id == id);
-                    const itemRow = document.createElement('div');
-                    itemRow.className = 'cart-item';
-                    itemRow.innerHTML = `
-                        <div><strong>${prod.name}</strong></div>
-                        <div>${cart[id]} шт. x ${prod.price} ₽ = ${prod.price * cart[id]} ₽</div>
-                    `;
-                    list.appendChild(itemRow);
-                }
+        function refreshCartState() {
+            const qty = aggregateQty();
+            const cost = aggregateSum();
+
+            // Обновление десктопного виджета
+            document.getElementById('dkCartCount').innerText = qty;
+
+            // Обновление нижнего мобильного статус-бара
+            const mbBadge = document.getElementById('mbCartCount');
+            if (qty > 0) {
+                mbBadge.innerText = qty;
+                mbBadge.style.display = 'block';
             } else {
-                modal.classList.remove('active');
+                mbBadge.style.display = 'none';
+            }
+
+            if (systemSessionValid) synchronizeAdminDashboard();
+        }
+
+        function renderBasketModalList() {
+            const wrapper = document.getElementById('basketItemsList');
+            const footBlock = document.getElementById('basketFooterBlock');
+            wrapper.innerHTML = '';
+
+            const keys = Object.keys(basketStorage);
+            if (keys.length === 0) {
+                wrapper.innerHTML = '<div style="text-align:center; padding:40px 0; color:var(--text-muted); font-weight:500;">Ваша спецификация пуста</div>';
+                footBlock.style.display = 'none';
+                return;
+            }
+
+            footBlock.style.display = 'block';
+            document.getElementById('basketSumVal').innerText = `${aggregateSum()} ₽`;
+
+            keys.forEach(id => {
+                const item = dbProducts.find(p => p.id === id);
+                if (!item) return;
+
+                const nodeRow = document.createElement('div');
+                nodeRow.classList.add('basket-row');
+                const pathImg = (item.image && item.image.startsWith('http')) ? item.image : generateLuxuryPlaceholder(item.brand);
+
+                nodeRow.innerHTML = `
+                    <div class="basket-img">
+                        <img src="${pathImg}" alt="${item.name}">
+                    </div>
+                    <div class="basket-details">
+                        <div class="basket-name">${item.name}</div>
+                        <div class="basket-math">${item.price} ₽ × ${basketStorage[id]}</div>
+                    </div>
+                    <div class="lux-qty">
+                        <button class="lux-qty-btn" onclick="modifyBasketVolume('${id}', -1)">-</button>
+                        <span class="lux-qty-val">${basketStorage[id]}</span>
+                        <button class="lux-qty-btn" onclick="modifyBasketVolume('${id}', 1)">+</button>
+                    </div>
+                `;
+                wrapper.appendChild(nodeRow);
+            });
+        }
+
+        function runCheckout(platform) {
+            let textMessage = "Ассаламу алейкум! Сформирован оптовый заказ в Amanat Market:\n\n";
+            Object.keys(basketStorage).forEach((id, sequence) => {
+                const product = dbProducts.find(p => p.id === id);
+                if (product) {
+                    textMessage += `${sequence + 1}. ${product.brand} | ${product.name} [${basketStorage[id]} шт.] по ${product.price} ₽\n`;
+                }
+            });
+            textMessage += `\n*Оптовый итог спецификации:* ${aggregateSum()} ₽`;
+
+            const parsedString = encodeURIComponent(textMessage);
+            if (platform === 'wa') {
+                window.open(`https://wa.me/77077974406?text=${parsedString}`, '_blank');
+            } else if (platform === 'tg') {
+                navigator.clipboard.writeText(textMessage).then(() => {
+                    alert("Спецификация заказа успешно скопирована! Перейдите в чат-бот для отправки.");
+                    window.open(`https://t.me/Amanating_bot`, '_blank');
+                });
             }
         }
 
-        // Первичный запуск
-        renderProducts();
+        // ДЕЙСТВИЯ С МОДАЛЬНЫМИ ОКНАМИ
+        function openBasket() {
+            renderBasketModalList();
+            document.getElementById('basketOverlay').classList.add('active');
+        }
+        function closeBasket() { document.getElementById('basketOverlay').classList.remove('active'); }
+
+        function openAdmin() { document.getElementById('adminOverlay').classList.add('active'); }
+        function closeAdmin() { document.getElementById('adminOverlay').classList.remove('active'); }
+
+        // АДМИНИСТРАТИВНЫЙ ОРГАН УПРАВЛЕНИЯ
+        function executeAuth(e) {
+            e.preventDefault();
+            const uInput = document.getElementById('authLogin').value;
+            const pInput = document.getElementById('authPassword').value;
+
+            if (uInput === 'amanat06.ru' && pInput === 'amanat06.ru.amanat06.ru') {
+                systemSessionValid = true;
+                document.getElementById('authForm').style.display = 'none';
+                document.getElementById('dashboardBlock').style.display = 'flex';
+                synchronizeAdminDashboard();
+            } else {
+                alert('Ошибка верификации цифровой подписи доступа.');
+            }
+        }
+
+        function synchronizeAdminDashboard() {
+            document.getElementById('dsTotal').innerText = dbProducts.length;
+            document.getElementById('dsQty').innerText = aggregateQty();
+            document.getElementById('dsSum').innerText = `${aggregateSum()} ₽`;
+        }
     </script>
 </body>
 </html>
