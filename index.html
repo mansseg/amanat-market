@@ -963,6 +963,10 @@
   g.src=BASE_URL+"/packs/js/sdk.js";
   g.async=true;
   s.parentNode.insertBefore(g,s);
+  window.chatwootSettings = {
+    welcomeTitle: "Чистый Тест — Чат",
+    welcomeTagline: "📚 База знаний: доставка, оплата, возврат, размеры — " + BASE_URL + "/hc/chis-2261-2026/ru"
+  };
   g.onload=function(){
     window.chatwootSDK.run({
       websiteToken: "fGJjzivuVp2bXyUXuxfFLAkS",
