@@ -956,24 +956,6 @@
 
         document.getElementById('cartModal').addEventListener('click', function(e) { if (e.target === this) toggleCart(); });
     </script>
-<script>
-(function(d,t) {
-  var BASE_URL="https://istile.ddns.net";
-  var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-  g.src=BASE_URL+"/packs/js/sdk.js";
-  g.async=true;
-  s.parentNode.insertBefore(g,s);
-  window.chatwootSettings = {
-    welcomeTitle: "Чистый Тест — Чат",
-    welcomeTagline: "📚 База знаний: доставка, оплата, возврат, размеры — " + BASE_URL + "/hc/chis-2261-2026/ru"
-  };
-  g.onload=function(){
-    window.chatwootSDK.run({
-      websiteToken: "fGJjzivuVp2bXyUXuxfFLAkS",
-      baseUrl: BASE_URL
-    });
-  };
-})(document,"script");
-</script>
+
 </body>
 </html>
