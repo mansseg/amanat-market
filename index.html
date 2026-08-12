@@ -983,5 +983,31 @@
   };
 })(document,"script");
 </script>
+    <script>
+(function(d,t) {
+  var BASE_URL="https://istile.ddns.net";
+  var HC_URL="https://istile.ddns.net/hc/chis-2261-2026/ru";
+  var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=BASE_URL+"/packs/js/sdk.js";
+  g.async=true;
+  s.parentNode.insertBefore(g,s);
+  window.chatwootSettings = {
+    welcomeTitle: "Чат магазина",
+    welcomeTagline: "📚 База знаний: " + HC_URL
+  };
+  var kb=document.createElement('a');
+  kb.href=HC_URL;
+  kb.target='_blank';
+  kb.textContent='📚 База знаний';
+  kb.style.cssText='position:fixed;right:24px;bottom:110px;z-index:2147483000;background:#16a34a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;font-weight:600;padding:10px 16px;border-radius:24px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.25);';
+  document.body.appendChild(kb);
+  g.onload=function(){
+    window.chatwootSDK.run({
+      websiteToken: "fGJjzivuVp2bXyUXuxfFLAkS",
+      baseUrl: BASE_URL
+    });
+  };
+})(document,"script");
+</script>
 </body>
 </html>
