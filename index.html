@@ -956,8 +956,9 @@
 
         document.getElementById('cartModal').addEventListener('click', function(e) { if (e.target === this) toggleCart(); });
     </script>
-    
     <!-- iStile: чат на сайте. Вставьте перед </body> на каждой странице. -->
+<!-- ВАЖНО: если на сайте уже стоит старый код чата (в нём есть слово HC_URL
+     или chatwootSDK), удалите его целиком — иначе на сайте будет два чата. -->
 <script>
 (function(){
   var PANEL="https://idealstile.ru";
@@ -979,8 +980,11 @@
   function start(){
     var fallback={widgetEnabled:true};
     try{
+      var url=PANEL+"/api/widget/state?token="+encodeURIComponent(TOKEN)+"&_="+Date.now();
       var x=new XMLHttpRequest();
-      x.open("GET", PANEL+"/api/widget/state?token="+encodeURIComponent(TOKEN), true);
+      x.open("GET", url, true);
+      try{ x.setRequestHeader("Cache-Control","no-cache"); }catch(e){}
+      try{ x.setRequestHeader("Pragma","no-cache"); }catch(e){}
       x.timeout=4000;
       x.onload=function(){
         var state=fallback;
