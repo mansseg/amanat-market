@@ -982,17 +982,45 @@
   };
 })(document,"script");
 </script>
-    <script>
-  (function(d,t) {
-    var BASE_URL="https://istile.ddns.net";
-    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=BASE_URL+"/packs/js/sdk.js";
+<!-- iStile: чат на сайте. Вставьте перед </body> на каждой странице. -->
+<script>
+(function(){
+  var PANEL="https://idealstile.ru";
+  var BASE="https://istile.ddns.net";
+  var TOKEN="fGJjzivuVp2bXyUXuxfFLAkS";
+
+  function runWidget(state){
+    if(!state || state.widgetEnabled===false){ return; }
+    var d=document,t="script";
+    var g=d.createElement(t), s=d.getElementsByTagName(t)[0];
+    g.src=BASE+"/packs/js/sdk.js";
     g.defer=true; g.async=true;
     s.parentNode.insertBefore(g,s);
     g.onload=function(){
-      window.chatwootSDK.run({ websiteToken: "fGJjzivuVp2bXyUXuxfFLAkS", baseUrl: BASE_URL });
+      try{ window.chatwootSDK.run({ websiteToken: TOKEN, baseUrl: BASE }); }catch(e){}
     };
-  })(document,"script");
+  }
+
+  function start(){
+    var fallback={widgetEnabled:true};
+    try{
+      var x=new XMLHttpRequest();
+      x.open("GET", PANEL+"/api/widget/state?token="+encodeURIComponent(TOKEN), true);
+      x.timeout=4000;
+      x.onload=function(){
+        var state=fallback;
+        try{ state=JSON.parse(x.responseText)||fallback; }catch(e){}
+        runWidget(state);
+      };
+      x.onerror=function(){ runWidget(fallback); };
+      x.ontimeout=function(){ runWidget(fallback); };
+      x.send();
+    }catch(e){ runWidget(fallback); }
+  }
+
+  if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",start); }
+  else { start(); }
+})();
 </script>
     </body>
 </html>
