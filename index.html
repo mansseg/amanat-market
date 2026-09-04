@@ -956,50 +956,6 @@
 
         document.getElementById('cartModal').addEventListener('click', function(e) { if (e.target === this) toggleCart(); });
     </script>
-    <!-- iStile: чат на сайте. Вставьте перед </body> на каждой странице. -->
-<!-- ВАЖНО: если на сайте уже стоит старый код чата (в нём есть слово HC_URL
-     или chatwootSDK), удалите его целиком — иначе на сайте будет два чата. -->
-<script>
-(function(){
-  var PANEL="https://idealstile.ru";
-  var BASE="https://istile.ddns.net";
-  var TOKEN="fGJjzivuVp2bXyUXuxfFLAkS";
-
-  function runWidget(state){
-    if(!state || state.widgetEnabled===false){ return; }
-    var d=document,t="script";
-    var g=d.createElement(t), s=d.getElementsByTagName(t)[0];
-    g.src=BASE+"/packs/js/sdk.js";
-    g.defer=true; g.async=true;
-    s.parentNode.insertBefore(g,s);
-    g.onload=function(){
-      try{ window.chatwootSDK.run({ websiteToken: TOKEN, baseUrl: BASE }); }catch(e){}
-    };
-  }
-
-  function start(){
-    var fallback={widgetEnabled:true};
-    try{
-      var url=PANEL+"/api/widget/state?token="+encodeURIComponent(TOKEN)+"&_="+Date.now();
-      var x=new XMLHttpRequest();
-      x.open("GET", url, true);
-      try{ x.setRequestHeader("Cache-Control","no-cache"); }catch(e){}
-      try{ x.setRequestHeader("Pragma","no-cache"); }catch(e){}
-      x.timeout=4000;
-      x.onload=function(){
-        var state=fallback;
-        try{ state=JSON.parse(x.responseText)||fallback; }catch(e){}
-        runWidget(state);
-      };
-      x.onerror=function(){ runWidget(fallback); };
-      x.ontimeout=function(){ runWidget(fallback); };
-      x.send();
-    }catch(e){ runWidget(fallback); }
-  }
-
-  if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",start); }
-  else { start(); }
-})();
-</script>
+<script async src="https://idealstile.ru/api/widget/loader?token=fGJjzivuVp2bXyUXuxfFLAkS"></script>
     </body>
 </html>
