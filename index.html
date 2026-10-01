@@ -2,962 +2,798 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аманат Маркет — Оригинальная бытовая химия в Ингушетии</title>
-    <meta name="description" content="Оптовая продажа оригинальной бытовой химии в Ингушетии. Прямые поставки от производителя. Доставка по Магасу, Назрани и всей Ингушетии.">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --gold: #e8c547; --gold-light: #f5d76e; --gold-dark: #c9a227; --gold-bright: #ffd700;
-            --cream: #faf8f3; --cream-dark: #f5f0e6;
-            --green-dark: #1a3329; --green: #2d5a4a; --green-light: #3d7a64;
-            --text: #2c3e2d; --text-light: #5a6c57; --border: #e8e4d9;
-            --shadow: rgba(30, 58, 47, 0.1); --gold-shadow: rgba(232, 197, 71, 0.4);
-            --danger: #c0392b; --danger-light: #e74c3c;
-        }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--text); background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); overflow-x: hidden; }
-        .premium-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a961' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        .floating-cart-btn { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--gold-light); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 5px 20px var(--gold-shadow); transition: all 0.3s; z-index: 100; opacity: 0; pointer-events: none; }
-        .floating-cart-btn.visible { opacity: 1; pointer-events: all; }
-        .floating-cart-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 8px 25px var(--gold-shadow); }
-        .scroll-btn { position: fixed; right: 25px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold-light); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 5px 20px var(--gold-shadow); transition: all 0.3s; z-index: 100; opacity: 0; pointer-events: none; }
-        .scroll-btn.visible { opacity: 1; pointer-events: all; }
-        .scroll-btn:hover { transform: translateY(-3px) scale(1.1); }
-        .scroll-top { bottom: 100px; }
-        .scroll-bottom { bottom: 40px; }
-        .header-cart { display: flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, rgba(232, 197, 71, 0.25) 0%, rgba(232, 197, 71, 0.1) 100%); border: 2px solid var(--gold); border-radius: 50px; padding: 0.35rem 0.65rem; cursor: pointer; transition: all 0.3s; color: var(--gold-light); }
-        .header-cart:hover { background: linear-gradient(135deg, rgba(232, 197, 71, 0.35) 0%, rgba(232, 197, 71, 0.2) 100%); transform: translateY(-2px); box-shadow: 0 5px 15px var(--gold-shadow); }
-        .header-cart i { font-size: 0.9rem; color: var(--gold-bright); }
-        .header-cart-info { display: flex; flex-direction: column; line-height: 1.05; }
-        .header-cart-count { font-size: 0.7rem; font-weight: 700; color: var(--gold-bright); }
-        .header-cart-total { font-size: 0.6rem; font-weight: 600; color: var(--gold-light); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        header { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 30px rgba(30, 58, 47, 0.3); border-bottom: 2px solid var(--gold); }
-        .header-top { padding: 0.5rem 0; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 0.5rem; }
-        .logo { font-size: 1.35rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; color: var(--gold-bright); text-shadow: 2px 2px 4px rgba(0,0,0,0.4); white-space: nowrap; }
-        .logo i { font-size: 1.6rem; color: var(--gold-bright); }
-        .header-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
-        .burger-btn { display: none; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; font-size: 1.1rem; transition: all 0.3s; flex-shrink: 0; }
-        .burger-btn:hover { background: rgba(232, 197, 71, 0.2); }
-        nav { background: rgba(30, 58, 47, 0.95); padding: 0.5rem 0; border-top: 1px solid rgba(232, 197, 71, 0.3); }
-        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; justify-content: center; }
-        .nav-links a { color: var(--gold-bright); text-decoration: none; font-weight: 600; transition: all 0.3s; position: relative; padding: 0.35rem 0; font-size: 0.9rem; }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold-bright), var(--gold-light)); transition: width 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-shadow); }
-        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 51, 41, 0.98); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
-        .mobile-menu.active { display: flex; }
-        .mobile-menu a { color: var(--gold-bright); text-decoration: none; font-size: 1.5rem; font-weight: 600; transition: all 0.3s; }
-        .mobile-menu a:hover { color: var(--gold); transform: scale(1.1); }
-        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 2px solid var(--gold); color: var(--gold-bright); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
-        
-        .hero { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); padding: 3.5rem 0; text-align: center; position: relative; overflow: hidden; border-bottom: 4px solid var(--gold); z-index: 2; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(232, 197, 71, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite; }
-        .hero-content { position: relative; z-index: 2; }
-        .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); padding: 0.45rem 1.1rem; border-radius: 50px; font-weight: 700; margin-bottom: 1.1rem; box-shadow: 0 5px 20px var(--gold-shadow); animation: fadeInUp 1s ease-out; border: 2px solid var(--gold-bright); font-size: 0.85rem; }
-        .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.9rem; line-height: 1.3; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out 0.2s both; font-family: 'Cormorant Garamond', serif; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 30%, var(--gold-bright) 60%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); }
-        .hero-description { font-size: 1.05rem; margin-bottom: 1.75rem; opacity: 0.95; max-width: 650px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease-out 0.4s both; font-weight: 300; line-height: 1.8; }
-        .hero-description-line { display: block; margin-bottom: 0.35rem; }
-        .hero-description-line:last-child { margin-bottom: 0; }
-        .hero-buttons { margin: 1.75rem 0; animation: fadeInUp 1s ease-out 0.6s both; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .hero-stats { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeInUp 1s ease-out 0.8s both; }
-        .stat-item { text-align: center; padding: 1.1rem 1.75rem; background: rgba(232, 197, 71, 0.12); border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.4); transition: all 0.3s; cursor: pointer; }
-        .stat-item:hover { transform: translateY(-8px); background: rgba(232, 197, 71, 0.25); box-shadow: 0 10px 35px var(--gold-shadow); border-color: var(--gold-bright); }
-        .stat-number { font-size: 2.5rem; font-weight: 800; display: block; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: 'Cormorant Garamond', serif; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); }
-        .stat-label { font-size: 0.9rem; opacity: 0.9; margin-top: 0.35rem; font-weight: 500; color: var(--gold-light); }
-        
-        /* БЛОК ПРОБЛЕМЫ - УЛУЧШЕННЫЙ ПОДЗАГОЛОВОК */
-        .problem-section { padding: 4rem 0; background: #fff; position: relative; z-index: 2; }
-        .problem-section .section-title { color: var(--danger); }
-        .problem-section .section-title::after { background: linear-gradient(90deg, var(--danger), var(--danger-light), var(--danger)); }
-        .problem-section .section-subtitle { 
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 2.25rem;
-            margin-top: 1rem;
-        }
-        .problem-section .section-subtitle .gold-text {
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 30%, var(--gold-bright) 60%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            text-shadow: 0 2px 4px rgba(232, 197, 71, 0.3);
-        }
-        .problem-card { max-width: 800px; margin: 2rem auto 0; background: #fff; padding: 2.5rem; border-radius: 1.5rem; border-left: 6px solid var(--danger); box-shadow: 0 10px 40px rgba(192, 57, 43, 0.15); }
-        .problem-card .problem-number { font-size: 4rem; font-weight: 800; color: var(--danger); font-family: 'Cormorant Garamond', serif; line-height: 1; margin-bottom: 1rem; }
-        .problem-card h3 { font-size: 1.75rem; color: var(--green-dark); margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
-        .problem-card p { font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 1.5rem; }
-        .problem-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .problem-stat { background: var(--cream); padding: 1.25rem; border-radius: 1rem; text-align: center; border: 2px solid var(--border); }
-        .problem-stat .stat-num { font-size: 2rem; font-weight: 800; color: var(--danger); font-family: 'Cormorant Garamond', serif; display: block; }
-        .problem-stat .stat-desc { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
-        
-        .how-to-section { padding: 4rem 0; background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); position: relative; z-index: 2; }
-        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .step-card { text-align: center; padding: 2rem 1.5rem; background: #fff; border-radius: 1.5rem; border: 3px solid var(--border); transition: all 0.4s; position: relative; }
-        .step-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 50px var(--gold-shadow); }
-        .step-number { width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; font-weight: 800; margin: 0 auto 1.25rem; font-family: 'Cormorant Garamond', serif; box-shadow: 0 5px 20px var(--gold-shadow); }
-        .step-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .step-card p { font-size: 0.95rem; line-height: 1.7; color: var(--text-light); }
-        
-        .principles, .features, .catalog, .delivery-section { padding: 3.5rem 0; position: relative; z-index: 2; }
-        .principles { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
-        .features { background: #fff; }
-        .catalog { background: linear-gradient(180deg, var(--cream) 0%, #fff 100%); }
-        .delivery-section { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--cream); }
-        .delivery-section .section-title { color: var(--gold-bright); }
-        .delivery-section .section-title::after { background: linear-gradient(90deg, var(--gold-bright), var(--gold), var(--gold-bright)); }
-        .delivery-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
-        .delivery-card { max-width: 700px; margin: 1.75rem auto 0; background: rgba(255,255,255,0.08); padding: 2.25rem; border-radius: 1.5rem; border: 2px solid rgba(232, 197, 71, 0.4); text-align: center; }
-        .delivery-card .delivery-icon { font-size: 3.5rem; margin-bottom: 0.85rem; }
-        .delivery-card h3 { font-size: 1.6rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; margin-bottom: 0.85rem; }
-        .delivery-card p { font-size: 1.1rem; line-height: 1.8; opacity: 0.95; }
-        
-        .delivery-simple { max-width: 600px; margin: 2rem auto 0; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.3); text-align: center; }
-        .delivery-simple .icon { font-size: 3rem; margin-bottom: 1rem; }
-        .delivery-simple h4 { font-size: 1.4rem; color: var(--gold-bright); margin-bottom: 0.75rem; font-family: 'Cormorant Garamond', serif; }
-        .delivery-simple p { font-size: 1.1rem; opacity: 0.95; }
-        .delivery-simple .highlight { font-weight: 700; color: var(--gold-bright); font-size: 1.2rem; display: block; margin-top: 0.5rem; }
-        
-        .section-title { text-align: center; font-size: 2.1rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
-        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 90px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); border-radius: 2px; }
-        .section-subtitle { text-align: center; font-size: 1rem; color: var(--text-light); margin-bottom: 2.25rem; margin-top: 1rem; }
-        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
-        .principle-card { background: linear-gradient(135deg, #fff 0%, var(--cream) 100%); padding: 1.75rem 1.5rem; border-radius: 1.5rem; border: 3px solid transparent; transition: all 0.4s; position: relative; overflow: hidden; box-shadow: 0 10px 40px var(--shadow); }
-        .principle-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); }
-        .principle-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 60px var(--gold-shadow); }
-        .principle-icon { font-size: 2.5rem; margin-bottom: 0.85rem; display: inline-block; animation: float 3s ease-in-out infinite; }
-        .principle-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .principle-text { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); }
-        .quality-section { padding: 3.5rem 0; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); position: relative; z-index: 2; color: var(--cream); }
-        .quality-section .section-title { color: var(--gold-bright); }
-        .quality-section .section-title::after { background: linear-gradient(90deg, var(--gold-bright), var(--gold), var(--gold-bright)); }
-        .quality-section .section-subtitle { color: var(--gold-light); opacity: 0.95; }
-        .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
-        .quality-card { background: rgba(255, 255, 255, 0.06); padding: 1.5rem; border-radius: 1.25rem; border: 2px solid rgba(232, 197, 71, 0.4); transition: all 0.4s; }
-        .quality-card:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-5px); border-color: var(--gold-bright); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .quality-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; }
-        .quality-card p { line-height: 1.7; opacity: 0.95; font-size: 0.85rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.75rem; margin-top: 2.25rem; }
-        .feature-card { text-align: center; padding: 1.75rem 1.5rem; border-radius: 1.5rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); transition: all 0.4s; border: 3px solid var(--border); position: relative; overflow: hidden; }
-        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); transform: scaleX(0); transition: transform 0.4s; }
-        .feature-card:hover::before { transform: scaleX(1); }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 50px var(--shadow); }
-        .feature-icon { font-size: 2.75rem; margin-bottom: 0.85rem; display: inline-block; }
-        .feature-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .catalog-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 1.75rem; gap: 1.1rem; }
-        .catalog-header h2 { font-size: 1.85rem; font-weight: 700; color: var(--green-dark); margin: 0; font-family: 'Cormorant Garamond', serif; }
-        .filters { display: flex; gap: 0.65rem; flex-wrap: wrap; justify-content: center; }
-        .filter-btn { padding: 0.6rem 1.1rem; border: 2px solid var(--border); background: #fff; border-radius: 50px; cursor: pointer; transition: all 0.3s; font-weight: 600; font-family: inherit; position: relative; overflow: hidden; font-size: 0.85rem; }
-        .filter-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; z-index: 0; }
-        .filter-btn:hover::before, .filter-btn.active::before { width: 300px; height: 300px; }
-        .filter-btn span { position: relative; z-index: 1; }
-        .filter-btn:hover, .filter-btn.active { color: var(--green-dark); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 5px 20px var(--gold-shadow); }
-        .search-box { position: relative; width: 100%; max-width: 400px; }
-        .search-box input { width: 100%; padding: 0.7rem 0.9rem 0.7rem 2.5rem; border: 2px solid var(--border); border-radius: 50px; font-size: 0.85rem; font-family: inherit; transition: all 0.3s; background: #fff; }
-        .search-box input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-shadow); }
-        .search-box i { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 0.85rem; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.1rem; }
-        .product-card { background: #fff; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 5px 20px var(--shadow); transition: all 0.3s; border: 2px solid var(--border); animation: fadeInUp 0.5s ease-out; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px var(--gold-shadow); border-color: var(--gold); }
-        .product-image-wrapper { position: relative; overflow: hidden; height: 150px; background: #fff; display: flex; align-items: center; justify-content: center; }
-        .product-image { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s; }
-        .product-card:hover .product-image { transform: scale(1.08); }
-        .product-info { padding: 0.9rem; }
-        .product-brand { color: var(--gold-dark); font-weight: 700; font-size: 0.8rem; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .product-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem; color: var(--green-dark); line-height: 1.3; font-family: 'Cormorant Garamond', serif; }
-        .product-category { color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.35rem; }
-        .product-price { font-size: 1.6rem; font-weight: 800; color: var(--gold-dark); display: flex; align-items: center; gap: 0.25rem; font-family: 'Cormorant Garamond', serif; margin-bottom: 0.65rem; }
-        .product-price span { font-size: 1.15rem; }
-        .quantity-selector { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); border-radius: 50px; padding: 0.35rem; border: 2px solid var(--border); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); }
-        .qty-btn { width: 30px; height: 30px; border: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50%; cursor: pointer; font-weight: 700; font-size: 1rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px var(--gold-shadow); border: 2px solid var(--gold-light); flex-shrink: 0; }
-        .qty-btn:hover { transform: scale(1.12); }
-        .qty-btn:active { transform: scale(0.95); }
-        .qty-value { font-weight: 700; font-size: 1rem; min-width: 32px; text-align: center; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .btn { padding: 0.7rem 1.1rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; position: relative; overflow: hidden; font-family: 'Montserrat', sans-serif; }
-        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.5s; }
-        .btn:hover::before { left: 100%; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
-        .btn-whatsapp { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: var(--gold-bright); box-shadow: 0 4px 15px var(--shadow); border: 2px solid var(--gold); }
-        .btn-telegram { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); box-shadow: 0 4px 15px var(--gold-shadow); border: 2px solid var(--gold-light); }
-        .btn-gold { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); box-shadow: 0 4px 15px var(--gold-shadow); border: 2px solid var(--gold-light); }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: linear-gradient(135deg, #faf8f3 0%, #f5f0e6 100%); border-radius: 1.5rem; max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; padding: 1.75rem; box-shadow: 0 25px 100px rgba(0,0,0,0.6); border: 3px solid var(--gold); opacity: 1 !important; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem; padding-bottom: 0.9rem; border-bottom: 3px solid var(--border); }
-        .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--green-dark); display: flex; align-items: center; gap: 0.55rem; font-family: 'Cormorant Garamond', serif; }
-        .close-modal { background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--text-light); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .close-modal:hover { background: var(--cream); transform: rotate(90deg); }
-        .cart-item { display: flex; gap: 1.1rem; padding: 1.1rem; background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); border-radius: 1.25rem; margin-bottom: 0.75rem; align-items: center; border: 2px solid var(--border); }
-        .cart-item-image { width: 75px; height: 75px; object-fit: cover; border-radius: 0.75rem; border: 2px solid var(--gold); }
-        .cart-item-info { flex: 1; }
-        .cart-item-name { font-weight: 700; margin-bottom: 0.25rem; font-size: 0.95rem; color: var(--green-dark); }
-        .cart-item-price { color: var(--gold-dark); font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
-        .cart-item-quantity { display: flex; align-items: center; gap: 0.5rem; }
-        .cart-total { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 3px solid var(--border); text-align: right; }
-        .total-label { font-size: 1rem; color: var(--text-light); margin-bottom: 0.5rem; }
-        .total-amount { font-size: 2.25rem; font-weight: 800; color: var(--gold-dark); display: block; font-family: 'Cormorant Garamond', serif; }
-        .checkout-buttons { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
-        .checkout-buttons .btn { flex: 1; min-width: 170px; justify-content: center; padding: 0.75rem 1.1rem; font-size: 0.9rem; }
-        .admin-login { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 3000; align-items: center; justify-content: center; }
-        .admin-login.active { display: flex; }
-        .login-box { background: linear-gradient(135deg, #fff 0%, var(--cream) 100%); padding: 2.25rem; border-radius: 1.5rem; max-width: 400px; width: 90%; box-shadow: 0 25px 100px rgba(0,0,0,0.4); border: 3px solid var(--gold); }
-        .login-box h3 { margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; }
-        .login-box input { width: 100%; padding: 0.8rem 0.9rem; border: 2px solid var(--border); border-radius: 50px; font-size: 0.9rem; margin-bottom: 0.85rem; font-family: inherit; }
-        .login-box input:focus { outline: none; border-color: var(--gold); }
-        .admin-panel { display: none; padding: 2.25rem 0; background: linear-gradient(180deg, var(--green-dark) 0%, var(--green) 100%); min-height: 100vh; z-index: 2; position: relative; }
-        .admin-panel.active { display: block; }
-        .admin-header { background: rgba(0,0,0,0.3); color: var(--gold-bright); padding: 1.75rem 0; margin-bottom: 2.25rem; border-radius: 1.5rem; text-align: center; border: 3px solid var(--gold); }
-        .admin-card { background: #fff; border-radius: 1.5rem; padding: 1.75rem; box-shadow: 0 15px 50px rgba(0,0,0,0.2); border: 3px solid var(--gold); max-width: 700px; margin: 0 auto; }
-        .admin-card h3 { margin-bottom: 1.5rem; font-size: 1.25rem; color: var(--green-dark); font-family: 'Cormorant Garamond', serif; text-align: center; }
-        .admin-info-text { color: var(--text-light); text-align: center; padding: 1.1rem; font-size: 0.95rem; line-height: 1.8; background: var(--cream); border-radius: 1rem; margin-bottom: 1.1rem; }
-        .admin-sheets-link { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.75rem 1.75rem; margin-top: 0.75rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 5px 20px var(--gold-shadow); }
-        .admin-sheets-link:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--gold-shadow); }
-        .admin-instructions { text-align: left; margin-top: 1.1rem; padding: 1.1rem; background: var(--cream); border-radius: 1rem; font-size: 0.85rem; line-height: 1.8; color: var(--text-light); }
-        .admin-instructions ol { margin-left: 1.1rem; margin-top: 0.55rem; }
-        .admin-instructions li { margin-bottom: 0.35rem; }
-        .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.1rem; margin-top: 1.5rem; }
-        .admin-stat-item { background: var(--cream); padding: 1.1rem; border-radius: 1rem; text-align: center; border: 2px solid var(--border); }
-        .admin-stat-value { font-size: 1.6rem; font-weight: 800; color: var(--gold-dark); font-family: 'Cormorant Garamond', serif; }
-        .admin-stat-label { font-size: 0.8rem; color: var(--text-light); margin-top: 0.35rem; font-weight: 600; }
-        footer { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); color: var(--cream); padding: 2.75rem 0 1.25rem; margin-top: 3.5rem; position: relative; z-index: 2; border-top: 4px solid var(--gold); }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2.25rem; margin-bottom: 2.25rem; }
-        .footer-section h3 { margin-bottom: 1.1rem; font-size: 1.3rem; color: var(--gold-bright); font-family: 'Cormorant Garamond', serif; display: flex; align-items: center; gap: 0.55rem; }
-        .footer-section p, .footer-section a { color: var(--cream); text-decoration: none; line-height: 2; transition: all 0.3s; display: block; font-size: 0.85rem; }
-        .footer-section a:hover { color: var(--gold-bright); padding-left: 5px; }
-        .footer-description-line { display: block; margin-bottom: 0.3rem; line-height: 1.7; }
-        .footer-contact-buttons { display: flex; gap: 0.75rem; margin-top: 0.85rem; flex-wrap: wrap; }
-        .footer-contact-link { display: flex; align-items: center; gap: 0.45rem; color: var(--gold-light); text-decoration: none; font-size: 0.85rem; transition: all 0.3s; padding: 0.45rem 0.9rem; border: 2px solid rgba(232, 197, 71, 0.4); border-radius: 50px; background: rgba(232, 197, 71, 0.15); }
-        .footer-contact-link:hover { background: rgba(232, 197, 71, 0.3); border-color: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 5px 15px var(--gold-shadow); }
-        .footer-contact-link i { color: var(--gold-bright); font-size: 0.95rem; }
-        .footer-bottom { text-align: center; padding-top: 1.75rem; border-top: 2px solid rgba(232, 197, 71, 0.3); color: rgba(255,255,255,0.6); }
-        .footer-copyright { cursor: pointer; transition: all 0.3s; display: inline-block; }
-        .footer-copyright:hover { color: var(--gold-bright); }
-        .notification { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--green-dark); padding: 0.9rem 1.75rem; border-radius: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; z-index: 3000; font-weight: 600; border: 2px solid var(--gold-bright); font-size: 0.9rem; }
-        .notification.show { display: block; animation: slideUp 0.4s ease-out forwards; }
-        @keyframes slideUp { to { transform: translateX(-50%) translateY(0); } }
-        .loading-message { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-light); font-size: 1.05rem; }
-        
-        @media (max-width: 768px) {
-            .container { padding: 0 0.75rem; }
-            .header-top { padding: 0.4rem 0; }
-            .header-content { flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: center; gap: 0.35rem; }
-            .logo { font-size: 1.05rem; gap: 0.3rem; white-space: nowrap; }
-            .logo i { font-size: 1.3rem; }
-            .header-cart { padding: 0.3rem 0.5rem; gap: 0.3rem; }
-            .header-cart i { font-size: 0.8rem; }
-            .header-cart-count { font-size: 0.65rem; }
-            .header-cart-total { font-size: 0.55rem; }
-            .burger-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; font-size: 1rem; }
-            nav { display: none; }
-            .hero { padding: 2.25rem 0; }
-            .hero h1 { font-size: 1.85rem; }
-            .hero-description { font-size: 0.95rem; }
-            .hero-stats { gap: 0.85rem; }
-            .stat-item { padding: 0.85rem 1.25rem; }
-            .stat-number { font-size: 1.85rem; }
-            .stat-label { font-size: 0.8rem; }
-            .hero-badge { font-size: 0.8rem; padding: 0.4rem 1rem; }
-            .section-title { font-size: 1.7rem; }
-            .principles, .features, .catalog, .quality-section, .delivery-section, .problem-section, .how-to-section { padding: 2.75rem 0; }
-            .principles-grid, .features-grid, .quality-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-            .product-image-wrapper { height: 120px; }
-            .product-info { padding: 0.75rem; }
-            .product-brand { font-size: 0.75rem; }
-            .product-name { font-size: 0.95rem; margin-bottom: 0.35rem; }
-            .product-category { font-size: 0.8rem; margin-bottom: 0.5rem; }
-            .product-price { font-size: 1.3rem; margin-bottom: 0.5rem; }
-            .quantity-selector { padding: 0.3rem; gap: 0.4rem; }
-            .qty-btn { width: 28px; height: 28px; font-size: 0.95rem; }
-            .qty-value { font-size: 0.95rem; min-width: 28px; }
-            .filter-btn { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
-            .floating-cart-btn { width: 48px; height: 48px; right: 10px; font-size: 1.2rem; }
-            .scroll-btn { width: 38px; height: 38px; right: 10px; font-size: 0.95rem; }
-            .scroll-top { bottom: 85px; }
-            .scroll-bottom { bottom: 35px; }
-            .modal-content { padding: 1.1rem; }
-            .cart-item { flex-direction: column; text-align: center; padding: 0.9rem; }
-            .footer-content { gap: 1.25rem; }
-            .footer-contact-buttons { flex-direction: column; }
-            .delivery-card { padding: 1.5rem; margin: 1.25rem 0.75rem 0; }
-            .delivery-card .delivery-icon { font-size: 2.75rem; }
-            .delivery-card h3 { font-size: 1.3rem; }
-            .delivery-card p { font-size: 0.95rem; }
-            .problem-card { padding: 1.5rem; margin: 1.5rem 0.75rem 0; }
-            .problem-card .problem-number { font-size: 3rem; }
-            .problem-card h3 { font-size: 1.4rem; }
-            .problem-card p { font-size: 0.95rem; }
-            .steps-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-            .step-number { width: 50px; height: 50px; font-size: 1.5rem; }
-            .delivery-simple { margin: 1.5rem 0.75rem 0; padding: 1.5rem; }
-            .problem-section .section-subtitle { font-size: 1.1rem; }
-            .problem-section .section-subtitle .gold-text { font-size: 1.4rem; }
-        }
-        
-        @media (max-width: 480px) {
-            .header-content { gap: 0.25rem; }
-            .logo { font-size: 0.95rem; gap: 0.25rem; }
-            .logo i { font-size: 1.15rem; }
-            .header-cart { padding: 0.25rem 0.45rem; }
-            .header-cart i { font-size: 0.7rem; }
-            .header-cart-count { font-size: 0.6rem; }
-            .header-cart-total { font-size: 0.5rem; }
-            .burger-btn { width: 30px; height: 30px; font-size: 0.9rem; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
-            .product-image-wrapper { height: 105px; }
-            .product-brand { font-size: 0.7rem; }
-            .product-name { font-size: 0.88rem; margin-bottom: 0.3rem; }
-            .product-category { font-size: 0.75rem; margin-bottom: 0.45rem; }
-            .product-price { font-size: 1.2rem; margin-bottom: 0.45rem; }
-            .quantity-selector { padding: 0.25rem; gap: 0.35rem; }
-            .qty-btn { width: 26px; height: 26px; font-size: 0.9rem; }
-            .qty-value { font-size: 0.9rem; min-width: 26px; }
-            .hero h1 { font-size: 1.65rem; }
-            .hero-description { font-size: 0.88rem; }
-            .stat-item { padding: 0.7rem 1rem; }
-            .stat-number { font-size: 1.65rem; }
-            .stat-label { font-size: 0.75rem; }
-            .filters { gap: 0.4rem; }
-            .filter-btn { padding: 0.45rem 0.7rem; font-size: 0.75rem; }
-            .section-title { font-size: 1.55rem; }
-            .problem-card .problem-number { font-size: 2.5rem; }
-            .problem-stats { grid-template-columns: 1fr; }
-            .problem-section .section-subtitle { font-size: 1rem; }
-            .problem-section .section-subtitle .gold-text { font-size: 1.25rem; }
-        }
-        
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--cream); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Аманат Маркет — Оригинальная бытовая химия в Ингушетии | Оптом и в розницу</title>
+    <meta name="description" content="Оптово-розничный маркет оригинальной бытовой химии в Ингушетии. 100% защита от подделок, QR-код на каждой упаковке. Быстрая доставка по Магасу, Назрани и всей республике.">
+    <meta name="keywords" content="бытовая химия Ингушетия, Магас, Назрань, Аманат Маркет, оригинальный порошок, Ariel, Tide, ABC, Bimax, Grass">
+
+    <!-- Open Graph & Social Meta -->
+    <meta property="og:title" content="Аманат Маркет — Оригинальная бытовая химия премиум класса в Ингушетии">
+    <meta property="og:description" content="100% оригинал от производителей. Защитный QR-код, торговля по канонам Ислама. Доставка по всей республике.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Cormorant Garamond / Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="premium-pattern"></div>
-    <button class="scroll-btn scroll-top" id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
-    <button class="scroll-btn scroll-bottom" id="scrollBottomBtn" onclick="scrollToBottom()"><i class="fas fa-chevron-down"></i></button>
-    <button class="floating-cart-btn" id="floatingCartBtn" onclick="toggleCart()" title="Открыть корзину">
-        <i class="fas fa-shopping-cart"></i>
-    </button>
-    
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
-        <a href="#home" onclick="closeMobileMenu()">Главная</a>
-        <a href="#problem" onclick="closeMobileMenu()">Проблема</a>
-        <a href="#principles" onclick="closeMobileMenu()">Принципы</a>
-        <a href="#quality" onclick="closeMobileMenu()">Гарантия</a>
-        <a href="#catalog" onclick="closeMobileMenu()">Каталог</a>
-        <a href="#how-to" onclick="closeMobileMenu()">Как заказать</a>
-        <a href="#delivery" onclick="closeMobileMenu()">Доставка</a>
-        <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
-    </div>
-    
-    <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <i class="fas fa-crown"></i>
-                        <span>Аманат Маркет</span>
+
+    <!-- Верхний служебный инфобар (Notice Bar) -->
+    <aside class="top-announcement" aria-label="Важная информация">
+        <div class="site-container announcement-inner">
+            <div class="announcement-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>100% Оригинальная продукция • QR-код на каждой упаковке</span>
+            </div>
+            <div class="announcement-item highlight-free">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span>Бесплатная доставка по Ингушетии от 1 000 ₽</span>
+            </div>
+            <div class="announcement-item phone-link">
+                <a href="https://wa.me/77077974406" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i> +7 707 797 44 06
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Основная плавающая шапка (Header) -->
+    <header class="main-header" id="mainHeader">
+        <div class="site-container header-inner">
+            <!-- Логотип -->
+            <a href="#hero" class="brand-logo" aria-label="На главную">
+                <div class="logo-emblem">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="logo-text-group">
+                    <span class="brand-name">АМАНАТ МАРКЕТ</span>
+                    <span class="brand-tagline">ОРИГИНАЛЬНАЯ ХИМИЯ • ИНГУШЕТИЯ</span>
+                </div>
+            </a>
+
+            <!-- Десктопная навигация -->
+            <nav class="desktop-nav" aria-label="Основное меню">
+                <a href="#catalog" class="nav-link active">Каталог</a>
+                <a href="#guarantee" class="nav-link">Гарантия подлинности</a>
+                <a href="#steps" class="nav-link">Как заказать</a>
+                <a href="#delivery" class="nav-link">Доставка</a>
+                <a href="#about" class="nav-link">Принципы Аманат</a>
+            </nav>
+
+            <!-- Правый блок действий -->
+            <div class="header-actions">
+                <!-- Кнопка поиска -->
+                <button class="icon-btn search-trigger" id="searchTriggerBtn" title="Быстрый поиск">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <!-- Мессенджеры -->
+                <div class="header-socials">
+                    <a href="https://wa.me/77077974406" target="_blank" class="social-btn wa" title="WhatsApp" rel="noopener">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://t.me/Amanating_bot" target="_blank" class="social-btn tg" title="Telegram Бот" rel="noopener">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                </div>
+
+                <!-- Кнопка корзины с бейджем -->
+                <button class="cart-button" id="cartOpenBtn" aria-label="Открыть корзину">
+                    <div class="cart-icon-wrap">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-counter" id="cartBadgeCount">0</span>
                     </div>
-                    <div class="header-right">
-                        <div class="header-cart" id="headerCart" onclick="toggleCart()">
-                            <i class="fas fa-shopping-cart"></i>
-                            <div class="header-cart-info">
-                                <span class="header-cart-count" id="headerCartCount">0 шт.</span>
-                                <span class="header-cart-total" id="headerCartTotal">0 ₽</span>
-                            </div>
+                    <div class="cart-btn-info">
+                        <span class="cart-btn-label">Корзина</span>
+                        <span class="cart-btn-total" id="cartBtnTotal">0 ₽</span>
+                    </div>
+                </button>
+
+                <!-- Мобильный бургер -->
+                <button class="burger-menu-btn" id="burgerToggleBtn" aria-label="Меню навигации">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Полноэкранное мобильное меню -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-drawer-header">
+            <div class="logo-text-group">
+                <span class="brand-name">АМАНАТ МАРКЕТ</span>
+                <span class="brand-tagline">МЕНЮ САЙТА</span>
+            </div>
+            <button class="close-drawer-btn" id="closeMobileNavBtn" aria-label="Закрыть">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="mobile-drawer-links">
+            <a href="#catalog" class="mob-link" onclick="closeMobileNav()"><i class="fa-solid fa-layer-group"></i> Каталог товаров</a>
+            <a href="#guarantee" class="mob-link" onclick="closeMobileNav()"><i class="fa-solid fa-shield-halved"></i> 100% Гарантия подлинности</a>
+            <a href="#steps" class="mob-link" onclick="closeMobileNav()"><i class="fa-solid fa-list-check"></i> Как сделать заказ</a>
+            <a href="#delivery" class="mob-link" onclick="closeMobileNav()"><i class="fa-solid fa-truck-ramp-box"></i> Доставка по Ингушетии</a>
+            <a href="#about" class="mob-link" onclick="closeMobileNav()"><i class="fa-solid fa-hand-holding-heart"></i> Принципы торговли «Аманат»</a>
+        </div>
+        <div class="mobile-drawer-footer">
+            <p>Быстрая связь с консультантом:</p>
+            <div class="mob-actions-row">
+                <a href="https://wa.me/77077974406" target="_blank" class="mob-btn wa" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i> Написать в WhatsApp
+                </a>
+                <a href="https://t.me/Amanating_bot" target="_blank" class="mob-btn tg" rel="noopener">
+                    <i class="fa-brands fa-telegram"></i> Написать в Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Главный баннер (Hero) -->
+    <section class="hero-section" id="hero">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="site-container hero-container">
+            <div class="hero-content">
+                <div class="hero-pill">
+                    <span class="pill-dot"></span>
+                    <span>Прямые поставки от официальных заводов • Без подделок</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Оригинальная бытовая химия <span class="text-gold-gradient">премиум качества</span> в Ингушетии
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Защитите здоровье семьи и чистоту дома. По канонам Ислама: честные составы, прозрачные цены и защитный QR-код на каждой упаковке.
+                </p>
+
+                <!-- Быстрый умный поиск прямо в Hero -->
+                <div class="hero-search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="heroSearchInput" placeholder="Поиск порошка, геля, мыла, средства для посуды или бренда (Ariel, ABC, Grass)..." autocomplete="off">
+                    <button class="btn-clear-search" id="heroClearSearchBtn" style="display:none;" title="Очистить">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button class="hero-search-submit" onclick="focusAndSearchCatalog()">
+                        Найти в каталоге
+                    </button>
+                </div>
+
+                <!-- Быстрые фичи / УТП в Hero -->
+                <div class="hero-badges-grid">
+                    <div class="hero-badge-card">
+                        <div class="badge-icon"><i class="fa-solid fa-qrcode"></i></div>
+                        <div class="badge-info">
+                            <strong>QR-проверка</strong>
+                            <span>Каждой единицы товара</span>
                         </div>
-                        <button class="burger-btn" onclick="openMobileMenu()" title="Меню">
-                            <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="hero-badge-card">
+                        <div class="badge-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <div class="badge-info">
+                            <strong>100% Заводской оригинал</strong>
+                            <span>Густая формула, стойкий аромат</span>
+                        </div>
+                    </div>
+                    <div class="hero-badge-card">
+                        <div class="badge-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div class="badge-info">
+                            <strong>Доставка день-в-день</strong>
+                            <span>По Магасу, Назрани и всей РИ</span>
+                        </div>
+                    </div>
+                    <div class="hero-badge-card">
+                        <div class="badge-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <div class="badge-info">
+                            <strong>Оптовые и розничные цены</strong>
+                            <span>Выгодно магазинам и семьям</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки действий -->
+                <div class="hero-cta-group">
+                    <a href="#catalog" class="btn btn-gold-solid btn-large">
+                        <i class="fa-solid fa-basket-shopping"></i> Перейти к покупкам
+                    </a>
+                    <a href="#guarantee" class="btn btn-glass btn-large">
+                        <i class="fa-solid fa-circle-question"></i> Почему 80% рынка — подделка?
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция каталога товаров (В ФОКУСЕ ВНИМАНИЯ) -->
+    <section class="catalog-section" id="catalog">
+        <div class="site-container">
+            
+            <div class="section-heading text-center">
+                <span class="section-tag">ОНЛАЙН ВИТРИНА</span>
+                <h2 class="section-title">Каталог сертифицированных товаров</h2>
+                <p class="section-desc">
+                    Цены и остатки синхронизируются в реальном времени. Выберите нужные позиции и оформите заказ в 1 клик.
+                </p>
+            </div>
+
+            <!-- Интерактивная плашка с фильтрами и категориями -->
+            <div class="catalog-controls-card">
+                <!-- Категории -->
+                <div class="category-tabs-scroll">
+                    <div class="category-tabs" id="categoryTabs">
+                        <button class="cat-pill active" data-category="all">
+                            <i class="fa-solid fa-boxes-stacked"></i> Все товары (<span id="count-all">0</span>)
+                        </button>
+                        <button class="cat-pill" data-category="laundry">
+                            <i class="fa-solid fa-shirt"></i> Стирка и порошки
+                        </button>
+                        <button class="cat-pill" data-category="dishes">
+                            <i class="fa-solid fa-utensils"></i> Мытьё посуды
+                        </button>
+                        <button class="cat-pill" data-category="cleaning">
+                            <i class="fa-solid fa-broom"></i> Уборка и дезинфекция
+                        </button>
+                        <button class="cat-pill" data-category="kitchen">
+                            <i class="fa-solid fa-fire-burner"></i> Для кухни
+                        </button>
+                        <button class="cat-pill" data-category="hygiene">
+                            <i class="fa-solid fa-pump-soap"></i> Гигиена и мыло
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Строка дополнительных фильтров (Бренды + Сортировка) -->
+                <div class="sub-filters-row">
+                    <!-- Популярные бренды -->
+                    <div class="brand-filter-group">
+                        <span class="filter-label"><i class="fa-solid fa-tags"></i> Бренды:</span>
+                        <div class="brand-chips" id="brandChips">
+                            <button class="brand-chip active" data-brand="all">Все</button>
+                            <button class="brand-chip" data-brand="ABC">ABC</button>
+                            <button class="brand-chip" data-brand="Ariel">Ariel</button>
+                            <button class="brand-chip" data-brand="Bimax">Bimax</button>
+                            <button class="brand-chip" data-brand="Domestos">Domestos</button>
+                            <button class="brand-chip" data-brand="Grass">Grass</button>
+                            <button class="brand-chip" data-brand="Sarma">Сарма</button>
+                            <button class="brand-chip" data-brand="Tide">Tide</button>
+                            <button class="brand-chip" data-brand="Nevskaya">Невская косметика</button>
+                        </div>
+                    </div>
+
+                    <!-- Сортировка по цене -->
+                    <div class="sort-dropdown-wrap">
+                        <label for="catalogSortSelect" class="filter-label"><i class="fa-solid fa-arrow-down-short-wide"></i> Сортировка:</label>
+                        <select id="catalogSortSelect" class="sort-select">
+                            <option value="default">По популярности</option>
+                            <option value="price-asc">Сначала недорогие (₽ ↑)</option>
+                            <option value="price-desc">Сначала премиум (₽ ↓)</option>
+                            <option value="name-asc">По названию (А-Я)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Строка статуса выборки -->
+                <div class="catalog-status-bar">
+                    <div class="catalog-result-count">
+                        Найдено товаров: <strong id="visibleProductsCount">0</strong>
+                    </div>
+                    <div class="catalog-reset-wrap" id="resetFiltersWrap" style="display: none;">
+                        <button class="btn-text-link" onclick="resetAllFilters()">
+                            <i class="fa-solid fa-rotate-left"></i> Сбросить фильтры
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <nav>
-            <div class="container">
-                <ul class="nav-links">
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#problem">Проблема</a></li>
-                    <li><a href="#principles">Принципы</a></li>
-                    <li><a href="#quality">Гарантия</a></li>
-                    <li><a href="#catalog">Каталог</a></li>
-                    <li><a href="#how-to">Как заказать</a></li>
-                    <li><a href="#delivery">Доставка</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="container">
-                <div class="hero-badge"><i class="fas fa-shield-alt"></i> 100% Гарантия подлинности</div>
-                <h1>Оригинальная бытовая химия<br>премиум класса</h1>
-                <div class="hero-description">
-                    <span class="hero-description-line">Прямые поставки от производителя</span>
-                    <span class="hero-description-line">Аманат — наше качество по канонам Ислама</span>
-                    <span class="hero-description-line">Защитный QR-код на каждой упаковке</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#catalog" class="btn btn-gold" style="font-size: 1rem; padding: 1rem 2rem;"><i class="fas fa-th-large"></i> Смотреть каталог</a>
-                    <a href="#catalog" class="btn btn-gold" style="font-size: 1rem; padding: 1rem 2rem;"><i class="fas fa-bolt"></i> Заказать сейчас</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'})">
-                        <span class="stat-number" id="totalProducts">0</span>
-                        <span class="stat-label">позиций</span>
-                    </div>
-                    <div class="stat-item" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'})">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">брендов</span>
-                    </div>
-                    <div class="stat-item" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'})">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">оригинал</span>
-                    </div>
+
+            <!-- Сетка товаров -->
+            <div class="products-grid-container" id="productsGrid">
+                <!-- Карточки товаров рендерятся через JavaScript -->
+                <div class="grid-skeleton-loading">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
                 </div>
             </div>
+
+            <!-- Заглушка, если ничего не найдено -->
+            <div class="no-products-found" id="noProductsFound" style="display:none;">
+                <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+                <h3>По вашему запросу ничего не найдено</h3>
+                <p>Попробуйте изменить поисковый запрос или сбросить фильтры по бренду и категории.</p>
+                <button class="btn btn-gold-solid" onclick="resetAllFilters()">Показать все товары</button>
+            </div>
+
         </div>
     </section>
-    
-    <section class="problem-section" id="problem">
-        <div class="container">
-            <h2 class="section-title">Реальная проблема</h2>
-            <p class="section-subtitle">Почему мы создали <span class="gold-text">Аманат Маркет</span></p>
-            <div class="problem-card">
-                <div class="problem-number">80–90%</div>
-                <h3>бытовой химии в Ингушетии — подделка</h3>
-                <p>Поддельные средства не просто неэффективны. Они содержат опасные примеси, разрушают поверхности и вызывают аллергию у детей. Внешне — не отличить от оригинала. Мы создали Аманат Маркет именно поэтому.</p>
-                <div class="problem-stats">
-                    <div class="problem-stat">
-                        <span class="stat-num">3%</span>
-                        <span class="stat-desc">Активного вещества в подделках вместо заявленных 25–40%</span>
+
+    <!-- Секция: Почему 80% рынка Ингушетии — опасный контрафакт? -->
+    <section class="truth-section" id="guarantee">
+        <div class="site-container">
+            <div class="truth-card-wrap">
+                <div class="truth-header">
+                    <div class="danger-badge">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>ОСТЕРЕГАЙТЕСЬ ПОДДЕЛОК</span>
                     </div>
-                    <div class="problem-stat">
-                        <span class="stat-num">☠️</span>
-                        <span class="stat-desc">Опасный состав — хлорсодержащие отходы без нейтрализации</span>
-                    </div>
-                    <div class="problem-stat">
-                        <span class="stat-num">≈</span>
-                        <span class="stat-desc">Копия упаковки — та же этикетка, фальшивый штрихкод</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="principles" id="principles">
-        <div class="container">
-            <h2 class="section-title">Наши принципы</h2>
-            <p class="section-subtitle">Аманат Маркет • Свод принципов</p>
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <div class="principle-icon">🛡️</div>
-                    <h3 class="principle-title">Истинный оригинал</h3>
-                    <p class="principle-text">Стопроцентная защита от подделок. Поставки идут строго напрямую от изготовителя, минуя розничные магазины и маркетплейсы, торгующие опасными суррогатами и контрафактом.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-icon">☪️</div>
-                    <h3 class="principle-title">Религиозная этика</h3>
-                    <p class="principle-text">Бескомпромиссная честность и прозрачность каждой сделки. Мы ведем торговлю в строгом соответствии с канонами Ислама.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-icon">📜</div>
-                    <h3 class="principle-title">Чистота договора</h3>
-                    <p class="principle-text">Продукция идет из чистых источников прямо в ваши руки. Мы принимаем доверие покупателя как священный долг.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="quality-section" id="quality">
-        <div class="container">
-            <h2 class="section-title">Гарантия качества</h2>
-            <p class="section-subtitle">Абсолютный контроль качества и полная ликвидация рисков</p>
-            <div class="quality-grid">
-                <div class="quality-card"><h3><i class="fas fa-qrcode"></i> QR-код на каждой упаковке</h3><p>Каждая упаковка «Аманат Маркет» имеет защитный QR-код. Отсканировав его при получении, можно проверить оригинальность партии и убедиться в безопасности состава.</p></div>
-                <div class="quality-card"><h3><i class="fas fa-award"></i> Премиум состав</h3><p>Средство идеально пенится, обладает честной густой вязкостью оригинального завода изготовителя и дарит вещам тонкий, благородный и стойкий аромат.</p></div>
-                <div class="quality-card"><h3><i class="fas fa-heart"></i> Безопасность для здоровья</h3><p>Строго сертифицированные формулы, которые абсолютно безвредны для детей, защищают кожу ваших рук и сохраняют здоровье всей семьи.</p></div>
-                <div class="quality-card"><h3><i class="fas fa-tshirt"></i> Долгосрочность одежды</h3><p>Глубокое сохранение структуры ткани, защитные компоненты для волокон и первозданная яркость ваших вещей даже после 100 стирок.</p></div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Почему выбирают нас</h2>
-            <p class="section-subtitle">Преимущества работы с Аманат Маркет</p>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon">💰</div><h3 class="feature-title">Оптовые цены</h3><p>Выгодные условия для магазинов и оптовиков. Работаем без посредников — напрямую от производителя</p></div>
-                <div class="feature-card"><div class="feature-icon">✅</div><h3 class="feature-title">Оригинальная продукция</h3><p>Только сертифицированные бренды. Гарантия качества на каждую позицию</p></div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="how-to-section" id="how-to">
-        <div class="container">
-            <h2 class="section-title">Как заказать</h2>
-            <p class="section-subtitle">Три шага до чистоты</p>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <h3>Выбираете товары</h3>
-                    <p>Листаете каталог или пишете нам — подберём нужное, уточним наличие и рассчитаем стоимость.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <h3>Подтверждаете заказ</h3>
-                    <p>Сообщаете адрес и время. Оплата при получении или переводом — как удобно.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <h3>Получаете дома</h3>
-                    <p>Привозим в день заказа или назавтра. Проверяете упаковку при курьере и принимаете спокойно.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="delivery-section" id="delivery">
-        <div class="container">
-            <h2 class="section-title">Доставка</h2>
-            <p class="section-subtitle">Привозим по всей Ингушетии</p>
-            <div class="delivery-card">
-                <div class="delivery-icon">🚚</div>
-                <h3>Быстрая доставка</h3>
-                <p>Отправка в день заказа по договорённости.<br>Доставка по всей Ингушетии.</p>
-            </div>
-            <div class="delivery-simple">
-                <div class="icon">🎁</div>
-                <h4>Бесплатная доставка</h4>
-                <p>При заказе от <span class="highlight">1000 ₽</span></p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="catalog" id="catalog">
-        <div class="container">
-            <div class="catalog-header">
-                <h2>Каталог товаров</h2>
-                <div class="filters">
-                    <button class="filter-btn active" onclick="filterCategory('all')"><span>Все товары</span></button>
-                    <button class="filter-btn" onclick="filterCategory('kitchen')"><span>🍳 Кухня</span></button>
-                    <button class="filter-btn" onclick="filterCategory('dishes')"><span>🍽️ Посуда</span></button>
-                    <button class="filter-btn" onclick="filterCategory('laundry')"><span> Стирка</span></button>
-                    <button class="filter-btn" onclick="filterCategory('cleaning')"><span>🧹 Уборка</span></button>
-                    <button class="filter-btn" onclick="filterCategory('hygiene')"><span> Гигиена</span></button>
-                </div>
-                <div class="search-box"><i class="fas fa-search"></i><input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="searchProducts()"></div>
-            </div>
-            <div class="products-grid" id="productsGrid"></div>
-        </div>
-    </section>
-    
-    <div class="admin-login" id="adminLogin">
-        <div class="login-box">
-            <h3><i class="fas fa-user-shield" style="color: var(--gold);"></i> Вход в панель управления</h3>
-            <input type="text" id="adminUsername" placeholder="Логин">
-            <input type="password" id="adminPassword" placeholder="Пароль" onkeypress="if(event.key==='Enter')checkLogin()">
-            <button class="btn btn-gold" onclick="checkLogin()" style="width: 100%; justify-content: center; padding: 0.8rem; font-size: 0.9rem; margin-bottom: 0.6rem;"><i class="fas fa-sign-in-alt"></i> Войти</button>
-            <button class="btn" onclick="closeAdminLogin()" style="width: 100%; justify-content: center; padding: 0.8rem; background: var(--cream); border: 2px solid var(--border); color: var(--text);">Отмена</button>
-        </div>
-    </div>
-    <div class="admin-panel" id="adminPanel">
-        <div class="container">
-            <div class="admin-header">
-                <h2 style="font-size: 1.85rem; font-family: 'Cormorant Garamond', serif; margin-bottom: 0.55rem;"><i class="fas fa-cog"></i> Панель управления</h2>
-                <p style="font-size: 0.95rem; opacity: 0.9;">Управление товарами через Google Таблицу</p>
-            </div>
-            <div class="admin-card">
-                <h3><i class="fas fa-table" style="color: var(--gold);"></i> Управление товарами</h3>
-                <div class="admin-info-text">
-                    <p style="font-size: 1rem; color: var(--green-dark); font-weight: 700; margin-bottom: 0.35rem;">📊 Все товары в Google Таблице</p>
-                    <p>Изменения в таблице видны всем посетителям сайта сразу!</p>
-                    <a href="https://docs.google.com/spreadsheets/d/1AQPDlp3Wh2rz21Ra1ltDpEDy9ocSO_elskJYx8ONr8s/edit" target="_blank" class="admin-sheets-link">
-                        <i class="fab fa-google"></i> Открыть Google Таблицу
-                    </a>
-                </div>
-                <div class="admin-instructions">
-                    <strong style="color: var(--green-dark);">Как управлять товарами:</strong>
-                    <ol>
-                        <li>Нажмите кнопку <strong>"Открыть Google Таблицу"</strong> выше</li>
-                        <li>Добавьте/измените/удалите товары прямо в таблице (как в Excel)</li>
-                        <li>Сохраните изменения (автоматически в Google)</li>
-                        <li>Обновите страницу сайта — товары появятся сразу!</li>
-                    </ol>
-                </div>
-                <div class="admin-stats">
-                    <div class="admin-stat-item">
-                        <div class="admin-stat-value" id="adminTotalProducts">0</div>
-                        <div class="admin-stat-label">Всего товаров</div>
-                    </div>
-                    <div class="admin-stat-item">
-                        <div class="admin-stat-value" id="adminCartItems">0</div>
-                        <div class="admin-stat-label">В корзине</div>
-                    </div>
-                    <div class="admin-stat-item">
-                        <div class="admin-stat-value" id="adminTotalAmount">0 ₽</div>
-                        <div class="admin-stat-label">Общая сумма</div>
-                    </div>
-                </div>
-                <button class="btn" onclick="logoutAdmin()" style="width: 100%; justify-content: center; padding: 0.8rem; margin-top: 1.25rem; background: var(--cream); color: var(--green-dark); border: 2px solid var(--gold);"><i class="fas fa-sign-out-alt"></i> Выйти</button>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title"><i class="fas fa-shopping-cart" style="color: var(--gold);"></i> Ваша корзина</h3>
-                <button class="close-modal" onclick="toggleCart()"><i class="fas fa-times"></i></button>
-            </div>
-            <button onclick="clearCart()" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white; border: none; padding: 0.5rem 0.9rem; border-radius: 50px; cursor: pointer; font-weight: 600; margin-bottom: 0.85rem; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem;"><i class="fas fa-trash-alt"></i> Очистить корзину</button>
-            <div id="cartItems"></div>
-            <div class="cart-total" id="cartTotal" style="display: none;">
-                <div class="total-label">Итого к оплате:</div>
-                <span class="total-amount" id="totalAmount">0 ₽</span>
-                <div class="checkout-buttons">
-                    <a href="#" class="btn btn-whatsapp" id="whatsappOrder" target="_blank"><i class="fab fa-whatsapp"></i> Заказать в WhatsApp</a>
-                    <a href="#" class="btn btn-telegram" id="telegramOrder" target="_blank"><i class="fab fa-telegram"></i> Заказать в Telegram</a>
-                </div>
-            </div>
-            <div id="emptyCart" style="text-align: center; padding: 2.75rem 0.85rem;">
-                <i class="fas fa-shopping-cart" style="font-size: 3.5rem; color: var(--border); margin-bottom: 0.85rem; opacity: 0.5;"></i>
-                <p style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 1.1rem;">Корзина пуста</p>
-                <button class="btn btn-gold" onclick="toggleCart(); document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});" style="padding: 0.8rem 1.75rem; font-size: 0.9rem;">Перейти к каталогу</button>
-            </div>
-        </div>
-    </div>
-    <footer id="contacts">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-crown"></i> Аманат Маркет</h3>
-                    <p>
-                        <span class="footer-description-line">Оптовый портал дистрибуции</span>
-                        <span class="footer-description-line">оригинальной бытовой химии</span>
-                        <span class="footer-description-line">премиум класса.</span>
-                        <span class="footer-description-line">Работаем по канонам Ислама —</span>
-                        <span class="footer-description-line">честность, прозрачность, качество.</span>
+                    <h2 class="truth-title">Почему 80–90% бытовой химии на рынках — опасный суррогат?</h2>
+                    <p class="truth-intro">
+                        Внешне упаковка выглядит как настоящая: скопированы шрифты, нанесены похожие штрихкоды. Но внутри — опасная смесь, которая портит ткани, разрушает стиральные машины и вызывает сыпь у детей.
                     </p>
                 </div>
-                <div class="footer-section">
-                    <h3>Каталог</h3>
-                    <p><a href="#catalog" onclick="filterCategory('laundry')"><i class="fas fa-chevron-right" style="color: var(--gold); margin-right: 0.35rem;"></i>Стирка и порошки</a></p>
-                    <p><a href="#catalog" onclick="filterCategory('dishes')"><i class="fas fa-chevron-right" style="color: var(--gold); margin-right: 0.35rem;"></i>Мытьё посуды</a></p>
-                    <p><a href="#catalog" onclick="filterCategory('cleaning')"><i class="fas fa-chevron-right" style="color: var(--gold); margin-right: 0.35rem;"></i>Уборка</a></p>
-                    <p><a href="#catalog" onclick="filterCategory('hygiene')"><i class="fas fa-chevron-right" style="color: var(--gold); margin-right: 0.35rem;"></i>Гигиена</a></p>
+
+                <div class="comparison-grid">
+                    <!-- Колонка подделки -->
+                    <div class="comp-col fake-col">
+                        <div class="col-head">
+                            <i class="fa-solid fa-skull-crossbones"></i>
+                            <h3>Подделка с рынка</h3>
+                            <span class="sub-label">Дешево, но губительно</span>
+                        </div>
+                        <ul class="comp-list">
+                            <li><i class="fa-solid fa-xmark"></i> <strong>Всего 3–5% активного вещества:</strong> вода, подкрашенная дешевым сульфатом и технической солью.</li>
+                            <li><i class="fa-solid fa-xmark"></i> <strong>Опасные хлорные остатки:</strong> резкий токсичный запах, вызывающий аллергический кашель и зуд.</li>
+                            <li><i class="fa-solid fa-xmark"></i> <strong>Разрушение волокон ткани:</strong> белые вещи желтеют, цветные тускнеют уже через 2–3 стирки.</li>
+                            <li><i class="fa-solid fa-xmark"></i> <strong>Фальшивые QR-коды:</strong> либо не сканируются вовсе, либо ведут на пустые страницы.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Колонка оригинала Аманат -->
+                    <div class="comp-col original-col">
+                        <div class="col-head">
+                            <i class="fa-solid fa-award"></i>
+                            <h3>Оригинал в «Аманат Маркет»</h3>
+                            <span class="sub-label">100% честный состав</span>
+                        </div>
+                        <ul class="comp-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>Честная заводская концентрация:</strong> густой гель, пышная пена и минимальный расход.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Безопасно для детей и аллергиков:</strong> европейские и российские формулы сертификации качества.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Защита одежды и техники:</strong> компоненты против накипи берегут ТЭН стиральной машины.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Защитный QR-код:</strong> мгновенная проверка подлинности прямо при курьере.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Связаться с нами</h3>
-                    <p style="opacity: 0.9; margin-bottom: 0.55rem;"><i class="fas fa-clock" style="color: var(--gold); margin-right: 0.35rem;"></i> Ежедневно, без выходных</p>
-                    <div class="footer-contact-buttons">
-                        <a href="https://wa.me/77077974406" class="footer-contact-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="https://t.me/Amanating_bot" class="footer-contact-link" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+
+                <!-- Плашка проверки при получении -->
+                <div class="delivery-inspect-banner">
+                    <div class="inspect-icon">
+                        <i class="fa-solid fa-hand-holding-hand"></i>
+                    </div>
+                    <div class="inspect-text">
+                        <h4>Наше золотое правило доверия:</h4>
+                        <p>Вы не платите ни рубля, пока не осмотрите флаконы или мешки порошка при курьере и не проверите QR-код. Если вас что-то не устроит — возврат без лишних вопросов.</p>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright" onclick="toggleAdmin()" title="Панель управления">&copy; 2026 Amanat Market. Все права защищены.</p>
-                <p style="margin-top: 0.55rem; font-size: 0.8rem; opacity: 0.8;"><i class="fas fa-shield-alt" style="color: var(--gold);"></i> 100% Гарантия подлинности • QR-код на каждой упаковке</p>
+        </div>
+    </section>
+
+    <!-- Секция: 3 простых шага до чистоты -->
+    <section class="steps-section" id="steps">
+        <div class="site-container">
+            <div class="section-heading text-center">
+                <span class="section-tag">ПРОЗРАЧНЫЙ ПРОЦЕСС</span>
+                <h2 class="section-title">Как оформить и получить заказ</h2>
+                <p class="section-desc">Без сложных регистраций, паролей и привязки банковских карт.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num-bubble">01</div>
+                    <div class="step-icon"><i class="fa-solid fa-cart-plus"></i></div>
+                    <h3 class="step-card-title">Соберите корзину</h3>
+                    <p class="step-card-text">
+                        Выберите любимые позиции в каталоге выше. Цены актуальные и без скрытых надбавок.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num-bubble">02</div>
+                    <div class="step-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h3 class="step-card-title">Отправьте в WhatsApp</h3>
+                    <p class="step-card-text">
+                        Нажмите кнопку оформления. Готовая накладная сформируется автоматически и откроется в чате с менеджером.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num-bubble">03</div>
+                    <div class="step-icon"><i class="fa-solid fa-house-circle-check"></i></div>
+                    <h3 class="step-card-title">Примите дома</h3>
+                    <p class="step-card-text">
+                        Курьер доставит заказ до двери по Магасу, Назрани и всей республике. Оплата при получении!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция: Доставка по всей Ингушетии -->
+    <section class="delivery-showcase" id="delivery">
+        <div class="site-container">
+            <div class="delivery-banner-card">
+                <div class="delivery-info-left">
+                    <span class="section-tag gold">ДОСТАВКА И ОПЛАТА</span>
+                    <h2 class="delivery-title">Привезем прямо к вашей двери</h2>
+                    <p class="delivery-text">
+                        Работаем ежедневно по всем населенным пунктам Республики Ингушетия: <strong>Магас, Назрань, Карабулак, Сунжа, Малгобек, Экажево, Нестеровская, Плиево</strong> и др.
+                    </p>
+                    <div class="delivery-perks-list">
+                        <div class="perk-item">
+                            <i class="fa-solid fa-gift"></i>
+                            <div>
+                                <strong>Бесплатно от 1 000 ₽</strong>
+                                <span>При меньшей сумме — доставка от 100 ₽</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <strong>Быстро и точно в срок</strong>
+                                <span>Доставка день-в-день при согласовании с менеджером</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <i class="fa-solid fa-wallet"></i>
+                            <div>
+                                <strong>Удобные формы оплаты</strong>
+                                <span>Наличными курьеру или переводом на карту при проверке</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-calculator-box">
+                    <div class="calc-inner">
+                        <div class="calc-badge"><i class="fa-solid fa-percent"></i> ОПТОВИКАМ И МАГАЗИНАМ</div>
+                        <h3>Специальные оптовые условия</h3>
+                        <p>Вы владелец магазина, супермаркета или клининговой компании? Предоставляем индивидуальные оптовые прайсы от 1 коробки.</p>
+                        <a href="https://wa.me/77077974406?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D1%8E%D1%82%20%D0%BE%D0%BF%D1%82%D0%BE%D0%B2%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%B8%20%D0%BF%D1%80%D0%B0%D0%B9%D1%81-%D0%BB%D0%B8%D1%81%D1%82" target="_blank" class="btn btn-gold-solid btn-full" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i> Запросить оптовый прайс
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция: Философия бренда и религиозная этика -->
+    <section class="ethics-section" id="about">
+        <div class="site-container">
+            <div class="section-heading text-center">
+                <span class="section-tag">ФИЛОСОФИЯ БРЕНДА</span>
+                <h2 class="section-title">Слово «Аманат» обязывает к абсолютной честности</h2>
+                <p class="section-desc">
+                    В Исламе «Аманат» — это вверенное на хранение имущество и священное доверие. Мы помним об этом в каждой сделке.
+                </p>
+            </div>
+
+            <div class="ethics-grid">
+                <div class="ethic-card">
+                    <div class="ethic-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3>Торговля по канонам Ислама</h3>
+                    <p>Никакого обмана в составе, объеме или цене. Если товар имеет дефект или нюанс — мы говорим об этом прямо до продажи.</p>
+                </div>
+                <div class="ethic-card">
+                    <div class="ethic-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>Чистота источника</h3>
+                    <p>Мы работаем строго по прямым дистрибьюторским цепочкам, чтобы наши покупатели получали благословенную и дозволенную продукцию.</p>
+                </div>
+                <div class="ethic-card">
+                    <div class="ethic-icon"><i class="fa-solid fa-people-roof"></i></div>
+                    <h3>Забота о земляках</h3>
+                    <p>Наша цель — избавить дома и семьи Ингушетии от токсичного фальсификата, дав людям доступ к доступному заводскому качеству.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта (Footer) -->
+    <footer class="site-footer">
+        <div class="site-container">
+            <div class="footer-grid">
+                <!-- О компании -->
+                <div class="footer-col brand-col">
+                    <div class="brand-logo footer-logo">
+                        <div class="logo-emblem"><i class="fa-solid fa-crown"></i></div>
+                        <div class="logo-text-group">
+                            <span class="brand-name">АМАНАТ МАРКЕТ</span>
+                            <span class="brand-tagline">ИНГУШЕТИЯ</span>
+                        </div>
+                    </div>
+                    <p class="footer-bio">
+                        Официальный портал дистрибуции оригинальной бытовой химии премиум-класса. Честные поставки с защитой от подделок.
+                    </p>
+                    <div class="footer-social-row">
+                        <a href="https://wa.me/77077974406" target="_blank" class="footer-social-btn wa" title="WhatsApp" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/Amanating_bot" target="_blank" class="footer-social-btn tg" title="Telegram" rel="noopener">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Быстрые ссылки -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Каталог товаров</h4>
+                    <ul class="footer-links">
+                        <li><a href="#catalog" onclick="filterCategoryByCode('laundry')">Стиральные порошки и гели</a></li>
+                        <li><a href="#catalog" onclick="filterCategoryByCode('dishes')">Гели для мытья посуды</a></li>
+                        <li><a href="#catalog" onclick="filterCategoryByCode('cleaning')">Чистящие средства и Доместос</a></li>
+                        <li><a href="#catalog" onclick="filterCategoryByCode('kitchen')">Очистители жира и Азелит</a></li>
+                        <li><a href="#catalog" onclick="filterCategoryByCode('hygiene')">Мыло и гигиена</a></li>
+                    </ul>
+                </div>
+
+                <!-- Доверие и гарантии -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#guarantee">Проверка QR-кода</a></li>
+                        <li><a href="#steps">Условия доставки</a></li>
+                        <li><a href="#delivery">Оптовые закупки</a></li>
+                        <li><a href="#about">Каноны Ислама в торговле</a></li>
+                    </ul>
+                </div>
+
+                <!-- Контакты -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Служба заботы</h4>
+                    <p class="footer-contact-line">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+77077974406">+7 707 797 44 06</a>
+                    </p>
+                    <p class="footer-contact-line">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Прием заказов: круглосуточно онлайн</span>
+                    </p>
+                    <p class="footer-contact-line">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Республика Ингушетия, доставка по всему региону</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Нижняя плашка копирайта -->
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 «Аманат Маркет». Все права защищены.</p>
+                <div class="footer-admin-link">
+                    <button class="secret-admin-btn" id="openAdminModalBtn" title="Панель администратора">
+                        <i class="fa-solid fa-lock"></i> Вход для администратора
+                    </button>
+                </div>
             </div>
         </div>
     </footer>
-    <div class="notification" id="notification"></div>
-    <script>
-        const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/1AQPDlp3Wh2rz21Ra1ltDpEDy9ocSO_elskJYx8ONr8s/export?format=csv';
+
+    <!-- ============================================== -->
+    <!-- ВЫДВИЖНАЯ КОРЗИНА (OFF-CANVAS DRAWER) -->
+    <!-- ============================================== -->
+    <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Корзина покупок">
         
-        function getPlaceholder(text) {
-            const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'>
-                <rect width='300' height='300' fill='%23f5f0e6'/>
-                <text x='50%25' y='50%25' font-family='Arial' font-size='28' font-weight='bold' fill='%23c9a961' text-anchor='middle' dominant-baseline='middle'>${encodeURIComponent(text)}</text>
-            </svg>`;
-            return 'data:image/svg+xml;charset=UTF-8,' + svg.replace(/\n\s+/g, '');
-        }
-        
-        let products = [];
-        let cart = [];
-        let currentFilter = 'all';
-        let productQuantities = {};
+        <!-- Заголовок корзины -->
+        <div class="cart-drawer-header">
+            <div class="drawer-header-left">
+                <i class="fa-solid fa-bag-shopping drawer-icon"></i>
+                <div>
+                    <h3 class="drawer-title">Ваша корзина</h3>
+                    <span class="drawer-count-badge" id="drawerItemsSummary">0 позиций</span>
+                </div>
+            </div>
+            <button class="close-cart-btn" onclick="toggleCartDrawer(false)" aria-label="Закрыть">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
 
-        function updateStats() {
-            document.getElementById('totalProducts').textContent = products.length;
-            document.getElementById('adminTotalProducts').textContent = products.length;
-        }
+        <!-- Индикатор прогресса бесплатной доставки -->
+        <div class="free-delivery-tracker" id="freeDeliveryTracker">
+            <div class="tracker-message" id="freeDeliveryMessage">
+                <i class="fa-solid fa-truck-fast"></i> До бесплатной доставки осталось <strong>1 000 ₽</strong>
+            </div>
+            <div class="tracker-progress-bg">
+                <div class="tracker-progress-bar" id="freeDeliveryProgressBar" style="width: 0%;"></div>
+            </div>
+        </div>
 
-        async function loadProductsFromSheets() {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '<div class="loading-message"><i class="fas fa-spinner fa-spin" style="color: var(--gold); font-size: 2rem;"></i><br><br>Загрузка товаров...</div>';
+        <!-- Тело корзины (Список товаров) -->
+        <div class="cart-drawer-body" id="cartItemsList">
+            <!-- Список рендерится через JS -->
+            <div class="empty-cart-state" id="emptyCartView">
+                <div class="empty-cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <h4>Ваша корзина пока пуста</h4>
+                <p>Добавьте товары из каталога с гарантией 100% подлинности прямо сейчас.</p>
+                <button class="btn btn-gold-solid" onclick="toggleCartDrawer(false); scrollToSection('catalog');">
+                    Перейти к каталогу
+                </button>
+            </div>
+        </div>
+
+        <!-- Футер корзины: Форма оформления заказа и кнопки -->
+        <div class="cart-drawer-footer" id="cartFooterView" style="display: none;">
             
-            try {
-                const response = await fetch(SHEETS_URL);
-                if (!response.ok) throw new Error('Ошибка сети: ' + response.status);
-                const csvText = await response.text();
-                products = parseCSV(csvText);
-                console.log('Загружено товаров:', products.length);
-                if (products.length === 0) {
-                    grid.innerHTML = '<div class="loading-message">⚠️ Таблица пуста или имеет неправильный формат</div>';
-                    return;
-                }
-                renderProducts();
-                updateStats();
-            } catch (error) {
-                console.error('Ошибка загрузки:', error);
-                grid.innerHTML = '<div class="loading-message"><i class="fas fa-exclamation-triangle" style="color: #dc3545; font-size: 2rem;"></i><br><br>Ошибка: ' + error.message + '</div>';
-            }
-        }
-
-        function parseCSV(csv) {
-            const lines = csv.split('\n').filter(line => line.trim());
-            if (lines.length < 2) return [];
-            const headers = parseCSVLine(lines[0]).map(h => h.trim().replace(/"/g, '').toLowerCase());
-            return lines.slice(1).map(line => {
-                const values = parseCSVLine(line);
-                const obj = {};
-                headers.forEach((header, i) => {
-                    let value = values[i] ? values[i].trim().replace(/"/g, '') : '';
-                    if (header === 'id' || header === 'price') value = parseInt(value) || 0;
-                    obj[header] = value;
-                });
-                return obj;
-            }).filter(p => p.id && p.name);
-        }
-
-        function parseCSVLine(line) {
-            const result = [];
-            let current = '';
-            let inQuotes = false;
-            for (let i = 0; i < line.length; i++) {
-                const char = line[i];
-                if (char === '"') inQuotes = !inQuotes;
-                else if (char === ',' && !inQuotes) { result.push(current); current = ''; }
-                else current += char;
-            }
-            result.push(current);
-            return result;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProductsFromSheets();
-            updateCart();
-            setupScrollButtons();
-        });
-
-        function setupScrollButtons() {
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
-            const scrollBottomBtn = document.getElementById('scrollBottomBtn');
-            const floatingCartBtn = document.getElementById('floatingCartBtn');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollTopBtn.classList.add('visible');
-                    scrollBottomBtn.classList.add('visible');
-                    floatingCartBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                    scrollBottomBtn.classList.remove('visible');
-                    floatingCartBtn.classList.remove('visible');
-                }
-            });
-        }
-
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        function scrollToBottom() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
-
-        function openMobileMenu() { document.getElementById('mobileMenu').classList.add('active'); }
-        function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('active'); }
-
-        function renderProducts(filteredProducts = products) {
-            const grid = document.getElementById('productsGrid');
-            if (!filteredProducts || filteredProducts.length === 0) {
-                grid.innerHTML = '<div class="loading-message">Товары не найдены</div>';
-                return;
-            }
-            grid.innerHTML = filteredProducts.map(product => {
-                const qty = productQuantities[product.id] || 0;
-                const imgSrc = product.image || getPlaceholder(product.brand);
-                return `<div class="product-card" data-category="${product.category}">
-                    <div class="product-image-wrapper">
-                        <img src="${imgSrc}" alt="${product.name}" class="product-image">
+            <!-- Интерактивная форма данных покупателя -->
+            <div class="checkout-form-accordion">
+                <div class="form-title">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Данные для доставки (сохранятся в накладную):</span>
+                </div>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="orderCustomerName">Ваше имя</label>
+                        <input type="text" id="orderCustomerName" placeholder="Например: Магомед" autocomplete="name">
                     </div>
-                    <div class="product-info">
-                        <div class="product-brand">${product.brand}</div>
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-category"><i class="fas fa-tag"></i> ${getCategoryName(product.category)}</div>
-                        <div class="product-price">${product.price} <span>₽</span></div>
-                        <div class="quantity-selector">
-                            <button class="qty-btn" onclick="changeQuantity(${product.id}, -1)">−</button>
-                            <span class="qty-value" id="qty-${product.id}">${qty}</span>
-                            <button class="qty-btn" onclick="changeQuantity(${product.id}, 1)">+</button>
-                        </div>
+                    <div class="form-field">
+                        <label for="orderCustomerPhone">Телефон</label>
+                        <input type="tel" id="orderCustomerPhone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
                     </div>
-                </div>`;
-            }).join('');
-        }
-
-        function getCategoryName(category) {
-            const categories = { 'kitchen': 'Кухня', 'dishes': 'Посуда', 'laundry': 'Стирка', 'cleaning': 'Уборка', 'hygiene': 'Гигиена' };
-            return categories[category] || category;
-        }
-
-        function changeQuantity(productId, change) {
-            if (!productQuantities[productId]) productQuantities[productId] = 0;
-            productQuantities[productId] += change;
-            if (productQuantities[productId] < 0) productQuantities[productId] = 0;
-            const qtyElement = document.getElementById(`qty-${productId}`);
-            if (qtyElement) qtyElement.textContent = productQuantities[productId];
-            if (productQuantities[productId] > 0) addToCart(productId);
-            else { cart = cart.filter(item => item.id !== productId); updateCart(); }
-        }
-
-        function filterCategory(category) {
-            currentFilter = category;
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.closest('.filter-btn').classList.add('active');
-            if (category === 'all') renderProducts();
-            else renderProducts(products.filter(p => p.category === category));
-        }
-
-        function searchProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            renderProducts(products.filter(p => p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query)));
-        }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const quantity = productQuantities[productId] || 1;
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) existingItem.quantity = quantity;
-            else cart.push({ ...product, quantity: quantity });
-            updateCart();
-            showNotification('✅ ' + product.name + ' добавлен');
-        }
-
-        function updateQuantityInCart(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) { cart = cart.filter(i => i.id !== productId); productQuantities[productId] = 0; }
-                else productQuantities[productId] = item.quantity;
-                updateCart();
-            }
-        }
-
-        function clearCart() {
-            if (confirm('Очистить всю корзину?')) {
-                cart = [];
-                productQuantities = {};
-                updateCart();
-                showNotification('🗑️ Корзина очищена');
-            }
-        }
-
-        function updateCart() {
-            const headerCartCount = document.getElementById('headerCartCount');
-            const headerCartTotal = document.getElementById('headerCartTotal');
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
-            const emptyCart = document.getElementById('emptyCart');
-            const totalAmount = document.getElementById('totalAmount');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            headerCartCount.textContent = totalItems + ' шт.';
-            headerCartTotal.textContent = totalPrice.toLocaleString() + ' ₽';
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '';
-                cartTotal.style.display = 'none';
-                emptyCart.style.display = 'block';
-            } else {
-                emptyCart.style.display = 'none';
-                cartTotal.style.display = 'block';
-                cartItems.innerHTML = cart.map(item => {
-                    const imgSrc = item.image || getPlaceholder(item.brand);
-                    return `
-                    <div class="cart-item">
-                        <img src="${imgSrc}" alt="${item.name}" class="cart-item-image">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">${item.price} ₽</div>
-                            <div class="cart-item-quantity">
-                                <button class="qty-btn" onclick="updateQuantityInCart(${item.id}, -1)" style="width: 26px; height: 26px; font-size: 0.85rem;">−</button>
-                                <span style="font-weight: 700; min-width: 32px; text-align: center; font-size: 0.95rem; color: var(--green-dark);">${item.quantity}</span>
-                                <button class="qty-btn" onclick="updateQuantityInCart(${item.id}, 1)" style="width: 26px; height: 26px; font-size: 0.85rem;">+</button>
-                            </div>
-                        </div>
-                        <div style="text-align: right;"><div style="font-size: 1.25rem; font-weight: 800; color: var(--gold-dark); font-family: 'Cormorant Garamond', serif;">${(item.price * item.quantity).toLocaleString()} ₽</div></div>
+                    <div class="form-field">
+                        <label for="orderCustomerCity">Город / Населенный пункт</label>
+                        <select id="orderCustomerCity">
+                            <option value="Магас">Магас</option>
+                            <option value="Назрань" selected>Назрань</option>
+                            <option value="Карабулак">Карабулак</option>
+                            <option value="Сунжа">Сунжа</option>
+                            <option value="Малгобек">Малгобек</option>
+                            <option value="Экажево">Экажево</option>
+                            <option value="Другой населенный пункт">Другой населенный пункт</option>
+                        </select>
                     </div>
-                `}).join('');
-                totalAmount.textContent = totalPrice.toLocaleString() + ' ₽';
-                const orderText = encodeURIComponent('Здравствуйте! Хочу заказать:\n\n' + cart.map(item => item.name + ' - ' + item.quantity + ' шт. (' + (item.price * item.quantity).toLocaleString() + ' ₽)').join('\n') + '\n\nИтого: ' + totalPrice.toLocaleString() + ' ₽');
-                document.getElementById('whatsappOrder').href = 'https://wa.me/77077974406?text=' + orderText;
-                document.getElementById('telegramOrder').href = 'https://t.me/Amanating_bot?text=' + orderText;
-            }
-            document.getElementById('adminCartItems').textContent = totalItems;
-            document.getElementById('adminTotalAmount').textContent = totalPrice.toLocaleString() + ' ₽';
-        }
+                    <div class="form-field">
+                        <label for="orderCustomerAddress">Улица, дом или ориентир</label>
+                        <input type="text" id="orderCustomerAddress" placeholder="Ул. и номер дома">
+                    </div>
+                </div>
+            </div>
 
-        function toggleCart() { const modal = document.getElementById('cartModal'); modal.classList.toggle('active'); }
-        function toggleAdmin() { document.getElementById('adminLogin').classList.toggle('active'); }
+            <!-- Итоговая сводка -->
+            <div class="cart-summary-box">
+                <div class="summary-line">
+                    <span>Товаров на сумму:</span>
+                    <strong id="cartSubtotalAmount">0 ₽</strong>
+                </div>
+                <div class="summary-line">
+                    <span>Доставка по Ингушетии:</span>
+                    <strong id="cartDeliveryAmount" class="text-success">Бесплатно</strong>
+                </div>
+                <div class="summary-total-line">
+                    <span>Итого к оплате:</span>
+                    <span class="total-price-huge" id="cartGrandTotal">0 ₽</span>
+                </div>
+            </div>
 
-        function closeAdminLogin() {
-            document.getElementById('adminLogin').classList.remove('active');
-            document.getElementById('adminUsername').value = '';
-            document.getElementById('adminPassword').value = '';
-        }
+            <!-- Кнопки оформления через мессенджеры -->
+            <div class="cart-action-buttons">
+                <button class="btn btn-order-wa" id="submitOrderWhatsAppBtn" onclick="handleCheckout('whatsapp')">
+                    <i class="fa-brands fa-whatsapp"></i> Оформить заказ в WhatsApp
+                </button>
+                <button class="btn btn-order-tg" id="submitOrderTelegramBtn" onclick="handleCheckout('telegram')">
+                    <i class="fa-brands fa-telegram"></i> Оформить через Telegram
+                </button>
+            </div>
+            
+            <div class="cart-quick-actions">
+                <button class="btn-clear-cart" onclick="confirmClearCart()">
+                    <i class="fa-solid fa-trash-can"></i> Очистить корзину
+                </button>
+            </div>
+        </div>
 
-        function checkLogin() {
-            const username = document.getElementById('adminUsername').value;
-            const password = document.getElementById('adminPassword').value;
-            if (username === 'amanat06.ru' && password === 'amanat06.ru.amanat06.ru') {
-                document.getElementById('adminLogin').classList.remove('active');
-                document.getElementById('adminPanel').classList.add('active');
-                updateAdminStats();
-                document.getElementById('adminUsername').value = '';
-                document.getElementById('adminPassword').value = '';
-                setTimeout(() => {
-                    document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            } else {
-                alert('Неверный логин или пароль!');
-            }
-        }
+    </aside>
 
-        function updateAdminStats() {
-            document.getElementById('adminTotalProducts').textContent = products.length;
-        }
+    <!-- ============================================== -->
+    <!-- МОДАЛЬНОЕ ОКНО БЫСТРОГО ПРОСМОТРА ТОВАРА -->
+    <!-- ============================================== -->
+    <div class="modal-backdrop" id="productModalBackdrop" onclick="closeProductModal(event)">
+        <div class="quick-view-card" id="quickViewCard">
+            <button class="modal-close-corner" onclick="closeProductModalDirect()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="quick-view-content" id="quickViewContent">
+                <!-- Контент генерируется динамически -->
+            </div>
+        </div>
+    </div>
 
-        function logoutAdmin() { 
-            document.getElementById('adminPanel').classList.remove('active'); 
-            showNotification('Вы вышли из панели управления'); 
-        }
+    <!-- ============================================== -->
+    <!-- МОДАЛЬНОЕ ОКНО АДМИНИСТРАТОРА -->
+    <!-- ============================================== -->
+    <div class="modal-backdrop" id="adminModalBackdrop" onclick="closeAdminModal(event)">
+        <div class="admin-login-card" id="adminLoginCard">
+            <button class="modal-close-corner" onclick="closeAdminModalDirect()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="admin-modal-head">
+                <i class="fa-solid fa-user-shield admin-head-icon"></i>
+                <h3>Панель управления товарами</h3>
+                <p>Управление ценами и позициями через Google Таблицу</p>
+            </div>
 
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.classList.add('show');
-            setTimeout(() => { notification.classList.remove('show'); }, 3000);
-        }
+            <div id="adminLoginForm">
+                <div class="form-field">
+                    <label for="adminUsernameInput">Логин</label>
+                    <input type="text" id="adminUsernameInput" placeholder="Логин">
+                </div>
+                <div class="form-field">
+                    <label for="adminPasswordInput">Пароль</label>
+                    <input type="password" id="adminPasswordInput" placeholder="Пароль" onkeypress="if(event.key==='Enter')handleAdminLogin()">
+                </div>
+                <button class="btn btn-gold-solid btn-full" onclick="handleAdminLogin()">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Войти
+                </button>
+            </div>
 
-        document.getElementById('cartModal').addEventListener('click', function(e) { if (e.target === this) toggleCart(); });
-    </script>
-    
-<script async src="https://idealstile.ru/api/widget/loader?token=ahJcdWukgf1eikBmwC22W8ut"></script>
-    
+            <div id="adminDashboardView" style="display: none;">
+                <div class="admin-success-msg">
+                    <i class="fa-solid fa-circle-check"></i> Вы успешно авторизованы!
+                </div>
+                <div class="admin-stats-pills">
+                    <div class="stat-pill">
+                        <span class="stat-val" id="adminTotalProdsCount">0</span>
+                        <span class="stat-lbl">Всего товаров</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-val" id="adminCategoriesCount">5</span>
+                        <span class="stat-lbl">Категорий</span>
+                    </div>
+                </div>
+                <div class="admin-actions-box">
+                    <p>Товары редактируются мгновенно онлайн через Google Таблицу:</p>
+                    <a href="https://docs.google.com/spreadsheets/d/1AQPDlp3Wh2rz21Ra1ltDpEDy9ocSO_elskJYx8ONr8s/edit" target="_blank" class="btn btn-gold-solid btn-full" rel="noopener">
+                        <i class="fa-solid fa-table"></i> Открыть Google Таблицу
+                    </a>
+                    <button class="btn btn-glass btn-full" onclick="forceReloadProductsFromSheets()" style="margin-top: 10px;">
+                        <i class="fa-solid fa-arrows-rotate"></i> Принудительно обновить кэш сайта
+                    </button>
+                </div>
+                <button class="btn-text-link" onclick="handleAdminLogout()" style="margin-top: 15px; width: 100%; text-align: center;">
+                    Выйти из системы
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ ДЛЯ СМАРТФОНОВ (MOBILE BOTTOM BAR) -->
+    <!-- ============================================== -->
+    <nav class="mobile-bottom-bar" aria-label="Быстрая мобильная навигация">
+        <a href="#hero" class="mob-tab-btn" onclick="scrollToSection('hero')">
+            <i class="fa-solid fa-house"></i>
+            <span>Главная</span>
+        </a>
+        <a href="#catalog" class="mob-tab-btn" onclick="scrollToSection('catalog')">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span>Каталог</span>
+        </a>
+        <button class="mob-tab-btn mob-cart-tab" onclick="toggleCartDrawer(true)">
+            <div class="mob-cart-badge-wrap">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="mob-cart-badge" id="mobBottomCartCount">0</span>
+            </div>
+            <span>Корзина</span>
+        </button>
+        <a href="https://wa.me/77077974406" target="_blank" class="mob-tab-btn" rel="noopener">
+            <i class="fa-brands fa-whatsapp text-wa-color"></i>
+            <span>WhatsApp</span>
+        </a>
+    </nav>
+
+    <!-- Всплывающие уведомления (Toast Notifications) -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Внешний виджет клиента (сохранен для совместимости) -->
+    <script async src="https://idealstile.ru/api/widget/loader?token=ahJcdWukgf1eikBmwC22W8ut"></script>
+
+    <!-- Основной JS скрипт приложения -->
+    <script src="app.js"></script>
 </body>
 </html>
